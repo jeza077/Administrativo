@@ -29,9 +29,10 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <!-- Css propio -->
   <link rel="stylesheet" href="vistas/dist/css/main.css">
+  <link rel="stylesheet"  type="text/css" href="vistas/dist/css/flaticon.css">
   <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <?php
 		date_default_timezone_set('America/Tegucigalpa');

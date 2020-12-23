@@ -1,12 +1,15 @@
 :root{
     --btnPrimario: orange;
     --btnPrimarioHover: #FF5F35;
+    --btnAzul: #007BFF;
     --darkFirst: #212529;
+    --primario: #fff;
     --darkSecond: #23211e;
     --orangeFirst: #FF5300;
     --orangeSecond: #292423;
     --orangeThird: #ff8303;
     --grisOscuro: #495057;
+    --linkIconOscuro: #555b61;
 }
 /* * {
     font-family: 'Poppins', sans-serif;
@@ -76,6 +79,7 @@ box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.5);
 .card {
     display: block;
     height: 100%;
+    border-radius: 0.8rem;
 }
 body.login-page .card{
     padding: 45px 10px;
@@ -682,22 +686,32 @@ i.show-confir-pass{
 }
 
 /***** SIDEBAR ******/
+[class*=sidebar-dark] .brand-link{
+    border-bottom: none!important;
+}
 .main-sidebar{
     position: fixed!important;
-    background-color: var(--darkFirst);
+    background-color: var(--primario);
+}
+.sidebar{
+    padding-top: 50px;
+}
+.nav-link.menu-lateral:hover{
+    background: var(--btnAzul)!important;
+    color: #fff!important;
+    /* border-radius: 0.6em; */
+}
+.nav-pills .nav-link{
+    color: var(--linkIconOscuro)!important;
 }
 .nav-link.active {
-    background: var(--orangeThird)!important;
+    background: var(--btnAzul)!important;
     color: #fff!important;
     /* border-radius: 0.6em; */
 }
     /* .nav-link.menu-lateral{
         transition: 0.3s;
     } */
-.nav-link.menu-lateral:hover{
-    background: var(--orangeThird)!important;
-    /* border-radius: 0.6em; */
-}
 /* .nav-treeview>.nav-item>.nav-link.active{
     background: #d7dce4 !important;
     color: #fff;

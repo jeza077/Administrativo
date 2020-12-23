@@ -2,7 +2,7 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="login-logo">
-      <a href="login"><b>Gym </b>La Roca</a>
+      <a href="login"><b>Gym </b></a>
     </div>
 
     <!-- CONTENEDOR LOGIN -->
