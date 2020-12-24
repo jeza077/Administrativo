@@ -121,7 +121,7 @@ class ControladorGlobales{
 			EDITAR PARAMETROS
     =============================================*/
     
-    public function ctrEditarParametro(){
+    static public function ctrEditarParametro(){
 
       if(isset($_POST["editarParametro"])){
 
@@ -189,7 +189,7 @@ class ControladorGlobales{
       EDITAR ROL
     =============================================*/
     
-    public function ctrEditarRol(){
+    static public function ctrEditarRol(){
 
       if(isset($_POST["editarRol"])){
 
