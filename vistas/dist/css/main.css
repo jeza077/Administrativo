@@ -31,6 +31,8 @@ body::-webkit-scrollbar-thumb{
     color: var(--orangeThird);
 }
 
+
+/******* BOTONES ***/
 /* BOTON NARANJA */
 .btn-orange {
     background-color: var(--orangeThird);
@@ -54,6 +56,11 @@ border-color: var(--orangeThird);;
 }
 /* .btn-outline-orange:focus, .btn-outline-primary.focus {
 box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.5);
+} */
+
+/* BOTON AZUL */
+/* .btn-primary{
+    
 } */
 
 /* BOTON CALCULAR PAGO INSCRIPCION CLIENTE */
@@ -699,7 +706,7 @@ i.show-confir-pass{
 .nav-link.menu-lateral:hover{
     background: var(--btnAzul)!important;
     color: #fff!important;
-    /* border-radius: 0.6em; */
+    border-radius: 0.6em;
 }
 .nav-pills .nav-link{
     color: var(--linkIconOscuro)!important;
@@ -707,7 +714,7 @@ i.show-confir-pass{
 .nav-link.active {
     background: var(--btnAzul)!important;
     color: #fff!important;
-    /* border-radius: 0.6em; */
+    border-radius: 0.6em;
 }
     /* .nav-link.menu-lateral{
         transition: 0.3s;

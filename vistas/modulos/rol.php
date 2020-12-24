@@ -7,10 +7,10 @@
             <h1>Roles</h1>
           </div>
           <div class="col-sm-6">
-              <button class="btn btn-orange float-right"  data-toggle="modal" data-target="#modalNuevoRol">
+              <button class="btn btn-primary float-right"  data-toggle="modal" data-target="#modalNuevoRol">
                 Nuevo Rol        
               </button>
-              <button class="btn btn-danger btnExportarRol float-right mr-3 ">
+              <button class="btn btn-outline-danger btnExportarRol float-right mr-3 ">
                 Exportar PDF      
               </button>
           </div>
@@ -36,7 +36,7 @@
                       ROL
             ==========================================================-->   
 
-        <table class="table table-striped table-bordered tablas text-center">
+        <table class="table table-hover tablas text-center">
 
           <thead>
                           

@@ -22,11 +22,11 @@
          
           <div class="col-sm-6">
           <?php if($permisoAgregar == 1){ ?>
-            <button class="btn btn-orange float-right"  data-toggle="modal" data-target="#modalAgregarUsuario">
+            <button class="btn btn-primary float-right"  data-toggle="modal" data-target="#modalAgregarUsuario">
               Nuevo Usuario          
             </button>
           <?php } ?>
-            <button class="btn btn-danger btnExportarUsuarios float-right mr-3 ">
+            <button class="btn btn-outline-danger btnExportarUsuarios float-right mr-3 ">
               Exportar PDF          
             </button>
           </div>
@@ -50,7 +50,7 @@
 
           <div class="card-body">
           
-            <table class="table table-striped tablas text-center">
+            <table class="table table-hover tablas text-center">
               <thead>
                 <tr>
                   <th scope="col">#</th>

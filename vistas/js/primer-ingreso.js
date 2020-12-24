@@ -59,7 +59,7 @@ $('#btnPreguntaDos').click(function (e) {
                 $("#passwordPrimerIngreso").append("<label class='mt-2'>Confirmar contraseña</label>");
                 $("#passwordPrimerIngreso").append("<input type='password' class='form-control password confirmar-password' placeholder='Confirmar contraseña'>");
 
-                $("#guardarPassPrimerIngreso").append("<button type='submit' class='btn btn-orange btn-block btn-flat' id='cambiarPasPrimerIngreso'>Cambiar Contraseña</button>");
+                $("#guardarPassPrimerIngreso").append("<button type='submit' class='btn btn-primary btn-block btn-flat' id='cambiarPasPrimerIngreso'>Cambiar Contraseña</button>");
 
                 requisitosPassword("center-start");
                 $('#cambiarPasPrimerIngreso').attr('disabled', true);

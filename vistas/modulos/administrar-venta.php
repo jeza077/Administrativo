@@ -9,7 +9,7 @@
         </div>
         
         <div class="col-sm-6">
-          <a href="crear-venta" class="btn btn-orange float-right">
+          <a href="crear-venta" class="btn btn-primary float-right">
               Nueva Venta     
           </a> 
           

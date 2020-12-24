@@ -695,7 +695,7 @@ $(document).on('click', '.SwalBtnCancelarInscripcion', function () {
                         Swal.fire({
                             title: '¿Desea agregar una nueva inscripción?',
                             icon: 'info',
-                            html: '<button type="button" role="button" tabindex="0" class="SwalBtnNuevaInscripcion btn btn-orange customSwalBtn" data-toggle="modal" data-target="#modalNuevaInscripcion">' + 'Si, vamos' + '</button>' +
+                            html: '<button type="button" role="button" tabindex="0" class="SwalBtnNuevaInscripcion btn btn-primary customSwalBtn" data-toggle="modal" data-target="#modalNuevaInscripcion">' + 'Si, vamos' + '</button>' +
 
                             '<button type="button" role="button" tabindex="0" class="SwalBtnSalirNuevaInscripcion btn btn-danger customSwalBtn">' + 'No, salir' + '</button>',
                             // width: 600,

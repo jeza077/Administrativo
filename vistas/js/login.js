@@ -172,7 +172,7 @@ $(".verificarCorreoPreguntas").on('click', function(event){
                                         $("#passwords").append("<label class='mt-2'>Confirmar contraseña</label>");
                                         $("#passwords").append("<input type='password' class='form-control password confirmar-password' placeholder='Confirmar contraseña'>");
 
-                                        $("#btnCambiarPass").append("<button type='submit' class='btn btn-orange btn-block btn-flat' id='cambiarContraseña'>Cambiar Contraseña</button>")
+                                        $("#btnCambiarPass").append("<button type='submit' class='btn btn-primary btn-block btn-flat' id='cambiarContraseña'>Cambiar Contraseña</button>")
 
                                         $("#linkLogin").append("<p class='link mt-3 ml-2'>Regresar al <a href='javascript:void(0);' onclick='toggleForm(); toggleQuestions(); togglePassword();'>Login</a></p>")
 
@@ -306,7 +306,7 @@ $(".verificarCorreoPreguntas").on('click', function(event){
                                                         // $("#passwords").append("<label class='mt-2'>Confirmar contraseña</label>");
                                                         // $("#passwords").append("<input type='password' class='form-control password confirmar-password' placeholder='Confirmar contraseña'>");
             
-                                                        // $("#btnCambiarPass").append("<button type='submit' class='btn btn-orange btn-block btn-flat' id='cambiarContraseña'>Cambiar Contraseña</button>")
+                                                        // $("#btnCambiarPass").append("<button type='submit' class='btn btn-primary btn-block btn-flat' id='cambiarContraseña'>Cambiar Contraseña</button>")
             
                                                         // $("#linkLogin").append("<p class='link mt-3 ml-2'>Regresar al <a href='#' onclick='toggleForm(); toggleQuestions(); togglePassword();'>Login</a></p>")
             

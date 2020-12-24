@@ -27,7 +27,9 @@ $totalVentas = ControladorInventario::ctrMostrarSumaVentas($tabla);
 
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Productos más vendidos</h3>
+        <h3 class="card-title">
+           <b>Productos más vendidos</b> 
+        </h3>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
