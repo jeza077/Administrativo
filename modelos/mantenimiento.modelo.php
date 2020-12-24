@@ -61,16 +61,17 @@ class ModeloMantenimiento{
 		MOSTRAR PERMISOS ROlES
 	=============================================*/
 		
-	static public function mdlMostraPermisosrRoles($item, $valor){
+	static public function mdlMostraPermisosrRoles($item1, $valor1, $item2, $valor2){
 	
-        if($item != null){
+        if($item1 != null){
 
             $stmt = Conexion::conectar()->prepare("SELECT r.rol, pe.*, o.objeto FROM tbl_roles AS r \n"
             . "LEFT JOIN tbl_permisos AS pe ON r.id_rol = pe.id_rol\n"
             . "LEFT JOIN tbl_objetos AS o ON pe.id_objeto = o.id_objeto\n"
-            . "WHERE $item = :$item");	
+            . "WHERE pe.$item1 = :$item1 AND pe.$item2 = :$item2");	
 
-            $stmt->bindParam(":".$item, $valor, PDO::PARAM_STR);
+            $stmt->bindParam(":".$item1, $valor1, PDO::PARAM_STR);
+            $stmt->bindParam(":".$item2, $valor2, PDO::PARAM_STR);
             $stmt->execute();
             return $stmt -> fetch();
 

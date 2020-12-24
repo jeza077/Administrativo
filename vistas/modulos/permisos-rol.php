@@ -56,10 +56,12 @@
 
             <?php
                 // $tabla = "tbl_roles";
-                $item = null;
-                $valor = null;
+                $item1 = null;
+                $valor1 = null;
+                $item2 = null;
+                $valor2 = null;
                 
-                $permisosRol = ControladorMantenimientos::ctrMostrarPermisosRoles($item,$valor);
+                $permisosRol = ControladorMantenimientos::ctrMostrarPermisosRoles($item1, $valor1, $item2, $valor2);
                 // var_dump($permisosRol);
 
                 foreach ($permisosRol as $key => $value){

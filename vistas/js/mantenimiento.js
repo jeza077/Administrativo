@@ -294,10 +294,10 @@ $(".btnEditarRol").click(function(){
                                     
                         // console.log(parseInt(idRol))
                         // console.log(pantalla)
-                        console.log('consulta',consulta)
-                        console.log('agregar',agregar)
-                        console.log('actualizar',actualizar)
-                        console.log('eliminar',eliminar)
+                        // console.log('consulta',consulta)
+                        // console.log('agregar',agregar)
+                        // console.log('actualizar',actualizar)
+                        // console.log('eliminar',eliminar)
                         // return;
                         var datos = new FormData();
                         datos.append('idRol', idRol);
@@ -317,17 +317,23 @@ $(".btnEditarRol").click(function(){
                             contentType:false,
                             processData:false,
                             success:function(respuesta){ 
-                                //console.log(respuesta)
+                                console.log(respuesta)
 
                                 $('input[type=checkbox]').prop('checked',false);   
                                 $('#nuevaPantallaEditar').val('Seleccione...');                                       
-                                if(respuesta){
+                                if(respuesta == 'true'){
                                     $('#modalFooterPermisosEditar').before('<div class="alert alert-success alert-dismissible ml-3 mr-3 mt-4" role="alert"><i class="icon fas fa-check"></i>Los permisos se agregaron correctamente.</div>');
                                     setTimeout(function () {
                                         $('.alert').remove();
                                     }, 4000)
 
                                     
+                                } else if(respuesta == '"existe"'){
+                                    console.log('agregue otra')
+                                    $('#modalFooterPermisosEditar').before('<div class="alert alert-danger alert-dismissible ml-3 mr-3 mt-4" role="alert"><i class="icon fas fa-ban"></i>La pantalla elegida ya ha sido asociada anteriormente a este rol.</div>');
+                                    setTimeout(function () {
+                                        $('.alert').remove();
+                                    }, 4000)
                                 } else {
                                     // $('input[type=checkbox]').prop('checked',false);
                                     $('#modalFooterPermisosEditar').before('<div class="alert alert-danger alert-dismissible ml-3 mr-3 mt-4" role="alert"><i class="icon fas fa-ban"></i>Opps, algo salio mal. Intenta de nuevo!</div>');

@@ -162,9 +162,9 @@
         MOSTRAR PERMISOS ROLES
     =============================================*/
 
-    static public function ctrMostrarPermisosRoles($item, $valor){
+    static public function ctrMostrarPermisosRoles($item1, $valor1, $item2, $valor2){
 
-      $respuesta = ModeloMantenimiento::mdlMostraPermisosrRoles($item, $valor);
+      $respuesta = ModeloMantenimiento::mdlMostraPermisosrRoles($item1, $valor1, $item2, $valor2);
 
       return $respuesta;
 
@@ -194,41 +194,57 @@
         // $actualizar = 0;
         // $eliminar = 0;
 
-        if($cons != 'true'){
-          $consulta = 0;
+        $item1 = 'id_rol';
+        $valor1 = $idRol;
+        $item2 = 'id_objeto';
+        $valor2 = $pant;
+        
+        $respuesta = ModeloMantenimiento::mdlMostraPermisosrRoles($item1, $valor1, $item2, $valor2);
+        
+        if($respuesta != false){
+
+          return 'existe';
         } else {
-          $consulta = 1;
+          // return 'no existe';
+
+          if($cons != 'true'){
+            $consulta = 0;
+          } else {
+            $consulta = 1;
+          }
+
+          if($agre != 'true'){
+            $agregar = 0;
+          } else {
+            $agregar = 1;
+          }
+
+          if($actua != 'true'){
+            $actualizar = 0;
+          } else {
+            $actualizar = 1;
+          }
+
+          if($elim != 'true'){
+            $eliminar = 0;
+          } else {
+            $eliminar = 1;
+          }
+
+          // $datos = array('id' => $idRol,
+          //               'pantalla' => $pant,
+          //               'consu' => $consulta,
+          //               'agre' => $agregar,
+          //               'actua' => $actualizar,
+          //               'elim' => $eliminar);
+          // return $datos;
+          $tabla = 'tbl_permisos';
+          $respuesta = ModeloMantenimiento::mdlInsertarPermisosRoles($tabla, $idRol, $pant, $consulta, $agregar, $actualizar, $eliminar);
+    
+          return $respuesta;
         }
 
-        if($agre != 'true'){
-          $agregar = 0;
-        } else {
-          $agregar = 1;
-        }
 
-        if($actua != 'true'){
-          $actualizar = 0;
-        } else {
-          $actualizar = 1;
-        }
-
-        if($elim != 'true'){
-          $eliminar = 0;
-        } else {
-          $eliminar = 1;
-        }
-
-        // $datos = array('id' => $idRol,
-        //               'pantalla' => $pant,
-        //               'consu' => $consulta,
-        //               'agre' => $agregar,
-        //               'actua' => $actualizar,
-        //               'elim' => $eliminar);
-        // return $datos;
-        $tabla = 'tbl_permisos';
-        $respuesta = ModeloMantenimiento::mdlInsertarPermisosRoles($tabla, $idRol, $pant, $consulta, $agregar, $actualizar, $eliminar);
-  
-        return $respuesta;
       }
 
 
