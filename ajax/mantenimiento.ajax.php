@@ -5,8 +5,6 @@ require_once "../modelos/mantenimiento.modelo.php";
 
 class AjaxRol{
 
-    
-
     /*=============================================
                 GUARDAR ROL
     ==============================================*/
@@ -77,6 +75,36 @@ class AjaxRol{
     }    
 
 
+    /*=============================================
+            ACTIVAR PERMISOS ROL
+    ==============================================*/
+    public $idPermiso;
+    public $estadoPermiso;
+    public $tipoPermiso;
+
+    
+    public function ajaxActivarPermisos(){ 
+
+        $tabla = "tbl_permisos";
+
+        $item1 = $this->tipoPermiso;
+        $valor1 = $this->estadoPermiso;
+
+        $item2 = "id_permiso";
+        $valor2 = $this->idPermiso;
+        
+        $item3 = null;
+        $valor3 = null;
+
+        $item4 = null;
+        $valor4 = null;
+
+        $respuesta = ModeloMantenimiento::mdlActualizarMantenimiento($tabla, $item1, $valor1, $item2, $valor2, $item3, $valor3, $item4, $valor4);
+        echo json_encode($respuesta);
+
+
+    }    
+
 }    
 
 /*========================================
@@ -119,12 +147,19 @@ if(isset($_POST["activarRol"])){
 }  
 
 
-
+/*=============================================
+        ACTIVAR PERMISOS ROL
+==============================================*/
+if(isset($_POST["idPermiso"])){ 
+    $activarPermisos = new ajaxRol();
+    $activarPermisos->idPermiso = $_POST["idPermiso"];
+    $activarPermisos->estadoPermiso = $_POST["estadoPermiso"];
+    $activarPermisos->tipoPermiso = $_POST["tipoPermiso"];
+    $activarPermisos->ajaxActivarPermisos();
+}  
 
 
 class AjaxInscripcion{
-
-
 
     /*=============================================
                    Activar INSCRIPCIONES

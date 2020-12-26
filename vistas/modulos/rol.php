@@ -357,7 +357,7 @@ MODAL EDITAR ROL
         PIE DEL MODAL
         ======================================-->
      
-        <div class="modal-footer mt-4" id="modalFooterPermisosEditar">
+        <div class="modal-footer" id="modalFooterPermisosEditar">
           <button type="submit" class="btn btn-primary btnGuardarCambiosEditar">Guardar Cambios
           </button>
           <button type="button" class="btn btn-orange" data-dismiss="modal">Salir</button>

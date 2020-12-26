@@ -55,9 +55,11 @@
             // echo "<pre>";
             // var_dump($_POST);
             // echo "</pre>";
-  
+          // return $datos;
+          
           $respuesta = ModeloMantenimiento::mdlInsertarRoles($tabla, $datos);
           
+          // return $respuesta;
           // var_dump($respuesta);
           if($respuesta == true){
          

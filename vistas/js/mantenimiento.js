@@ -32,6 +32,7 @@ $(document).on('click', '.btnGuardarRol', function (e) {
         processData:false,
         success:function(respuesta){ 
             // console.log(respuesta)
+            // return;
             var idRol = respuesta;
 
             if(respuesta){
@@ -125,10 +126,10 @@ $(document).on('click', '.btnGuardarRol', function (e) {
                                                 
                                     // console.log(parseInt(idRol))
                                     // console.log(pantalla)
-                                    console.log('consulta',consulta)
-                                    console.log('agregar',agregar)
-                                    console.log('actualizar',actualizar)
-                                    console.log('eliminar',eliminar)
+                                    // console.log('consulta',consulta)
+                                    // console.log('agregar',agregar)
+                                    // console.log('actualizar',actualizar)
+                                    // console.log('eliminar',eliminar)
                                     // return;
                                     var datos = new FormData();
                                     datos.append('idRol', idRol);
@@ -148,17 +149,23 @@ $(document).on('click', '.btnGuardarRol', function (e) {
                                         contentType:false,
                                         processData:false,
                                         success:function(respuesta){ 
-                                            console.log(respuesta)
+                                            // console.log(respuesta)
     
                                             $('input[type=checkbox]').prop('checked',false);   
                                             $('#nuevaPantalla').val('Seleccione...');                                       
-                                            if(respuesta){
+                                            if(respuesta == 'true'){
                                                 $('#modalFooterPermisos').before('<div class="alert alert-success alert-dismissible ml-3 mr-3 mt-4" role="alert"><i class="icon fas fa-check"></i>Los permisos se agregaron correctamente.</div>');
                                                 setTimeout(function () {
                                                     $('.alert').remove();
                                                 }, 4000)
     
                                                 
+                                            } else if(respuesta == '"existe"'){
+                                                console.log('agregue otra')
+                                                $('#modalFooterPermisos').before('<div class="alert alert-danger alert-dismissible ml-3 mr-3 mt-4" role="alert"><i class="icon fas fa-ban"></i>La pantalla elegida ya ha sido asociada anteriormente a este rol.</div>');
+                                                setTimeout(function () {
+                                                    $('.alert').remove();
+                                                }, 4000)
                                             } else {
                                                 // $('input[type=checkbox]').prop('checked',false);
                                                 $('#modalFooterPermisos').before('<div class="alert alert-danger alert-dismissible ml-3 mr-3 mt-4" role="alert"><i class="icon fas fa-ban"></i>Opps, algo salio mal. Intenta de nuevo!</div>');
@@ -322,7 +329,7 @@ $(".btnEditarRol").click(function(){
                                 $('input[type=checkbox]').prop('checked',false);   
                                 $('#nuevaPantallaEditar').val('Seleccione...');                                       
                                 if(respuesta == 'true'){
-                                    $('#modalFooterPermisosEditar').before('<div class="alert alert-success alert-dismissible ml-3 mr-3 mt-4" role="alert"><i class="icon fas fa-check"></i>Los permisos se agregaron correctamente.</div>');
+                                    $('#modalFooterPermisosEditar').before('<div class="alert alert-success alert-dismissible ml-3 mr-3" role="alert"><i class="icon fas fa-check"></i>Los permisos se agregaron correctamente.</div>');
                                     setTimeout(function () {
                                         $('.alert').remove();
                                     }, 4000)
@@ -330,13 +337,13 @@ $(".btnEditarRol").click(function(){
                                     
                                 } else if(respuesta == '"existe"'){
                                     console.log('agregue otra')
-                                    $('#modalFooterPermisosEditar').before('<div class="alert alert-danger alert-dismissible ml-3 mr-3 mt-4" role="alert"><i class="icon fas fa-ban"></i>La pantalla elegida ya ha sido asociada anteriormente a este rol.</div>');
+                                    $('#modalFooterPermisosEditar').before('<div class="alert alert-danger alert-dismissible ml-3 mr-3" role="alert"><i class="icon fas fa-ban"></i>La pantalla elegida ya ha sido asociada anteriormente a este rol.</div>');
                                     setTimeout(function () {
                                         $('.alert').remove();
                                     }, 4000)
                                 } else {
                                     // $('input[type=checkbox]').prop('checked',false);
-                                    $('#modalFooterPermisosEditar').before('<div class="alert alert-danger alert-dismissible ml-3 mr-3 mt-4" role="alert"><i class="icon fas fa-ban"></i>Opps, algo salio mal. Intenta de nuevo!</div>');
+                                    $('#modalFooterPermisosEditar').before('<div class="alert alert-danger alert-dismissible ml-3 mr-3" role="alert"><i class="icon fas fa-ban"></i>Opps, algo salio mal. Intenta de nuevo!</div>');
                                     setTimeout(function () {
                                         $('.alert').remove();
                                     }, 4000)
@@ -381,7 +388,7 @@ $(".btnActivar").click(function(){
       contentType:false,
       processData:false,
       success:function(respuesta){ 
-          console.log(respuesta)
+        //   console.log(respuesta)
      } 
 
     }) 
@@ -551,6 +558,59 @@ $(document).on('click', '.btnExportarInscripcion', function () {
     
 });
 
+
+/*=====================================
+    ACTIVAR PERMISOS ROL
+========================================*/
+$(".btnActivarPermisos").click(function(){
+
+    var idPermiso = $(this).attr("idPermiso");
+    var estadoPermiso = $(this).attr("estadoPermiso");
+    var tipoPermiso = $(this).attr("tipoPermiso");
+
+    // console.log(idPermiso)
+    // console.log(estadoPermiso)
+    // console.log(tipoPermiso)
+
+    // return;
+
+    var datos = new FormData();
+    datos.append("idPermiso", idPermiso);
+    datos.append("estadoPermiso", estadoPermiso);
+    datos.append("tipoPermiso", tipoPermiso);
+
+
+    $.ajax({
+        
+      url:"ajax/mantenimiento.ajax.php",
+      method:"POST",
+      data: datos,
+      cache: false,
+      contentType:false,
+      processData:false,
+      success:function(respuesta){ 
+        //   console.log(respuesta)
+     } 
+
+    }) 
+
+    if(estadoPermiso == 0){
+
+        $(this).removeClass('btn-success');
+        $(this).addClass('btn-danger');
+        $(this).html('No');
+        $(this).attr('estadoPermiso',1);
+
+    }else{
+
+        $(this).addClass('btn-success');
+        $(this).removeClass('btn-danger');
+        $(this).html('Si');
+        $(this).attr('estadoPermiso',0);
+
+    }
+
+})
 
 
 
