@@ -1,7 +1,7 @@
 /*===================================
 MODIFICAR PARAMETROS
 ====================================*/
-$(".btnEditarParametro").click(function(){
+$(document).on("click", ".btnEditarParametro", function(){
     
     var idParametro = $(this).attr("idParametro");
      // console.log("idParametro",idParametro);
@@ -38,7 +38,7 @@ $(".btnEditarParametro").click(function(){
 /*===================================
 MODIFICAR INSCRIPCION
 ====================================*/
-$(".btnEditarInscripcion").click(function(){
+$(document).on("click", ".btnEditarInscripcion", function(){
     
     var idInscripcion = $(this).attr("editarIdInscripcion");
 
@@ -73,7 +73,7 @@ $(".btnEditarInscripcion").click(function(){
 /*===================================
 MODIFICAR MATRIUCLA
 ====================================*/
-$(".btnEditarMatricula").click(function(){
+$(document).on("click", ".btnEditarMatricula", function(){
     
     var idMatricula = $(this).attr("editarIdMatricula");
 
@@ -106,7 +106,7 @@ $(".btnEditarMatricula").click(function(){
 /*===================================
 MODIFICAR DESCUENTO
 ====================================*/
-$(".btnEditarDescuento").click(function(){
+$(document).on("click", ".btnEditarDescuento", function(){
     
     var idDescuento = $(this).attr("editarIdDescuento");
     //console.log(idDescuento)
