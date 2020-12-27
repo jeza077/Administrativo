@@ -171,9 +171,7 @@
       return $respuesta;
 
     }
-
-
-
+    
     
     /*=============================================
         GUARDAR PERMISOS DE ROLES
@@ -253,9 +251,9 @@
     }
 
 
-    // /*======================================================
-    //  Inscripciones Insertar
-    // =============================================================================================*/
+    /*======================================================
+       Inscripciones Insertar
+    =============================================================================================*/
     static public function ctrInscripcionInsertar(){
 
       if(isset($_POST["nuevoInscripcion"])){
@@ -348,7 +346,7 @@
     }
 
      
-      /*=============================================
+    /*=============================================
         MOSTRAR INSCRIPCION
     =============================================*/
 
@@ -363,23 +361,17 @@
     }
 
 
-
-
-
-     /*======================================================
-     MATRICULA INSERTAR
+    /*======================================================
+         MATRICULA INSERTAR
     =========================================================*/
    
     static public function ctrMatriculaInsertar(){
-
 
       if(isset($_POST["nuevoMatricula"])){
 
         if(preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/', $_POST["nuevoMatricula"])){
          
-          
           $tabla = "tbl_matricula";
-          
   
           $datos = array("matricula" => $_POST["nuevoMatricula"], 
                           "precio" => $_POST["nuevoPrecio"]);
@@ -396,17 +388,14 @@
             $descripcionEvento = "Nueva Matricula del Gimnasio";
             $accion = "Nuevo";
 
-            $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
-
-     
-       
+            $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);  
   
             echo '<script>
   
             Swal.fire({
   
               icon: "success",
-              title: "¡La matricula ha sido creado exitosamente!",
+              title: "¡La matricula ha sido creada exitosamente!",
               showConfirmButton: true,
               confirmButtonText: "Cerrar",
               closeOnConfirm: false
@@ -421,10 +410,27 @@
   
             });
   
-  
             </script>';
   
   
+          } else {
+            echo'<script>
+                Swal.fire({
+                      icon: "error",
+                      title: "Opps, algo salio mal, intenta de nuevo!",
+                      showConfirmButton: true,
+                      confirmButtonText: "Cerrar",
+                      closeOnConfirm: false
+                      }).then((result) => {
+                                if (result.value) {
+        
+                                window.location = "inscripcion";
+        
+                                }
+                            })
+        
+                </script>';
+            
           }
   
   
@@ -461,7 +467,6 @@
     }
 
 
-
     /*=============================================
         MOSTRAR MATRICULA
     =============================================*/
@@ -476,12 +481,9 @@
 
     }
 
-
-
-
     
-     /*======================================================
-     DESCUENTO INSERTAR
+    /*======================================================
+       DESCUENTO INSERTAR
     =======================================================*/
    
     static public function ctrDescuentoInsertar(){
@@ -590,6 +592,75 @@
 
     }
 
+    /*=============================================
+      EDITAR MATRICULA
+    =============================================*/
+    
+    static public function ctrEditarMatricula(){
+
+      if(isset($_POST["editarMatricula"])){
+
+        $tabla = "tbl_matricula";
+
+        $datos = array ("tipo_matricula"=> $_POST["editarMatricula"],
+                        "precio_matricula"=>$_POST["editarPrecioMatricula"],
+                        "id_matricula"=>$_POST["editarIdMatricula"]);
+
+
+        $respuesta =  ModeloMantenimiento::mdlEditarMatricula($tabla,$datos);
+
+    
+        if($respuesta == true){
+            
+            $descripcionEvento = "Actualizo Matricula ";
+            $accion = "Actualizo";
+            $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
+
+          
+
+            echo'<script>
+    
+            Swal.fire({
+                 icon: "success",
+                  title: "Matricula editada correctamente",
+                  showConfirmButton: true,
+                  confirmButtonText: "Cerrar",
+                  closeOnConfirm: false
+                  }).then((result) => {
+                            if (result.value) {
+    
+                            window.location = "matricula";
+    
+                            }
+                        })
+    
+            </script>';
+    
+        } else{
+
+          echo'<script>
+    
+            Swal.fire({
+                  icon: "error",
+                  title: "Opps, algo salio mal, intenta de nuevo!",
+                  showConfirmButton: true,
+                  confirmButtonText: "Cerrar",
+                  closeOnConfirm: false
+                  }).then((result) => {
+                            if (result.value) {
+    
+                            window.location = "matricula";
+    
+                            }
+                        })
+    
+            </script>';
+        }
+
+      }
+
+  }
+
 
     /*=============================================
       EDITAR INSCRIPCION
@@ -659,6 +730,73 @@
 
       }
 
+    }
+
+
+  	/*=============================================
+            BORRAR MATRICULA
+    =============================================*/
+    static public function ctrBorrarMatricula(){
+      // var_dump($_GET);
+      //return;
+
+      if(isset($_GET['idEliminarMatricula'])){
+          $tabla = 'tbl_matricula';
+          $datos = $_GET['idEliminarMatricula'];
+
+
+          $respuesta = ModeloMantenimiento::mdlBorrarMatricula($tabla, $datos);
+          
+          // var_dump($respuesta);
+          // return;
+          
+          if($respuesta == true){
+
+            $descripcionEvento = "Elimino la Matricul";
+            $accion = "Elimino";
+
+            $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
+
+            
+            echo'<script>
+    
+            Swal.fire({
+                icon: "success",
+                  title: "Matricula eliminada correctamente",
+                  showConfirmButton: true,
+                  confirmButtonText: "Cerrar",
+                  closeOnConfirm: false
+                  }).then((result) => {
+                            if (result.value) {
+    
+                            window.location = "matricula";
+    
+                            }
+                        })
+    
+            </script>';
+    
+        }else{
+
+          echo'<script>
+    
+            Swal.fire({
+                  icon: "error",
+                  title: "Opps, algo salio mal, intenta de nuevo!",
+                  showConfirmButton: true,
+                  confirmButtonText: "Cerrar",
+                  closeOnConfirm: false
+                  }).then((result) => {
+                            if (result.value) {
+    
+                            window.location = "matricula";
+    
+                            }
+                        })
+    
+            </script>';
+        }
+      }
     }
 
 

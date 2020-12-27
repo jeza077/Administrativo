@@ -255,82 +255,12 @@ class ControladorGlobales{
     }
 
 
-
-     /*=============================================
-      EDITAR MATRICULA
-    =============================================*/
-    
-    public function ctrEditarMatricula(){
-
-        if(isset($_POST["editarMatricula"])){
-  
-          $tabla = "tbl_matricula";
-  
-          $datos = array ("tipo_matricula"=> $_POST["editarMatricula"],
-                          "precio_matricula"=>$_POST["editarPrecioMatricula"],
-                          "id_matricula"=>$_POST["editarIdMatricula"]);
-  
-  
-          $respuesta =  ModeloGlobales::mdlEditarMatricula($tabla,$datos);
-  
-      
-          if($respuesta == true){
-              
-              $descripcionEvento = "Actualizo Matricula ";
-              $accion = "Actualizo";
-              $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
-  
-            
-  
-              echo'<script>
-      
-              Swal.fire({
-                   icon: "success",
-                    title: "La matricula ha sido editado correctamente",
-                    showConfirmButton: true,
-                    confirmButtonText: "Cerrar",
-                    closeOnConfirm: false
-                    }).then((result) => {
-                              if (result.value) {
-      
-                              window.location = "matricula";
-      
-                              }
-                          })
-      
-              </script>';
-      
-          }else{
-  
-            echo'<script>
-      
-              Swal.fire({
-                    icon: "warning",
-                    title: "Error al editar matricula",
-                    showConfirmButton: true,
-                    confirmButtonText: "Cerrar",
-                    closeOnConfirm: false
-                    }).then((result) => {
-                              if (result.value) {
-      
-                              window.location = "matricula";
-      
-                              }
-                          })
-      
-              </script>';
-          }
-  
-        }
-  
-      }
-
       
     /*=============================================
       EDITAR DESCUENTO
     =============================================*/
     
-    public function ctrEditarDescuento(){
+    static public function ctrEditarDescuento(){
 
       if(isset($_POST["editarDescuento"])){
 
@@ -398,75 +328,6 @@ class ControladorGlobales{
 
     }
 
-
-
-
-
-  	/*=============================================
-            BORRAR MATRICULA
-	=============================================*/
-  static public function ctrBorrarMatricula(){
-    // var_dump($_GET);
-     //return;
-
-    if(isset($_GET['idEliminarMatricula'])){
-        $tabla = 'tbl_matricula';
-        $datos = $_GET['idEliminarMatricula'];
-
-
-        $respuesta = ModeloGlobales::mdlBorrarMatricula($tabla, $datos);
-        
-        // var_dump($respuesta);
-        // return;
-        
-        if($respuesta == true){
-
-          $descripcionEvento = "Elimino la Matricul";
-          $accion = "Elimino";
-
-          $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
-
-          
-          echo'<script>
-  
-          Swal.fire({
-               icon: "success",
-                title: "Se a eliminado correctamente",
-                showConfirmButton: true,
-                confirmButtonText: "Cerrar",
-                closeOnConfirm: false
-                }).then((result) => {
-                          if (result.value) {
-  
-                          window.location = "matricula";
-  
-                          }
-                      })
-  
-          </script>';
-  
-      }else{
-
-        echo'<script>
-  
-          Swal.fire({
-                icon: "warning",
-                title: "Error al borrar matricula",
-                showConfirmButton: true,
-                confirmButtonText: "Cerrar",
-                closeOnConfirm: false
-                }).then((result) => {
-                          if (result.value) {
-  
-                          window.location = "matricula";
-  
-                          }
-                      })
-  
-          </script>';
-      }
-    }
-  }
 
   	/*=============================================
             BORRAR Descuento

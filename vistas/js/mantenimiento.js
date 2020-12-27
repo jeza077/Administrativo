@@ -537,8 +537,8 @@ $(document).on('click', '.btnEliminarMatricula', function () {
     var ideliminarMatricula = $(this).attr('ideliminarMatricula');
 
     Swal.fire({
-        title: "¿Estas seguro de borrar la matricula?",
-        text: "¡Si no lo estas, puedes cancelar la accion!",
+        title: "¿Estás seguro de borrar la matricula?",
+        text: "¡Si no lo estas, puedes cancelar la acción!",
         icon: "info",
         showCancelButton: true,
         cancelButtonColor: "#DC3545",
@@ -743,17 +743,16 @@ $(document).on("click", ".btnActivarInscripcion", function(){
 /*=====================================
     ACTIVAR MATRICULA
 ========================================*/
-$(".btnActivar").click(function(){
+$(document).on("click", ".btnActivarMatricula", function(){
 
     var idMatricula = $(this).attr("idMatricula");
     var estadoMatricula = $(this).attr("estadoMatricula");
-    // console.log(idInscripcion)
+    // console.log(idMatricula)
     var datos = new FormData();
-    datos.append("activarid", idMatricula);
-    datos.append("activarMatricula",estadoMatricula);
+    datos.append("idMatricula", idMatricula);
+    datos.append("estadoMatricula",estadoMatricula);
 
     $.ajax({
-        
       url:"ajax/mantenimiento.ajax.php",
       method:"POST",
       data: datos,

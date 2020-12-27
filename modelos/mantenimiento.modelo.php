@@ -123,10 +123,6 @@ class ModeloMantenimiento{
     }
 
 
-    // static public function mdlRevisarPermisosRol($item1, $valor1, $item2, $valor2){
-
-    // }
-
     /*====================================================
        Actualizar Rol
     ======================================================*/
@@ -376,6 +372,33 @@ class ModeloMantenimiento{
 
 
     /*=============================================
+          EDITAR MATRICULA
+    =============================================*/
+    
+    static public function mdlEditarMatricula($tabla,$datos){
+        
+        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET tipo_matricula = :tipo_matricula, precio_matricula = :precio_matricula WHERE id_matricula = :id_matricula");
+
+        $stmt -> bindParam(":tipo_matricula", $datos["tipo_matricula"], PDO::PARAM_STR);
+        $stmt -> bindParam(":precio_matricula", $datos["precio_matricula"], PDO::PARAM_STR);
+        $stmt -> bindParam(":id_matricula", $datos["id_matricula"], PDO::PARAM_INT);
+
+        if($stmt->execute()){
+
+            return true;
+
+        }else{
+
+            return false;
+        
+        }
+
+        $stmt->close();
+        $stmt = null;
+    }
+
+
+    /*=============================================
           EDITAR INSCRIPCION
     =============================================*/
     
@@ -400,6 +423,31 @@ class ModeloMantenimiento{
 
         $stmt->close();
         $stmt = null;
+    }
+    
+
+    /*=============================================
+            BORRAR MATRICULA
+	=============================================*/
+	static public function mdlBorrarMatricula($tabla, $datos){
+
+		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_matricula = :id_matricula");
+
+		$stmt->bindParam(":id_matricula", $datos, PDO::PARAM_INT);
+
+		if($stmt->execute()){
+
+			return true;
+
+		} else {
+		
+			return $stmt->errorInfo();
+
+		}
+
+		$stmt->close();
+
+		$stmt = null;
     }
 
 

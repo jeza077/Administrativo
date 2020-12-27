@@ -10,7 +10,7 @@
                     <button class="btn btn-orange float-right"  data-toggle="modal" data-target="#modalNuevainscripcion">
                         Nueva Inscripcion    
                     </button>
-                    <button class="btn btn-danger btnExportarInscripcion float-right mr-3 ">
+                    <button class="btn btn-outline-danger btnExportarInscripcion float-right mr-3 ">
                     Exportar PDF          
                     </button>
                 </div>
@@ -33,11 +33,7 @@
        
                 ?>
 
-                <!--========================================================
-                        PARAMETROS
-                    ==========================================================-->   
-
-                <table class="table table-striped table-bordered tablas text-center">
+                <table class="table table-hover tablas text-center">
                     
                     <thead>
                         <tr>
@@ -137,13 +133,13 @@ MODAL AGREGAR NUEVA INSCRIPCION
                     </div>
 
                     <div class="form-group col-md-12">
-                        <label for="Descripcion">Precio Inscripción</label>
-                        <input type="text" class="form-control preciom " name="nuevoPrecio" value="" placeholder="Ingresa Precio" required>
+                        <label for="Descripcion">Cantidad Dias Inscripción</label>
+                        <input type="text" class="form-control preciom " name="nuevoDias" value="" placeholder="Ingresa Cantidad Dias" required>
                     </div>
 
                     <div class="form-group col-md-12">
-                        <label for="Descripcion">Cantidad Dias Inscripción</label>
-                        <input type="text" class="form-control preciom " name="nuevoDias" value="" placeholder="Ingresa Cantidad Dias" required>
+                        <label for="Descripcion">Precio Inscripción</label>
+                        <input type="text" class="form-control preciom " name="nuevoPrecio" value="" placeholder="Ingresa Precio" required>
                     </div>
                 </div>
 
@@ -207,14 +203,15 @@ MODAL EDITAR INSCRIPCION
                         </div>
 
                         <div class="form-group col-md-12">
+                            <label for="Descripcion">Cantidad Dias Inscripción</label>
+                            <input type="text" class="form-control preciom" id="editarDiasInscripcion" name="editarDiasInscripcion" value="" required>
+                        </div>
+
+                        <div class="form-group col-md-12">
                             <label for="Descripcion">Precio Inscripción</label>
                             <input type="textarea" class="form-control preciom" id="editarPrecioInscripcion" name="editarPrecioInscripcion" value="" required>
                         </div>
 
-                        <div class="form-group col-md-12">
-                            <label for="Descripcion">Cantidad Dias Inscripción</label>
-                            <input type="text" class="form-control preciom" id="editarDiasInscripcion" name="editarDiasInscripcion" value="" required>
-                        </div>
                         <input type="hidden" id="editarIdInscripcion" name="editarIdInscripcion">
 
                     </div>

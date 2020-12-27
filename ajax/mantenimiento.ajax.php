@@ -52,7 +52,7 @@ class AjaxRol{
 
 
     /*=============================================
-                   Activar Rol
+            ACTIVAR ROL
     ==============================================*/
     public $activarRol;
     public $activarid;
@@ -188,7 +188,7 @@ class AjaxInscripcion{
 }    
 
 /*========================================
-Activar INSCRIPCION
+        ACTIVAR INSCRIPCION
 ==========================================*/ 
 
 if(isset($_POST["activarInscripcion"])){ 
@@ -205,29 +205,33 @@ if(isset($_POST["activarInscripcion"])){
 
 class AjaxMatricula{
 
-
-
     /*=============================================
-                   Activar Matricula
+            ACTIVAR MATRICULA
     ==============================================*/
-    public $activarMatricula;
-    public $activarid;
+    public $idMatricula;
+    public $estadoMatricula;
     
     public function ajaxActivarMatricula(){ 
 
         $tabla = "tbl_matricula";
 
         $item1 = "estado";
-        $valor1 = $this->activarMatricula;
+        $valor1 = $this->estadoMatricula;
 
         $item2 = "id_matricula";
-        $valor2 = $this->activarid;
+        $valor2 = $this->idMatricula;
 
+        $item3 = null;
+        $valor3 = null;
 
-        $respuesta = ModeloMantenimiento::mdlActualizarMatricula($tabla,$item1,$valor1,$item2,$valor2);
+        $item4 = null;
+        $valor4 = null;
+
+        $respuesta = ModeloMantenimiento::mdlActualizarMantenimiento($tabla, $item1, $valor1, $item2, $valor2, $item3, $valor3, $item4, $valor4);
         echo json_encode($respuesta);
 
-
+        // $respuesta = ModeloMantenimiento::mdlActualizarMatricula($tabla,$item1,$valor1,$item2,$valor2);
+        // echo json_encode($respuesta);
     }    
 
 
@@ -237,11 +241,11 @@ class AjaxMatricula{
 Activar MATRICULA
 ==========================================*/ 
 
-if(isset($_POST["activarMatricula"])){ 
+if(isset($_POST["idMatricula"])){ 
 
-    $activarMatricula = new ajaxMatricula();
-    $activarMatricula->activarMatricula = $_POST["activarMatricula"];
-    $activarMatricula->activarid = $_POST["activarid"];
+    $activarMatricula = new AjaxMatricula();
+    $activarMatricula->idMatricula = $_POST["idMatricula"];
+    $activarMatricula->estadoMatricula = $_POST["estadoMatricula"];
     $activarMatricula->ajaxActivarMatricula();
 
 
