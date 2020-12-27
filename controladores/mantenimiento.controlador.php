@@ -608,6 +608,77 @@
 
     }
 
+
+    /*=============================================
+      EDITAR ROL
+    =============================================*/
+    
+    static public function ctrEditarRol(){
+
+      if(isset($_POST["editarRol"])){
+
+        $tabla = "tbl_roles";
+
+        $datos = array ("rol"=> $_POST["editarRol"],
+                        "descripcion"=>$_POST["editarDescripcionRol"],
+                        "id_rol"=>$_POST["editarIdRol"]);
+
+
+        $respuesta =  ModeloMantenimiento::mdlEditarRol($tabla,$datos);
+
+    
+        if($respuesta == true){
+            
+            $descripcionEvento = "Actualizo rol";
+            $accion = "Actualizo";
+            $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
+
+          
+
+            echo'<script>
+    
+            Swal.fire({
+                 icon: "success",
+                  title: "El rol ha sido editado correctamente",
+                  showConfirmButton: true,
+                  confirmButtonText: "Cerrar",
+                  closeOnConfirm: false
+                  }).then((result) => {
+                            if (result.value) {
+    
+                            window.location = "rol";
+    
+                            }
+                        })
+    
+            </script>';
+    
+        }else{
+
+          echo'<script>
+    
+            Swal.fire({
+                  icon: "warning",
+                  title: "Error al editar rol",
+                  showConfirmButton: true,
+                  confirmButtonText: "Cerrar",
+                  closeOnConfirm: false
+                  }).then((result) => {
+                            if (result.value) {
+    
+                            window.location = "rol";
+    
+                            }
+                        })
+    
+            </script>';
+        }
+
+      }
+
+    }
+
+
     /*=============================================
       EDITAR MATRICULA
     =============================================*/
@@ -814,6 +885,75 @@
 
       }
 
+    }
+
+
+
+    
+    /*=============================================
+              BORRAR ROLES
+    =============================================*/
+    static public function ctrBorrarRoles(){
+      // var_dump($_GET);
+      // return;
+
+      if(isset($_GET['idEliminarRoles'])){
+          $tabla = 'tbl_roles';
+          $datos = $_GET['idEliminarRoles'];
+
+
+          $respuesta = ModeloMantenimiento::mdlBorrarRoles($tabla, $datos);
+          
+          // var_dump($respuesta);
+          // return;
+          
+          if($respuesta == true){
+
+            $descripcionEvento = "Elimino el Rol";
+            $accion = "Elimino";
+
+            $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
+
+            
+            echo'<script>
+
+            Swal.fire({
+                  icon: "success",
+                  title: "Se a eliminado correctamente",
+                  showConfirmButton: true,
+                  confirmButtonText: "Cerrar",
+                  closeOnConfirm: false
+                  }).then((result) => {
+                            if (result.value) {
+
+                            window.location = "rol";
+
+                            }
+                        })
+
+            </script>';
+
+        }else{
+
+          echo'<script>
+
+            Swal.fire({
+                  icon: "warning",
+                  title: "Error al borrar rol",
+                  showConfirmButton: true,
+                  confirmButtonText: "Cerrar",
+                  closeOnConfirm: false
+                  }).then((result) => {
+                            if (result.value) {
+
+                            window.location = "rol";
+
+                            }
+                        })
+
+            </script>';
+        }
+      }
     }
 
 

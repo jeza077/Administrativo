@@ -4,11 +4,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Matricula</h1>
+            <h1>Documentos</h1>
           </div>
           <div class="col-sm-6">
                 <button class="btn btn-orange float-right"  data-toggle="modal" data-target="#modalNuevaMatricula">
-                  Nueva Matricula      
+                  Nuevo Documento      
                 </button>
                 <button class="btn btn-outline-danger btnExportarMatricula float-right mr-3 ">
                 Exportar PDF      
@@ -40,13 +40,8 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-
-                <th scope="col">Tipo de matricula</th>
-
-                <th scope="col">Precio</th>
-
+                <th scope="col">Tipo Documento</th>
                 <th scope="col">Estado</th>
-
                 <th scope="col">Acciones</th>
 
               </tr>
@@ -54,31 +49,25 @@
             
             <tbody>  
                 <?php
-                        // $tabla = "tbl_matricula";
+                        $tabla = "tbl_documento";
                         $item = null;
                         $valor = null;
                         
-                        $matricula = ControladorMantenimientos::ctrMostrarMatricula($item,$valor);
-                        // var_dump($rol);
+                        $documentos = ControladorUsuarios::ctrMostrar($tabla, $item, $valor);
+                        // var_dump($documentos);
 
-                        foreach ($matricula as $key => $value){
+                        foreach ($documentos as $key => $value){
                           echo '
-                            <tr>
-                          
-                            <td>'.($key + 1).'</td>
-                            <td>'.$value["tipo_matricula"].'</td>
-                            <td>'.$value["precio_matricula"].'</td>';
-                            if($value['estado'] != 0){
-                              echo '<td><button class="btn btn-success btn-md btnActivarMatricula" idMatricula="'.$value["id_matricula"].'" estadoMatricula="0">Activado</button></td>';
-                            }else{
-                              echo '<td><button class="btn btn-danger btn-md btnActivarMatricula" idMatricula="'.$value["id_matricula"].'" estadoMatricula="1">Desactivado</button></td>';
-                            } 
-                            echo'
-                            <td>
-                            <button class="btn btn-warning btnEditarMatricula" editarIdMatricula="'.$value["id_matricula"].'" data-toggle="modal" data-target="#modalEditarMatricula" data-toggle="tooltip" data-placement="left" title="Editar"><i class="fas fa-pencil-alt" style="color:#fff"></i></button>
+                            <tr>  
+                                <td>'.($key + 1).'</td>
+                                <td>'.$value["tipo_documento"].'</td>
+                                <td>Activo</td>
+                                <td>
+                                    <button class="btn btn-warning btnEditarMatricula" editarIdMatricula="'.$value["id_documento"].'" data-toggle="modal" data-target="#modalEditarMatricula" data-toggle="tooltip" data-placement="left" title="Editar"><i class="fas fa-pencil-alt" style="color:#fff"></i></button>
 
-                            <button class="btn btn-danger btnEliminarMatricula" ideliminarMatricula="'.$value["id_matricula"].'" data-toggle="tooltip" data-placement="left" title="Borrar"><i class="fas fa-trash-alt"></i></button></td>
-                        </tr>  '; 
+                                    <button class="btn btn-danger btnEliminarMatricula" ideliminarMatricula="'.$value["id_documento"].'" data-toggle="tooltip" data-placement="left" title="Borrar"><i class="fas fa-trash-alt"></i></button></td>
+                                </td>
+                            </tr>  '; 
                         }       
                   ?>                
               
@@ -144,8 +133,8 @@ MODAL AGREGAR NUEVA MATRICULA
 
         <?php
 
-          $crearMatricula = new ControladorMantenimientos();
-          $crearMatricula-> ctrMatriculaInsertar();
+        //   $crearMatricula = new ControladorMantenimientos();
+        //   $crearMatricula-> ctrMatriculaInsertar();
 
         ?>
 
@@ -215,8 +204,8 @@ MODAL EDITAR MATRICULA
 
         <?php
 
-          $editarMatricula = new ControladorMantenimientos();
-          $editarMatricula->ctrEditarMatricula();
+        //   $editarMatricula = new ControladorMantenimientos();
+        //   $editarMatricula->ctrEditarMatricula();
 
         ?>
 
@@ -237,8 +226,8 @@ MODAL EDITAR MATRICULA
 
 <?php
 
- $borrarMatricula = new ControladorMantenimientos();
- $borrarMatricula->ctrBorrarMatricula();
+//  $borrarMatricula = new ControladorMantenimientos();
+//  $borrarMatricula->ctrBorrarMatricula();
 
 ?>
 

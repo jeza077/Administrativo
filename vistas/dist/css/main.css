@@ -702,6 +702,11 @@ i.show-confir-pass{
     background: #d7dce4 !important;
     color: #fff;
 } */
+[class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link:hover{
+    background-color: red;
+}
+
+
 
 /** AGREGAR PERSONA */
 .card.agregar-persona{

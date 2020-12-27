@@ -54,57 +54,9 @@ class ModeloGlobales{
         $stmt = null;
     }
 
-     /*=============================================
-          EDITAR ROLES
-    =============================================*/
-    
-    static public function mdlEditarRol($tabla,$datos){
-        
-        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET rol = :rol, descripcion = :descripcion WHERE id_rol = :id_rol");
-
-        $stmt -> bindParam(":rol", $datos["rol"], PDO::PARAM_STR);
-        $stmt -> bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
-        $stmt -> bindParam(":id_rol", $datos["id_rol"], PDO::PARAM_INT);
-
-        if($stmt->execute()){
-
-            return true;
-
-        }else{
-
-            return false;
-        
-        }
-
-        $stmt->close();
-        $stmt = null;
-    }
 
 
-    /*=============================================
-            BORRAR ROLES
-	=============================================*/
-	static public function mdlBorrarRoles($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_rol = :id_rol");
-
-		$stmt->bindParam(":id_rol", $datos, PDO::PARAM_INT);
-
-		if($stmt->execute()){
-
-			return true;
-
-		} else {
-		
-			return $stmt->errorInfo();
-
-		}
-
-		$stmt->close();
-
-		$stmt = null;
-    }
-    
     /*=============================================
 			RANGO DINAMICO INSCRIPCION
 	=============================================*/

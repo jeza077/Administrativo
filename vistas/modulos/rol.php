@@ -366,7 +366,7 @@ MODAL EDITAR ROL
 
         <?php
 
-          $EditarRol = new ControladorGlobales();
+          $EditarRol = new ControladorMantenimientos();
           $EditarRol->ctrEditarRol();
 
         ?>
@@ -381,82 +381,9 @@ MODAL EDITAR ROL
 </div>
 
 
-<!--==============================================================================
-                     MODAL PERMISOS ROL PANTALLA
-==============================================================-->
-
-<div class="modal fade" id="modalEditarPermisos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  
-  <div class="modal-dialog modal-lg  " role="document">
-
-    <div class="modal-content">
-
-      <form role="form" method="post" autocomplete="off">
-
-        <!--=====================================
-        CABEZA DEL MODAL
-        ======================================-->
-
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Editar permiso para pantallas</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-
-        <!--=====================================
-        CUERPO DEL MODAL
-        ======================================-->
-
-        <div class="modal-body">
-          <div class="card-body">
-                <div class= "form-group col-md-12">
-                <label for="rol">Rol</label>
-                <input type="text" class="form-control  nombre mayus" id="editarRol" name="editarRol" value=""requiered>
-                </div>
-                <div class= "form-group col-md-12">
-                <label for="Descripcion">Descripción</label>
-                <input type="text" class="form-control nombre mayus" id="editarDescripcionRol" name="editarDescripcionRol" value=""requiered>
-                </div>
-                <input type="hidden" id="editarIdRol" name="editarIdRol">
-          </div>
-         
-         
-        </div>
-
-        <!--=====================================
-        PIE DEL MODAL
-        ======================================-->
-
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Guardar</button>
-           <button type="button" class="btn btn-orange" data-dismiss="modal">Salir</button>
-        </div>
-
-        <?php
-           $EditarRol = new ControladorGlobales();
-           $EditarRol->ctrEditarRol();
-        ?>
-
-
-
-
-      </form>
-
-
-    
-
-    </div>
-
-  </div>
-        
-
-</div>
-
-
 <?php
 
-$borrarRol = new ControladorGlobales();
+$borrarRol = new ControladorMantenimientos();
 $borrarRol->ctrBorrarRoles();
 
 ?>

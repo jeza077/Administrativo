@@ -251,19 +251,25 @@
                 <li class="nav-item">
                   <a href="inscripcion" class="nav-link">
                     <i class="fas fa-wallet nav-icon"></i>
-                    <p>Inscripcion</p>
+                    <p>Inscripciones</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="matricula" class="nav-link">
                     <i class="fas fa-money-bill-alt nav-icon"></i>
-                    <p>Matricula</p>
+                    <p>Matriculas</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="descuento" class="nav-link">
                     <i class="fas fa-cash-register nav-icon"></i>
-                    <p>Descuento</p>
+                    <p>Descuentos</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="tipo-documentos" class="nav-link">
+                    <i class="fas fa-cash-register nav-icon"></i>
+                    <p>Documentos</p>
                   </a>
                 </li>
               </ul>
