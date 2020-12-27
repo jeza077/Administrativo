@@ -81,31 +81,6 @@ class ModeloGlobales{
     }
 
 
-        /*=============================================
-          EDITAR INSCRIPCION
-    =============================================*/
-    
-    static public function mdlEditarInscripcion($tabla,$datos){
-        
-        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET tipo_inscripcion = :tipo_inscripcion, precio_inscripcion = :precio_inscripcion WHERE id_inscripcion = :id_inscripcion");
-
-        $stmt -> bindParam(":tipo_inscripcion", $datos["tipo_inscripcion"], PDO::PARAM_STR);
-        $stmt -> bindParam(":precio_inscripcion", $datos["precio_inscripcion"], PDO::PARAM_STR);
-        $stmt -> bindParam(":id_inscripcion", $datos["id_inscripcion"], PDO::PARAM_INT);
-
-        if($stmt->execute()){
-
-            return true;
-
-        }else{
-
-            return false;
-        
-        }
-
-        $stmt->close();
-        $stmt = null;
-    }
 
     /*=============================================
           EDITAR MATRICULA
@@ -160,30 +135,7 @@ class ModeloGlobales{
         $stmt = null;
     }
 
-    /*=============================================
-            BORRAR INSCRIPCION
-	=============================================*/
-	static public function mdlBorrarInscripcion($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_inscripcion = :id_inscripcion");
-
-		$stmt->bindParam(":id_inscripcion", $datos, PDO::PARAM_INT);
-
-		if($stmt->execute()){
-
-			return true;
-
-		} else {
-		
-			return $stmt->errorInfo();
-
-		}
-
-		$stmt->close();
-
-		$stmt = null;
-    }
-    
     /*=============================================
             BORRAR MATRICULA
 	=============================================*/

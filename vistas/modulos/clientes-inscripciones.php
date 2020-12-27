@@ -49,10 +49,10 @@
                   <th scope="col">#</th>
                   <th scope="col">No. Documento</th>
                   <th scope="col">Nombre</th>
-                  <th scope="col">T. Inscripcion</th>
-                  <th scope="col">F. Inscripcion</th>
-                  <th scope="col">F. Ultimo Pago</th>
-                  <th scope="col">F. Proximo Pago</th>
+                  <th scope="col">T. Inscripción</th>
+                  <th scope="col">F. Inscripción</th>
+                  <th scope="col">F. Último Pago</th>
+                  <th scope="col">F. Próximo Pago</th>
                   <th scope="col">Deuda</th>
                   <th scope="col">Estado</th>
                   <th scope="col">Acciones</th>

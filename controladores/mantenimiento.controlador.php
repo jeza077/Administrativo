@@ -258,20 +258,14 @@
     // =============================================================================================*/
     static public function ctrInscripcionInsertar(){
 
-
       if(isset($_POST["nuevoInscripcion"])){
 
-       
-
-
-
-        if(preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoInscripcion"]) && 
+        if(preg_match('/^[A-ZñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoInscripcion"]) && 
            preg_match('/^[0-9]+$/', $_POST["nuevoPrecio"])&& 
            preg_match('/^[0-9]+$/', $_POST["nuevoDias"])){
          
           
-          $tabla = "tbl_inscripcion";
-          
+          $tabla = "tbl_inscripcion";          
   
           $datos = array("inscripcion" => $_POST["nuevoInscripcion"], 
                           "precio" => $_POST["nuevoPrecio"],
@@ -299,7 +293,7 @@
             Swal.fire({
   
               icon: "success",
-              title: "¡La inscripcion ha sido creado exitosamente!",
+              title: "¡La inscripcion ha sido creada exitosamente!",
               showConfirmButton: true,
               confirmButtonText: "Cerrar",
               closeOnConfirm: false
@@ -580,7 +574,7 @@
   
     }
 
-      /*=============================================
+    /*=============================================
         MOSTRAR DESCUENTO
     =============================================*/
 
@@ -592,52 +586,192 @@
 
       return $respuesta;
 
+
+
+    }
+
+
+    /*=============================================
+      EDITAR INSCRIPCION
+    =============================================*/
+    
+    static public function ctrEditarInscripcion(){
+
+      if(isset($_POST["editarInscripcion"])){
+
+        $tabla = "tbl_inscripcion";
+
+        $datos = array ("tipo_inscripcion"=> $_POST["editarInscripcion"],
+                        "precio_inscripcion"=>$_POST["editarPrecioInscripcion"],
+                        "cantidad_dias"=>$_POST["editarDiasInscripcion"],
+                        "id_inscripcion"=>$_POST["editarIdInscripcion"]);
+
+
+        $respuesta =  ModeloMantenimiento::mdlEditarInscripcion($tabla,$datos);
+
+    
+        if($respuesta == true){
+            
+            $descripcionEvento = "Actualizo Inscripcion";
+            $accion = "Actualizo";
+            $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
+
+          
+
+            echo'<script>
+    
+            Swal.fire({
+                 icon: "success",
+                  title: "Inscripción editada correctamente",
+                  showConfirmButton: true,
+                  confirmButtonText: "Cerrar",
+                  closeOnConfirm: false
+                  }).then((result) => {
+                      if (result.value) {
+
+                      window.location = "inscripcion";
+
+                      }
+                  })
+    
+            </script>';
+    
+        }else{
+
+          echo'<script>
+    
+            Swal.fire({
+                  icon: "error",
+                  title: "Opps, algo salio mal, intenta de nuevo!",
+                  showConfirmButton: true,
+                  confirmButtonText: "Cerrar",
+                  closeOnConfirm: false
+                  }).then((result) => {
+                            if (result.value) {
+    
+                            window.location = "inscripcion";
+    
+                            }
+                        })
+    
+            </script>';
+        }
+
+      }
+
+    }
+
+
+    /*=============================================
+              BORRAR INSCRIPCION
+    =============================================*/
+    static public function ctrBorrarInscripcion(){
+      // var_dump($_GET);
+      //return;
+
+      if(isset($_GET['idEliminarInscripcion'])){
+          $tabla = 'tbl_inscripcion';
+          $datos = $_GET['idEliminarInscripcion'];
+
+
+          $respuesta = ModeloMantenimiento::mdlBorrarInscripcion($tabla, $datos);
+          
+          // var_dump($respuesta);
+          // return;
+          
+          if($respuesta == true){
+
+          
+            $descripcionEvento = "Elimino la Inscripcion";
+            $accion = "Elimino";
+
+            $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
+            
+            echo'<script>
+    
+            Swal.fire({
+                icon: "success",
+                  title: "Inscripción eliminada correctamente",
+                  showConfirmButton: true,
+                  confirmButtonText: "Cerrar",
+                  closeOnConfirm: false
+                  }).then((result) => {
+                            if (result.value) {
+    
+                            window.location = "inscripcion";
+    
+                            }
+                        })
+    
+            </script>';
+    
+        }else{
+
+          echo'<script>
+    
+            Swal.fire({
+                  icon: "error",
+                  title: "Opps, algo salio mal, intenta de nuevo!",
+                  showConfirmButton: true,
+                  confirmButtonText: "Cerrar",
+                  closeOnConfirm: false
+                  }).then((result) => {
+                            if (result.value) {
+    
+                            window.location = "inscripcion";
+    
+                            }
+                        })
+    
+            </script>';
+        }
+      }
     }
 
 
 
-	/*=============================================
-			RANGO DE FECHAS BITACORA
-	=============================================*/
+    /*=============================================
+        RANGO DE FECHAS BITACORA
+    =============================================*/
 
-	static public function ctrRangoFechasBitacora($fechaInicial, $fechaFinal) {
+    static public function ctrRangoFechasBitacora($fechaInicial, $fechaFinal) {
 
-		$tabla1 = "tbl_bitacora";
-		
-		$respuesta = ModeloMantenimiento::mdlRangoFechasBitacora($tabla1, $fechaInicial, $fechaFinal);
+      $tabla1 = "tbl_bitacora";
+      
+      $respuesta = ModeloMantenimiento::mdlRangoFechasBitacora($tabla1, $fechaInicial, $fechaFinal);
 
-		return $respuesta;
+      return $respuesta;
 
-  }
+    }
 
-  /*=============================================
-			RANGO DE INSCRIPCION
-	=============================================*/
+    /*=============================================
+        RANGO DE INSCRIPCION
+    =============================================*/
 
-	static public function ctrRangoInscripcion($rango) {
+    static public function ctrRangoInscripcion($rango) {
 
-		$tabla1 = "tbl_inscripcion";
-		
-		$respuesta = ModeloMantenimiento::mdlRangoInscripcion($tabla,$rango);
+      $tabla1 = "tbl_inscripcion";
+      
+      $respuesta = ModeloMantenimiento::mdlRangoInscripcion($tabla,$rango);
 
-		return $respuesta;
+      return $respuesta;
 
-  }
-
-
+    }
 
 
-  /*=============================================
-    RANGO DINAMICO
-  =============================================*/
-	static public function ctrRango($rango){
 
-		$tabla = 'tbl_bitacora';
-		
-		$respuesta = ModeloMantenimiento::mdlRango($tabla, $rango);
-		
-		return $respuesta;
-	}
+
+    /*=============================================
+      RANGO DINAMICO
+    =============================================*/
+    static public function ctrRango($rango){
+
+      $tabla = 'tbl_bitacora';
+      
+      $respuesta = ModeloMantenimiento::mdlRango($tabla, $rango);
+      
+      return $respuesta;
+    }
 
 }
 
