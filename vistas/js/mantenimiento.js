@@ -494,7 +494,7 @@ $(document).on("click", ".btnEditarDescuento", function(){
         processData:false,
         dataType: "json",
         success:function(respuesta){ 
-            console.log(respuesta)
+            // console.log(respuesta)
 
             $('#editarDescuento').val(respuesta['tipo_descuento']);
             $('#editarValorDescuento').val(respuesta['valor_descuento']);
@@ -507,6 +507,9 @@ $(document).on("click", ".btnEditarDescuento", function(){
 
 
 });
+
+
+
 
 /** ------------------------------------*/
 //         BORRAR INSCRIPCION
@@ -559,8 +562,8 @@ $(document).on('click', '.btnEliminarDescuento', function () {
     var ideliminarDescuento = $(this).attr('ideliminarDescuento');
 
     Swal.fire({
-        title: "¿Estas seguro de borrar el descuento?",
-        text: "¡Si no lo estas, puedes cancelar la accion!",
+        title: "¿Estás seguro de borrar el descuento?",
+        text: "¡Si no lo estas, puedes cancelar la acción!",
         icon: "info",
         showCancelButton: true,
         cancelButtonColor: "#DC3545",
@@ -786,14 +789,14 @@ $(document).on("click", ".btnActivarMatricula", function(){
 /*=====================================
     ACTIVAR DESCUENTO
 ========================================*/
-$(".btnActivar").click(function(){
+$(document).on("click", ".btnActivarDescuento", function(){
 
     var idDescuento = $(this).attr("idDescuento");
     var estadoDescuento = $(this).attr("estadoDescuento");
-    // console.log(idInscripcion)
+    // console.log(idDescuento)
     var datos = new FormData();
-    datos.append("activarid", idDescuento);
-    datos.append("activarDescuento",estadoDescuento);
+    datos.append("idDescuento", idDescuento);
+    datos.append("estadoDescuento",estadoDescuento);
 
     $.ajax({
         

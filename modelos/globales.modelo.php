@@ -82,57 +82,6 @@ class ModeloGlobales{
 
 
     /*=============================================
-          EDITAR DESCUENTO
-    =============================================*/
-    
-    static public function mdlEditarDescuento($tabla,$datos){
-        
-        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET tipo_descuento = :tipo_descuento, valor_descuento = :valor_descuento WHERE id_descuento = :id_descuento");
-
-        $stmt -> bindParam(":tipo_descuento", $datos["tipo_descuento"], PDO::PARAM_STR);
-        $stmt -> bindParam(":valor_descuento", $datos["valor_descuento"], PDO::PARAM_STR);
-        $stmt -> bindParam(":id_descuento", $datos["id_descuento"], PDO::PARAM_INT);
-
-        if($stmt->execute()){
-
-            return true;
-
-        }else{
-
-            return false;
-        
-        }
-
-        $stmt->close();
-        $stmt = null;
-    }
-
-    
-    /*=============================================
-            BORRAR DESCUENTO
-	=============================================*/
-	static public function mdlBorrarDescuento($tabla, $datos){
-
-		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_descuento = :id_descuento");
-
-		$stmt->bindParam(":id_descuento", $datos, PDO::PARAM_INT);
-
-		if($stmt->execute()){
-
-			return true;
-
-		} else {
-		
-			return $stmt->errorInfo();
-
-		}
-
-		$stmt->close();
-
-		$stmt = null;
-    }
-    
-    /*=============================================
             BORRAR ROLES
 	=============================================*/
 	static public function mdlBorrarRoles($tabla, $datos){

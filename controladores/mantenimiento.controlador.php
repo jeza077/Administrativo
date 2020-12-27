@@ -513,34 +513,50 @@
             $accion = "Nuevo";
 
             $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
-
-        
-       
   
             echo '<script>
-  
+
             Swal.fire({
-  
+
               icon: "success",
               title: "¡El descuento ha sido creado exitosamente!",
               showConfirmButton: true,
               confirmButtonText: "Cerrar",
               closeOnConfirm: false
-  
+
             }).then((result)=>{
-  
+
               if(result.value){
-  
+
                 window.location = "descuento";
-  
+
               }
-  
+
             });
-  
-  
+
+
             </script>';
+
   
-  
+          } else {
+            echo'<script>
+    
+            Swal.fire({
+                  icon: "error",
+                  title: "Opps, algo salio mal, intenta de nuevo!",
+                  showConfirmButton: true,
+                  confirmButtonText: "Cerrar",
+                  closeOnConfirm: false
+                  }).then((result) => {
+                            if (result.value) {
+    
+                            window.location = "descuento";
+    
+                            }
+                        })
+    
+            </script>';
+      
           }
   
   
@@ -733,6 +749,74 @@
     }
 
 
+    /*=============================================
+      EDITAR DESCUENTO
+    =============================================*/
+    
+    static public function ctrEditarDescuento(){
+
+      if(isset($_POST["editarDescuento"])){
+
+        $tabla = "tbl_descuento";
+
+        $datos = array ("tipo_descuento"=> $_POST["editarDescuento"],
+                        "valor_descuento"=>$_POST["editarValorDescuento"],
+                        "id_descuento"=>$_POST["editarIdDescuento"]);
+
+
+        $respuesta =  ModeloMantenimiento::mdlEditarDescuento($tabla,$datos);
+
+        if($respuesta == true){
+             
+          $descripcionEvento = "Actualizo Descuento";
+          $accion = "consulta";
+
+          $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
+          
+          echo'<script>
+    
+            Swal.fire({
+                 icon: "success",
+                  title: "Descuento editado correctamente",
+                  showConfirmButton: true,
+                  confirmButtonText: "Cerrar",
+                  closeOnConfirm: false
+                  }).then((result) => {
+                      if (result.value) {
+
+                      window.location = "descuento";
+
+                      }
+                  })
+    
+            </script>';
+    
+        }else{
+
+          echo'<script>
+    
+            Swal.fire({
+                  icon: "error",
+                  title: "Opps, algo salio mal, intenta de nuevo!",
+                  showConfirmButton: true,
+                  confirmButtonText: "Cerrar",
+                  closeOnConfirm: false
+                  }).then((result) => {
+                            if (result.value) {
+    
+                            window.location = "descuento";
+    
+                            }
+                        })
+    
+            </script>';
+        }
+
+      }
+
+    }
+
+
   	/*=============================================
             BORRAR MATRICULA
     =============================================*/
@@ -762,7 +846,7 @@
     
             Swal.fire({
                 icon: "success",
-                  title: "Matricula eliminada correctamente",
+                  title: "Matricula eliminada correctamente!",
                   showConfirmButton: true,
                   confirmButtonText: "Cerrar",
                   closeOnConfirm: false
@@ -829,7 +913,7 @@
     
             Swal.fire({
                 icon: "success",
-                  title: "Inscripción eliminada correctamente",
+                  title: "Inscripción eliminada correctamente!",
                   showConfirmButton: true,
                   confirmButtonText: "Cerrar",
                   closeOnConfirm: false
@@ -860,6 +944,72 @@
     
                             }
                         })
+    
+            </script>';
+        }
+      }
+    }
+
+    /*=============================================
+            BORRAR DESCUENTO
+    =============================================*/
+    static public function ctrBorrarDescuento(){
+      // var_dump($_GET);
+      //return;
+
+      if(isset($_GET['idEliminarDescuento'])){
+          $tabla = 'tbl_descuento';
+          $datos = $_GET['idEliminarDescuento'];
+
+
+          $respuesta = ModeloMantenimiento::mdlBorrarDescuento($tabla, $datos);
+          
+          // var_dump($respuesta);
+          // return;
+          
+          if($respuesta == true){
+
+            $descripcionEvento = "Elimino el Descuento";
+            $accion = "Elimino";
+
+            $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
+
+            
+            echo'<script>
+    
+            Swal.fire({
+                icon: "success",
+                  title: "Descuento eliminado correctamente!",
+                  showConfirmButton: true,
+                  confirmButtonText: "Cerrar",
+                  closeOnConfirm: false
+                  }).then((result) => {
+                      if (result.value) {
+
+                      window.location = "descuento";
+
+                      }
+                  })
+    
+            </script>';
+    
+        }else{
+
+          echo'<script>
+    
+            Swal.fire({
+                  icon: "error",
+                  title: "Opps, algo salio mal, intenta de nuevo!",
+                  showConfirmButton: true,
+                  confirmButtonText: "Cerrar",
+                  closeOnConfirm: false
+                  }).then((result) => {
+                      if (result.value) {
+
+                      window.location = "descuento";
+
+                      }
+                  })
     
             </script>';
         }

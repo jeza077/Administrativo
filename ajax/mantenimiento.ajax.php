@@ -230,15 +230,13 @@ class AjaxMatricula{
         $respuesta = ModeloMantenimiento::mdlActualizarMantenimiento($tabla, $item1, $valor1, $item2, $valor2, $item3, $valor3, $item4, $valor4);
         echo json_encode($respuesta);
 
-        // $respuesta = ModeloMantenimiento::mdlActualizarMatricula($tabla,$item1,$valor1,$item2,$valor2);
-        // echo json_encode($respuesta);
     }    
 
 
 }    
 
 /*========================================
-Activar MATRICULA
+    ACTIVAR MATRICULA
 ==========================================*/ 
 
 if(isset($_POST["idMatricula"])){ 
@@ -247,52 +245,54 @@ if(isset($_POST["idMatricula"])){
     $activarMatricula->idMatricula = $_POST["idMatricula"];
     $activarMatricula->estadoMatricula = $_POST["estadoMatricula"];
     $activarMatricula->ajaxActivarMatricula();
-
-
 }  
 
 
 class AjaxDescuento{
 
-
-
     /*=============================================
-                   Activar DESCUENTO
+            ACTIVAR DESCUENTO
     ==============================================*/
-    public $activarDescuento;
-    public $activarid;
+    public $idDescuento;
+    public $estadoDescuento;
     
     public function ajaxActivarDescuento(){ 
 
-        $tabla = "tbl_Descuento";
+        $tabla = "tbl_descuento";
 
         $item1 = "estado";
-        $valor1 = $this->activarDescuento;
+        $valor1 = $this->estadoDescuento;
 
-        $item2 = "id_matricula";
-        $valor2 = $this->activarid;
+        $item2 = "id_descuento";
+        $valor2 = $this->idDescuento;
 
+        $item3 = null;
+        $valor3 = null;
 
-        $respuesta = ModeloMantenimiento::mdlActualizarDescuento($tabla,$item1,$valor1,$item2,$valor2);
+        $item4 = null;
+        $valor4 = null;
+
+        $respuesta = ModeloMantenimiento::mdlActualizarMantenimiento($tabla, $item1, $valor1, $item2, $valor2, $item3, $valor3, $item4, $valor4);
         echo json_encode($respuesta);
+
+
+        // $respuesta = ModeloMantenimiento::mdlActualizarDescuento($tabla,$item1,$valor1,$item2,$valor2);
+        // echo json_encode($respuesta);
 
 
     }    
 
-
 }    
 
 /*========================================
-Activar DESCUENTO
+    ACTIVAR DESCUENTO
 ==========================================*/ 
 
-if(isset($_POST["activarDescuento"])){ 
+if(isset($_POST["idDescuento"])){ 
 
-    $activarDescuento = new ajaxDescuento();
-    $activarDescuento->activarMatricula = $_POST["activarDescuento"];
-    $activarDescuento->activarid = $_POST["activarid"];
+    $activarDescuento = new AjaxDescuento();
+    $activarDescuento->idDescuento = $_POST["idDescuento"];
+    $activarDescuento->estadoDescuento = $_POST["estadoDescuento"];
     $activarDescuento->ajaxActivarDescuento();
-
-
 }  
 
