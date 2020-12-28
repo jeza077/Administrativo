@@ -365,8 +365,6 @@ $(".btnEditarRol").click(function(){
 
 });
 
-
-
 /*===================================
     EDITAR PARAMETROS
 ====================================*/
@@ -439,8 +437,6 @@ $(document).on("click", ".btnEditarInscripcion", function(){
 
 });
 
-
-
 /*===================================
     EDITAR MATRIUCLA
 ====================================*/
@@ -508,7 +504,6 @@ $(document).on("click", ".btnEditarDescuento", function(){
 
 });
 
-
 /*===================================
     EDITAR DOCUMENTO
 ====================================*/
@@ -538,7 +533,6 @@ $(document).on("click", ".btnEditarDocumento", function(){
 
     });
 });
-
 
 
 
@@ -632,6 +626,31 @@ $(document).on('click', '.btnEliminarRoles', function () {
     });
 });
 
+/** ------------------------------------*/
+//         BORRAR DOCUMENTO
+// --------------------------------------*/ 
+$(document).on('click', '.btnEliminarDocumento', function () {
+    var idEliminarDocumento = $(this).attr('idEliminarDocumento');
+
+    Swal.fire({
+        title: "¿Estás seguro de querer borrar el documento?",
+        text: "¡Si no lo estas, puedes cancelar la acción!",
+        icon: "info",
+        showCancelButton: true,
+        cancelButtonColor: "#DC3545",
+        heightAuto: false,
+        allowOutsideClick: false
+    }).then((result)=>{
+        if(result.value){
+            window.location = `index.php?ruta=documentos&idEliminarDocumento=${idEliminarDocumento}`;
+            
+        }
+    });
+});
+
+
+
+
 
 
 /*=====================================
@@ -677,7 +696,6 @@ $(".btnActivar").click(function(){
     }
 
 })
-
 
 /*=====================================
     ACTIVAR PERMISOS ROL
@@ -863,15 +881,7 @@ $(document).on("click", ".btnActivarDescuento", function(){
 
 })
 
-//** ------------------------------------*/
-//         IMPRIMIR INSCRIPCION
-// --------------------------------------*/ 
-// $(document).on('click', '.btnExportarInscripcion', function () {
-//      var rango = valorBuscar;
 
-//     window.open("extensiones/tcpdf/pdf/inscripcion-pdf.php?&rango="+rango);
-    
-// });
 
 
 

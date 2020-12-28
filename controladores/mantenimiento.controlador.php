@@ -1166,7 +1166,6 @@
       }
     }
 
-
   	/*=============================================
             BORRAR MATRICULA
     =============================================*/
@@ -1232,7 +1231,6 @@
         }
       }
     }
-
 
     /*=============================================
               BORRAR INSCRIPCION
@@ -1365,6 +1363,74 @@
         }
       }
     }
+
+    /*=============================================
+            BORRAR DOCUMENTO
+    =============================================*/
+    static public function ctrBorrarDocumento(){
+      // var_dump($_GET['idEliminarDocumento']);
+      // return;
+
+      if(isset($_GET['idEliminarDocumento'])){
+
+          $tabla = 'tbl_documento';
+          $datos = $_GET['idEliminarDocumento'];
+
+
+          $respuesta = ModeloMantenimiento::mdlBorrarDocumento($tabla, $datos);
+          
+          // var_dump($respuesta);
+          // return;
+          
+          if($respuesta == true){
+
+            // $descripcionEvento = "Elimino el Rol";
+            // $accion = "Elimino";
+
+            // $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
+
+            
+            echo'<script>
+
+            Swal.fire({
+                  icon: "success",
+                  title: "Documento eliminado exitosamente!",
+                  showConfirmButton: true,
+                  confirmButtonText: "Cerrar",
+                  closeOnConfirm: false
+                  }).then((result) => {
+                      if (result.value) {
+
+                      window.location = "documentos";
+
+                      }
+                  })
+
+            </script>';
+
+        }else{
+
+          echo'<script>
+
+            Swal.fire({
+                  icon: "error",
+                  title: "Opps, algo salio mal, intenta de nuevo!",
+                  showConfirmButton: true,
+                  confirmButtonText: "Cerrar",
+                  closeOnConfirm: false
+                  }).then((result) => {
+                      if (result.value) {
+
+                      window.location = "documentos";
+
+                      }
+                  })
+
+            </script>';
+        }
+      }
+    }
+
 
 
 

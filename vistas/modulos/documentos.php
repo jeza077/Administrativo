@@ -226,8 +226,8 @@ MODAL EDITAR MATRICULA
 
 <?php
 
-//  $borrarMatricula = new ControladorMantenimientos();
-//  $borrarMatricula->ctrBorrarMatricula();
+ $borrarDocumento = new ControladorMantenimientos();
+ $borrarDocumento->ctrBorrarDocumento();
 
 ?>
 

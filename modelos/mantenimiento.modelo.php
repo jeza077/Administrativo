@@ -658,6 +658,31 @@ class ModeloMantenimiento{
     }
     
 
+    /*=============================================
+            BORRAR DOCUMENTO
+	=============================================*/
+	static public function mdlBorrarDocumento($tabla, $datos){
+
+		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_documento = :id_documento");
+
+		$stmt->bindParam(":id_documento", $datos, PDO::PARAM_INT);
+
+		if($stmt->execute()){
+
+			return true;
+
+		} else {
+		
+			return $stmt->errorInfo();
+
+		}
+
+		$stmt->close();
+
+		$stmt = null;
+    }
+    
+
 
     /*=============================================
 			RANGO DE FECHAS BITACORA
