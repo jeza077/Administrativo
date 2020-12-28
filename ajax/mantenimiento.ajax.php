@@ -20,19 +20,61 @@ class AjaxMantenimiento{
 
         echo json_encode($respuesta);
     
-    }  
+    }
+    
+    
+    /*=============================================
+            ACTIVAR DOCUMENTO
+    ==============================================*/
+    public $idDocumentoActivar;
+    public $estadoDocumento;
+    
+    public function ajaxActivarDocumento(){ 
+
+        $tabla = "tbl_documento";
+
+        $item1 = "estado";
+        $valor1 = $this->estadoDocumento;
+
+        $item2 = "id_documento";
+        $valor2 = $this->idDocumentoActivar;
+
+        $item3 = null;
+        $valor3 = null;
+
+        $item4 = null;
+        $valor4 = null;
+
+        $respuesta = ModeloMantenimiento::mdlActualizarMantenimiento($tabla, $item1, $valor1, $item2, $valor2, $item3, $valor3, $item4, $valor4);
+        echo json_encode($respuesta);
+
+        // $respuesta = ModeloMantenimiento::mdlActualizarRol($tabla,$item1,$valor1,$item2,$valor2);
+        // echo json_encode($respuesta);
+
+
+    }    
+
 }
 
 /*========================================
     EDITAR DOCUMENTO
 ==========================================*/ 
-
 if(isset($_POST["idDocumento"])){ 
-
     $editar = new AjaxMantenimiento();
     $editar->idDocumento = $_POST["idDocumento"];
     $editar-> ajaxEditarDocumento();
 }  
+
+/*========================================
+        ACTIVAR DOCUMENTO
+==========================================*/ 
+if(isset($_POST["idDocumentoActivar"])){ 
+    $activarDocumento = new AjaxMantenimiento();
+    $activarDocumento->estadoDocumento = $_POST["estadoDocumento"];
+    $activarDocumento->idDocumentoActivar = $_POST["idDocumentoActivar"];
+    $activarDocumento->ajaxActivarDocumento();
+}  
+
 
 
 class AjaxRol{
@@ -168,9 +210,8 @@ if(isset($_POST["pantalla"])){
 
 
 /*========================================
-Activar Rol
+        ACTIVAR ROL
 ==========================================*/ 
-
 if(isset($_POST["activarRol"])){ 
     $activarRol = new ajaxRol();
     $activarRol->activarRol = $_POST["activarRol"];

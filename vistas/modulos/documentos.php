@@ -49,26 +49,31 @@
             
             <tbody>  
                 <?php
-                        $tabla = "tbl_documento";
-                        $item = null;
-                        $valor = null;
-                        
-                        $documentos = ControladorUsuarios::ctrMostrar($tabla, $item, $valor);
-                        // var_dump($documentos);
+                  $tabla = "tbl_documento";
+                  $item = null;
+                  $valor = null;
+                  
+                  $documentos = ControladorUsuarios::ctrMostrar($tabla, $item, $valor);
+                  // var_dump($documentos);
 
-                        foreach ($documentos as $key => $value){
+                  foreach ($documentos as $key => $value){
+                    echo '
+                      <tr>  
+                          <td>'.($key + 1).'</td>
+                          <td>'.$value["tipo_documento"].'</td>';
+                          if($value['estado'] != 0){
+                            echo '<td><button class="btn btn-success btn-md btnActivarDocumento" idDocumento="'.$value["id_documento"].'" estadoDocumento="0">Activado</button></td>';
+                          }else{
+                            echo '<td><button class="btn btn-danger btn-md btnActivarDocumento" idDocumento="'.$value["id_documento"].'" estadoDocumento="1">Desactivado</button></td>';
+                          } 
                           echo '
-                            <tr>  
-                                <td>'.($key + 1).'</td>
-                                <td>'.$value["tipo_documento"].'</td>
-                                <td>Activo</td>
-                                <td>
-                                    <button class="btn btn-warning btnEditarDocumento" idDocumento="'.$value["id_documento"].'" data-toggle="modal" data-target="#modalEditarDocumento" data-toggle="tooltip" data-placement="left" title="Editar"><i class="fas fa-pencil-alt" style="color:#fff"></i></button>
+                          <td>
+                              <button class="btn btn-warning btnEditarDocumento" idDocumento="'.$value["id_documento"].'" data-toggle="modal" data-target="#modalEditarDocumento" data-toggle="tooltip" data-placement="left" title="Editar"><i class="fas fa-pencil-alt" style="color:#fff"></i></button>
 
-                                    <button class="btn btn-danger btnEliminarDocumento" idEliminarDocumento="'.$value["id_documento"].'" data-toggle="tooltip" data-placement="left" title="Borrar"><i class="fas fa-trash-alt"></i></button></td>
-                                </td>
-                            </tr>  '; 
-                        }       
+                              <button class="btn btn-danger btnEliminarDocumento" idEliminarDocumento="'.$value["id_documento"].'" data-toggle="tooltip" data-placement="left" title="Borrar"><i class="fas fa-trash-alt"></i></button></td>
+                          </td>
+                      </tr>  '; 
+                  }       
                   ?>                
               
             </tbody>

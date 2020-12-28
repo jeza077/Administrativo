@@ -54,33 +54,33 @@
             
             <tbody>  
                 <?php
-                        // $tabla = "tbl_matricula";
-                        $item = null;
-                        $valor = null;
-                        
-                        $matricula = ControladorMantenimientos::ctrMostrarMatricula($item,$valor);
-                        // var_dump($rol);
+                  // $tabla = "tbl_matricula";
+                  $item = null;
+                  $valor = null;
+                  
+                  $matricula = ControladorMantenimientos::ctrMostrarMatricula($item,$valor);
+                  // var_dump($rol);
 
-                        foreach ($matricula as $key => $value){
-                          echo '
-                            <tr>
-                          
-                            <td>'.($key + 1).'</td>
-                            <td>'.$value["tipo_matricula"].'</td>
-                            <td>'.$value["precio_matricula"].'</td>';
-                            if($value['estado'] != 0){
-                              echo '<td><button class="btn btn-success btn-md btnActivarMatricula" idMatricula="'.$value["id_matricula"].'" estadoMatricula="0">Activado</button></td>';
-                            }else{
-                              echo '<td><button class="btn btn-danger btn-md btnActivarMatricula" idMatricula="'.$value["id_matricula"].'" estadoMatricula="1">Desactivado</button></td>';
-                            } 
-                            echo'
-                            <td>
-                            <button class="btn btn-warning btnEditarMatricula" editarIdMatricula="'.$value["id_matricula"].'" data-toggle="modal" data-target="#modalEditarMatricula" data-toggle="tooltip" data-placement="left" title="Editar"><i class="fas fa-pencil-alt" style="color:#fff"></i></button>
+                  foreach ($matricula as $key => $value){
+                    echo '
+                      <tr>
+                    
+                      <td>'.($key + 1).'</td>
+                      <td>'.$value["tipo_matricula"].'</td>
+                      <td>'.$value["precio_matricula"].'</td>';
+                      if($value['estado'] != 0){
+                        echo '<td><button class="btn btn-success btn-md btnActivarMatricula" idMatricula="'.$value["id_matricula"].'" estadoMatricula="0">Activado</button></td>';
+                      }else{
+                        echo '<td><button class="btn btn-danger btn-md btnActivarMatricula" idMatricula="'.$value["id_matricula"].'" estadoMatricula="1">Desactivado</button></td>';
+                      } 
+                      echo'
+                      <td>
+                      <button class="btn btn-warning btnEditarMatricula" editarIdMatricula="'.$value["id_matricula"].'" data-toggle="modal" data-target="#modalEditarMatricula" data-toggle="tooltip" data-placement="left" title="Editar"><i class="fas fa-pencil-alt" style="color:#fff"></i></button>
 
-                            <button class="btn btn-danger btnEliminarMatricula" ideliminarMatricula="'.$value["id_matricula"].'" data-toggle="tooltip" data-placement="left" title="Borrar"><i class="fas fa-trash-alt"></i></button></td>
-                        </tr>  '; 
-                        }       
-                  ?>                
+                      <button class="btn btn-danger btnEliminarMatricula" ideliminarMatricula="'.$value["id_matricula"].'" data-toggle="tooltip" data-placement="left" title="Borrar"><i class="fas fa-trash-alt"></i></button></td>
+                  </tr>  '; 
+                  }       
+                ?>                
               
             </tbody>
         </table>       

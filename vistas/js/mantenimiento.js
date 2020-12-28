@@ -214,7 +214,7 @@ redireccionDinamica('.btnGuardarCambiosEditar', 'rol');
 /*===================================
     EDITAR ROL
 ====================================*/
-$(".btnEditarRol").click(function(){
+$(document).on("click", ".btnEditarRol", function(){
     
     var idRol = $(this).attr("editarIdRol");
 
@@ -881,6 +881,49 @@ $(document).on("click", ".btnActivarDescuento", function(){
 
 })
 
+/*=====================================
+    ACTIVAR DOCUMENTO
+========================================*/
+$(document).on("click", ".btnActivarDocumento", function(){
+
+    var idDocumento = $(this).attr("idDocumento");
+    var estadoDocumento = $(this).attr("estadoDocumento");
+    // console.log(idDocumento)
+    var datos = new FormData();
+    datos.append("idDocumentoActivar", idDocumento);
+    datos.append("estadoDocumento",estadoDocumento);
+
+    $.ajax({
+        
+      url:"ajax/mantenimiento.ajax.php",
+      method:"POST",
+      data: datos,
+      cache: false,
+      contentType:false,
+      processData:false,
+      success:function(respuesta){ 
+        //   console.log(respuesta)
+     } 
+
+    }) 
+
+    if(estadoDocumento == 0){
+        $(this).removeClass('btn-success');
+        $(this).addClass('btn-danger');
+        $(this).html('Desactivado');
+        $(this).attr('estadoDocumento',1);
+
+    }else{
+
+
+        $(this).addClass('btn-success');
+        $(this).removeClass('btn-danger');
+        $(this).html('Activado');
+        $(this).attr('estadoDocumento',0);
+
+    }
+
+})
 
 
 
