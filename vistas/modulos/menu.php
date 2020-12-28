@@ -267,7 +267,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="tipo-documentos" class="nav-link">
+                  <a href="documentos" class="nav-link">
                     <i class="fas fa-cash-register nav-icon"></i>
                     <p>Documentos</p>
                   </a>

@@ -10,7 +10,7 @@
               <button class="btn btn-orange float-right"  data-toggle="modal" data-target="#modalNuevoRol">
                 Nuevo Rol        
               </button>
-              <button class="btn btn-danger btnExportarRol float-right mr-3 ">
+              <button class="btn btn-outline-danger btnExportarRol float-right mr-3 ">
                 Exportar PDF      
               </button>
           </div>
@@ -36,7 +36,7 @@
                       ROL
             ==========================================================-->   
 
-        <table class="table table-striped table-bordered tablas text-center">
+        <table class="table table-hocer tablas text-center">
 
           <thead>
                           
@@ -79,8 +79,9 @@
 
                         echo'
                         <td>
-                        <button class="btn btn-warning btnEditarRol" editarIdRol="'.$value["id_rol"].'" data-toggle="modal" data-target="#modalEditarRol"><i class="fas fa-pencil-alt" style="color:#fff"></i></button>
-                        <button class="btn btn-danger btnEliminarRoles" ideliminarRoles="'.$value["id_rol"].'"><i class="fas fa-trash-alt"></i></button>
+                        <button class="btn btn-warning btnEditarRol" editarIdRol="'.$value["id_rol"].'" data-toggle="modal" data-target="#modalEditarRol" data-toggle="tooltip" data-placement="left" title="Editar"><i class="fas fa-pencil-alt" style="color:#fff"></i></button>
+
+                        <button class="btn btn-danger btnEliminarRoles" ideliminarRoles="'.$value["id_rol"].'" data-toggle="tooltip" data-placement="left" title="Borrar"><i class="fas fa-trash-alt"></i></button>
                         </td>
 
                       </tr>';

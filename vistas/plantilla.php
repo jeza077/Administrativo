@@ -118,7 +118,7 @@
             $_GET["ruta"] == "perfil" ||
             $_GET["ruta"] == "clientes-inscripciones-historico" ||
             $_GET["ruta"] == "clientes-pagos-historico" ||
-            $_GET["ruta"] == "tipo-documentos" ||
+            $_GET["ruta"] == "documentos" ||
             $_GET["ruta"] == "salir"){
 
             include "modulos/".$_GET["ruta"].".php";
@@ -237,17 +237,6 @@
 <script src="vistas/js/mantenimiento.js"></script>
 <script src="vistas/js/respaldo.js"></script>
 <script src="vistas/js/inventario.js"></script>
-<script src="vistas/js/parametros.js"></script>
-
-
-
-<!--<script src="vistas/js/validaciones.js"></script>
-<script src="vistas/js/categorias.js"></script>
-<script src="vistas/js/productos.js"></script>
-
-<script src="vistas/js/ventas.js"></script>
-<script src="vistas/js/reportes.js"></script> -->
-
 
 </body>
 </html>

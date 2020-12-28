@@ -509,6 +509,39 @@ $(document).on("click", ".btnEditarDescuento", function(){
 });
 
 
+/*===================================
+    EDITAR DOCUMENTO
+====================================*/
+$(document).on("click", ".btnEditarDocumento", function(){
+    
+    var idDocumento = $(this).attr("idDocumento");
+    // console.log(idDocumento)
+    var datos = new FormData();
+    datos.append("idDocumento", idDocumento);
+
+    $.ajax({
+
+        url:"ajax/mantenimiento.ajax.php",
+        method:"POST",
+        data: datos,
+        cache: false,
+        contentType:false,
+        processData:false,
+        dataType: "json",
+        success:function(respuesta){ 
+            // console.log(respuesta)
+
+            $('#editarDocumento').val(respuesta['tipo_documento']);
+            $('#editarIdDocumento').val(respuesta['id_documento']);
+         
+        } 
+
+    });
+});
+
+
+
+
 
 
 /** ------------------------------------*/

@@ -481,7 +481,22 @@
 
     }
 
-    
+
+    /*=============================================
+        MOSTRAR DOCUMENTOS
+    =============================================*/
+
+    static public function ctrMostrarDocumento($item, $valor){
+
+      $tabla = "tbl_documento";
+      
+      $respuesta = ModeloMantenimiento::mdlMostrarDocumento($tabla, $item, $valor);
+
+      return $respuesta;
+
+    }
+
+
     /*======================================================
        DESCUENTO INSERTAR
     =======================================================*/
@@ -607,6 +622,103 @@
 
 
     }
+
+
+    /*=============================================
+        AGREGAR NUEVO DOCUMENTO
+    =============================================*/
+    
+    static public function ctrDocumentoInsertar(){
+
+      // var_dump($_POST);
+      // return;
+      if(isset($_POST["nuevoDocumento"])){
+
+        if(preg_match('/^[A-ZñÑáéíóúÁÉÍÓÚ]+$/', $_POST["nuevoDocumento"])){
+
+          $tabla = "tbl_documento";
+
+          $datos = array ("tipo_documento" => $_POST["nuevoDocumento"]);
+
+
+          $respuesta =  ModeloMantenimiento::mdlDocumentoInsertar($tabla,$datos);
+
+    
+          if($respuesta == true){
+              
+              // $descripcionEvento = "Actualizo rol";
+              // $accion = "Actualizo";
+              // $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
+
+              echo'<script>
+      
+              Swal.fire({
+                  icon: "success",
+                    title: "El documento se creo exitosamente",
+                    showConfirmButton: true,
+                    confirmButtonText: "Cerrar",
+                    closeOnConfirm: false
+                    }).then((result) => {
+                              if (result.value) {
+      
+                              window.location = "documentos";
+      
+                              }
+                          })
+      
+              </script>';
+      
+          }else{
+
+            echo'<script>
+      
+              Swal.fire({
+                    icon: "warning",
+                    title: "Error al editar rol",
+                    showConfirmButton: true,
+                    confirmButtonText: "Cerrar",
+                    closeOnConfirm: false
+                    }).then((result) => {
+                              if (result.value) {
+      
+                              window.location = "rol";
+      
+                              }
+                          })
+      
+              </script>';
+          }
+
+        } else {
+          echo '<script>
+  
+              Swal.fire({
+
+                icon: "error",
+                title: "¡No puede ir vacío, escrito en minusculas o llevar caracteres especiales!",
+                showConfirmButton: true,
+                confirmButtonText: "Cerrar",
+                closeOnConfirm: false
+
+              }).then((result)=>{
+
+                if(result.value){
+
+                  window.location = "documentos";
+
+                }
+
+              });
+
+
+            </script>';
+
+        }
+      }
+
+    }
+
+
 
 
     /*=============================================
@@ -888,6 +1000,104 @@
     }
 
 
+    /*=============================================
+      EDITAR ROL
+    =============================================*/
+    
+    static public function ctrEditarDocumento(){
+      // var_dump($_POST);
+      // return;
+
+      if(isset($_POST["editarIdDocumento"])){
+
+        if(preg_match('/^[A-ZñÑÁÉÍÓÚ ]+$/', $_POST["editarDocumento"])){
+
+          $tabla = "tbl_documento";
+
+          $datos = array ("tipo_documento"=> $_POST["editarDocumento"],
+                          "id_documento"=>$_POST["editarIdDocumento"]);
+
+
+          $respuesta =  ModeloMantenimiento::mdlEditarDocumento($tabla,$datos);
+
+      
+          if($respuesta == true){
+              
+              // $descripcionEvento = "Actualizo rol";
+              // $accion = "Actualizo";
+              // $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);            
+
+              echo'<script>
+      
+              Swal.fire({
+                    icon: "success",
+                    title: "Documento editado correctamente",
+                    showConfirmButton: true,
+                    confirmButtonText: "Cerrar",
+                    closeOnConfirm: false
+                    }).then((result) => {
+                              if (result.value) {
+      
+                              window.location = "documentos";
+      
+                              }
+                          })
+      
+              </script>';
+      
+          }else{
+
+            echo'<script>
+      
+              Swal.fire({
+                    icon: "error",
+                    title: "Opps, algo salio mal, intenta de nuevo!",
+                    showConfirmButton: true,
+                    confirmButtonText: "Cerrar",
+                    closeOnConfirm: false
+                    }).then((result) => {
+                              if (result.value) {
+      
+                              window.location = "documentos";
+      
+                              }
+                          })
+      
+              </script>';
+          }
+        
+        } else {
+          echo '<script>
+  
+            Swal.fire({
+  
+              icon: "error",
+              title: "¡No puede ir vacío, escrito en minusculas o llevar caracteres especiales!",
+              showConfirmButton: true,
+              confirmButtonText: "Cerrar",
+              closeOnConfirm: false
+  
+            }).then((result)=>{
+  
+              if(result.value){
+  
+                window.location = "documentos";
+  
+              }
+  
+            });
+  
+  
+          </script>';
+  
+
+        }
+
+      }
+
+    }
+
+
 
     
     /*=============================================
@@ -919,7 +1129,7 @@
 
             Swal.fire({
                   icon: "success",
-                  title: "Se a eliminado correctamente",
+                  title: "Rol eliminado exitosamente",
                   showConfirmButton: true,
                   confirmButtonText: "Cerrar",
                   closeOnConfirm: false
@@ -938,7 +1148,7 @@
           echo'<script>
 
             Swal.fire({
-                  icon: "warning",
+                  icon: "error",
                   title: "Error al borrar rol",
                   showConfirmButton: true,
                   confirmButtonText: "Cerrar",

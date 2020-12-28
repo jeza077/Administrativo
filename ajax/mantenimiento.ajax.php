@@ -3,6 +3,38 @@
 require_once "../controladores/mantenimiento.controlador.php";
 require_once "../modelos/mantenimiento.modelo.php";
 
+class AjaxMantenimiento{
+
+    /*========================================
+        EDITAR DOCUMENTO
+    ==========================================*/ 
+    public $idDocumento;
+
+    public function ajaxEditarDocumento(){
+
+        $item = "id_documento";
+
+        $valor = $this->idDocumento;
+
+        $respuesta = ControladorMantenimientos::ctrMostrarDocumento($item,$valor);
+
+        echo json_encode($respuesta);
+    
+    }  
+}
+
+/*========================================
+    EDITAR DOCUMENTO
+==========================================*/ 
+
+if(isset($_POST["idDocumento"])){ 
+
+    $editar = new AjaxMantenimiento();
+    $editar->idDocumento = $_POST["idDocumento"];
+    $editar-> ajaxEditarDocumento();
+}  
+
+
 class AjaxRol{
 
     /*=============================================

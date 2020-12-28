@@ -287,7 +287,36 @@ class ModeloMantenimiento{
 
     }
 
+    
+    /*=============================================
+		MOSTRAR MATRICULA
+	=============================================*/
+		
+	static public function mdlMostrarDocumento($tabla, $item, $valor){
+	
+        if($item != null){
 
+            $stmt = Conexion::conectar()->prepare("SELECT * from $tabla where $item = :$item");		
+            $stmt->bindParam(":".$item, $valor, PDO::PARAM_STR);
+            $stmt->execute();
+            return $stmt -> fetch();
+
+        } else {
+
+            $stmt = Conexion::conectar()->prepare("SELECT * from $tabla");		
+            
+            $stmt->execute();
+
+            return $stmt -> fetchAll();
+
+        }
+
+        $stmt -> close();
+        $stmt = null;	
+
+
+
+    }
 
 
     /*====================================================
@@ -478,6 +507,55 @@ class ModeloMantenimiento{
     }
 
 
+    /*============================================
+            AGREGAR NUEVO DOCUMENTO
+	==============================================*/
+	static public function mdlDocumentoInsertar($tabla, $datos){
+
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(tipo_documento) VALUES (:tipo_documento)");
+       
+        $stmt->bindParam(":tipo_documento", $datos["tipo_documento"], PDO::PARAM_STR);
+        // $stmt->bindParam(":valor_descuento", $datos["valor"], PDO::PARAM_STR);
+        /*$stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_INT);*/
+
+		if($stmt->execute()){
+			return true;
+
+		}else{
+			return false;
+		
+		}
+
+		$stmt->close();
+		$stmt = null;
+    }
+
+
+    /*=============================================
+          EDITAR DOCUMENTO
+    =============================================*/
+    
+    static public function mdlEditarDocumento($tabla,$datos){
+        
+        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET tipo_documento = :tipo_documento WHERE id_documento = :id_documento");
+
+        $stmt -> bindParam(":tipo_documento", $datos["tipo_documento"], PDO::PARAM_STR);
+        $stmt -> bindParam(":id_documento", $datos["id_documento"], PDO::PARAM_INT);
+        // $stmt -> bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
+
+        if($stmt->execute()){
+
+            return true;
+
+        }else{
+
+            return false;
+        
+        }
+
+        $stmt->close();
+        $stmt = null;
+    }
 
 
     /*=============================================
