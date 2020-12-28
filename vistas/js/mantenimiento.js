@@ -9,7 +9,7 @@ $(document).on('click', '.btnGuardarRol', function (e) {
     // console.log('clcik')
 
     $(this).html('');
-    $(this).append('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Guardando...');
+    // $(this).append('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Guardando...');
 
     
     // return;
@@ -209,6 +209,60 @@ redireccionDinamica('.btnGuardarCambios', 'rol');
 redireccionDinamica('.btnGuardarCambiosEditar', 'rol');
 
 
+/* ========================================
+        GUARDAR PROVEEDOR
+=========================================== */
+$(document).on('click', '.btnGuardarProveedor', function (e) {
+    e.preventDefault();
+    // console.log('clcik')
+
+    // $(this).html('');
+    // $(this).append('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Guardando...');
+
+    
+    // return;
+    var nombre = $('input[name=nuevoNombre]').val();
+    var correo = $('input[name=nuevoCorreo]').val();
+    var telefono = $('input[name=nuevoTelefono]').val();
+    // console.log(telefono)
+
+    // return;
+    var datos = new FormData();
+    datos.append('nombre', nombre);
+    datos.append('correo', correo);
+    datos.append('telefono', telefono);
+
+    $.ajax({
+        
+        url:"ajax/mantenimiento.ajax.php",
+        method:"POST",
+        data: datos,
+        cache: false,
+        contentType:false,
+        processData:false,
+        success:function(respuesta){ 
+            console.log(respuesta)
+            
+            if(respuesta == 'true'){
+                Swal.fire({
+                    icon: "success",
+                    title: "Proveedor creado exitosamente!",
+                    showConfirmButton: true,
+                    confirmButtonText: "Cerrar",
+                    closeOnConfirm: false
+                    }).then((result) => {
+                        if (result.value) {
+
+                        window.location = "proveedores";
+
+                        }
+                    })
+        
+            }
+        }
+    })
+
+});
 
 
 /*===================================

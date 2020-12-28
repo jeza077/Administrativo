@@ -64,7 +64,7 @@
     }
 
     else if(isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok"){
-      echo '<body class="hold-transition sidebar-mini sidebar-collapse">';
+      echo '<body class="hold-transition sidebar-mini sidebar-collapse layout-fixed">';
 
       echo '<div class="wrapper">';
       /*=============================================
@@ -90,7 +90,7 @@
           if($_GET["ruta"] == "dashboard" ||
             $_GET["ruta"] == "usuarios" ||
             $_GET["ruta"] == "bitacora" ||
-            $_GET["ruta"] == "categorias" ||
+            $_GET["ruta"] == "proveedores" ||
             // $_GET["ruta"] == "ajustes-cuenta" ||
             $_GET["ruta"] == "productos" ||
             $_GET["ruta"] == "clientes" ||

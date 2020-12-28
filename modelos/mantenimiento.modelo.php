@@ -400,6 +400,32 @@ class ModeloMantenimiento{
     }
 
 
+    /*============================================
+		NUEVO PROVEEDOR
+	==============================================*/
+	static public function mdlNuevoProveedor($tabla, $datos){
+
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre, correo, telefono) VALUES (:nombre, :correo, :telefono)");
+       
+        $stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+        $stmt->bindParam(":correo", $datos["correo"], PDO::PARAM_STR);
+        $stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR);
+
+		if($stmt->execute()){
+			return true;
+
+		}else{
+			return false;
+		
+		}
+
+		$stmt->close();
+		$stmt = null;
+    }
+
+
+
+
     /*=============================================
           EDITAR ROLES
     =============================================*/

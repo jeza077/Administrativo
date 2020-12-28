@@ -220,6 +220,7 @@
               </ul>
             </li>
             <?php } ?>
+
             <?php if($_SESSION['permisos']['Mantenimiento']['consulta'] == 1){?>
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link menu-lateral">
@@ -270,6 +271,12 @@
                   <a href="documentos" class="nav-link">
                     <i class="fas fa-cash-register nav-icon"></i>
                     <p>Documentos</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="proveedores" class="nav-link">
+                    <i class="fas fa-cash-register nav-icon"></i>
+                    <p>Proveedores</p>
                   </a>
                 </li>
               </ul>

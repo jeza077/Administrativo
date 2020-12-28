@@ -54,6 +54,32 @@ class AjaxMantenimiento{
 
     }    
 
+
+
+    /*========================================
+        GUARDAR PROVEEDOR
+    ==========================================*/ 
+    public $nombre;
+    public $correo;
+    public $telefono;
+
+    public function ajaxNuevoProveedor(){
+        // $nombreProv = $this->nombre;
+        // $correoProv = $this->correo;
+        // $telefonoProv = $this->telefono;
+        $datos = array(
+            'nombre' => $this->nombre,
+            'correo' => $this->correo,
+            'telefono' => $this->telefono
+        );
+
+        $respuesta = ControladorMantenimientos::ctrNuevoProveedor($datos);
+
+        echo json_encode($respuesta);
+    
+    }
+    
+
 }
 
 /*========================================
@@ -74,6 +100,19 @@ if(isset($_POST["idDocumentoActivar"])){
     $activarDocumento->idDocumentoActivar = $_POST["idDocumentoActivar"];
     $activarDocumento->ajaxActivarDocumento();
 }  
+
+/*========================================
+        NUEVO PROVEEDOR
+==========================================*/ 
+if(isset($_POST["nombre"])){ 
+    $nuevoProveedor = new AjaxMantenimiento();
+    $nuevoProveedor->nombre = $_POST["nombre"];
+    $nuevoProveedor->correo = $_POST["correo"];
+    $nuevoProveedor->telefono = $_POST["telefono"];
+    $nuevoProveedor->ajaxNuevoProveedor();
+}  
+
+
 
 
 

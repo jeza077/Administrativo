@@ -719,6 +719,104 @@
     }
 
 
+    /*=============================================
+        AGREGAR NUEVO PROVEEDOR
+    =============================================*/
+    static public function ctrNuevoProveedor($datos){
+      
+      if(isset($datos["nombre"])){
+        
+        if(preg_match('/^[A-ZñÑÁÉÍÓÚ ]+$/', $datos["nombre"])){
+          // return $datos['telefono'];
+
+          $tabla = "tbl_proveedores";
+
+          $datos = array("nombre" => $datos["nombre"],
+                         "correo" => $datos["correo"],
+                         "telefono" => $datos["telefono"] 
+                    );
+
+          // return $datos;
+
+          $respuesta =  ModeloMantenimiento::mdlNuevoProveedor($tabla,$datos);
+
+    
+          if($respuesta == true){
+              
+              // $descripcionEvento = "Actualizo rol";
+              // $accion = "Actualizo";
+              // $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
+
+              return true;
+              echo'<script>
+      
+              Swal.fire({
+                  icon: "success",
+                    title: "El documento se creo exitosamente",
+                    showConfirmButton: true,
+                    confirmButtonText: "Cerrar",
+                    closeOnConfirm: false
+                    }).then((result) => {
+                              if (result.value) {
+      
+                              window.location = "documentos";
+      
+                              }
+                          })
+      
+              </script>';
+      
+          }else{
+
+            echo'<script>
+      
+              Swal.fire({
+                    icon: "warning",
+                    title: "Error al editar rol",
+                    showConfirmButton: true,
+                    confirmButtonText: "Cerrar",
+                    closeOnConfirm: false
+                    }).then((result) => {
+                              if (result.value) {
+      
+                              window.location = "rol";
+      
+                              }
+                          })
+      
+              </script>';
+          }
+
+        } else {
+          echo '<script>
+  
+              Swal.fire({
+
+                icon: "error",
+                title: "¡Campos no pueden ir vacíos, escrito en minusculas o llevar caracteres especiales!",
+                showConfirmButton: true,
+                confirmButtonText: "Cerrar",
+                closeOnConfirm: false
+
+              }).then((result)=>{
+
+                if(result.value){
+
+                  window.location = "documentos";
+
+                }
+
+              });
+
+
+            </script>';
+
+        }
+      }
+
+
+    }
+
 
 
     /*=============================================
