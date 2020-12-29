@@ -65,9 +65,9 @@
                           <td>'.$value["correo"].'</td>                         
                           <td>'.$value["telefono"].'</td>                         
                           <td>
-                              <button class="btn btn-warning btnEditarDocumento" idDocumento="'.$value["id_proveedor"].'" data-toggle="modal" data-target="#modalEditarDocumento" data-toggle="tooltip" data-placement="left" title="Editar"><i class="fas fa-pencil-alt" style="color:#fff"></i></button>
+                              <button class="btn btn-warning btnEditarProveedor" idProveedor="'.$value["id_proveedor"].'" data-toggle="modal" data-target="#modalEditarProveedor" data-toggle="tooltip" data-placement="left" title="Editar"><i class="fas fa-pencil-alt" style="color:#fff"></i></button>
 
-                              <button class="btn btn-danger btnEliminarDocumento" idEliminarDocumento="'.$value["id_proveedor"].'" data-toggle="tooltip" data-placement="left" title="Borrar"><i class="fas fa-trash-alt"></i></button></td>
+                              <button class="btn btn-danger btnEliminarProveedor" idEliminarProveedor="'.$value["id_proveedor"].'" data-toggle="tooltip" data-placement="left" title="Borrar"><i class="fas fa-trash-alt"></i></button></td>
                           </td>
                       </tr>  '; 
                   }       
@@ -114,7 +114,7 @@ MODAL AGREGAR NUEVA PROVEEDOR
 
         <div class="modal-body">
           <div class="form-group col-md-12">
-            <label for="Rol">Nombre</label>
+            <label for="nombre">Nombre</label>
             <input type="text" class="form-control nombre mayus" name="nuevoNombre" value="" placeholder="Ingresa Nombre" required>
           </div>
 
@@ -138,19 +138,7 @@ MODAL AGREGAR NUEVA PROVEEDOR
           <button type="button" class="btn btn-orange" data-dismiss="modal">Salir</button>
         </div>
 
-        <?php
-
-        //   $crearDocumento = new ControladorMantenimientos();
-        //   $crearDocumento-> ctrDocumentoInsertar();
-
-        ?>
-
-
-
-
-      </form>
-
-    
+      </form> 
 
     </div>
 
@@ -164,7 +152,7 @@ MODAL AGREGAR NUEVA PROVEEDOR
 MODAL EDITAR PROVEEDOR
 ======================================-->
 
-<div class="modal fade" id="modalEditarDocumento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalEditarProveedor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   
   <div class="modal-dialog " role="document">
 
@@ -177,7 +165,7 @@ MODAL EDITAR PROVEEDOR
         ======================================-->
 
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Editar Documento</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Editar Proveedor</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -188,16 +176,21 @@ MODAL EDITAR PROVEEDOR
         ======================================-->
 
         <div class="modal-body">
-          <div class="form-group col-md-12">
-            <label for="Rol">Tipo Documento</label>
-            <input type="text" class="form-control nombre mayus" id="editarDocumento" name="editarDocumento" value="" required>
-          </div>
+            <div class="form-group col-md-12">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control nombre mayus" id="editarNombre" name="editarNombre" value="" required>
+            </div>
 
-          <!-- <div class="form-group col-md-12">
-            <label for="Descripcion">Precio Matricula</label>
-            <input type="textarea" class="form-control preciom" id="editarPrecioMatricula" name="editarPrecioMatricula" value="" required>
-          </div> -->
-          <input type="hidden" id="editarIdDocumento" name="editarIdDocumento">
+            <div class="form-group col-md-12">
+                <label for="Descripcion">Correo</label>
+                <input type="email" class="form-control email" id="editarCorreo" name="editarCorreo" value="" required>
+            </div>
+
+            <div class="form-group col-md-12">
+                <label for="Descripcion">Teléfono</label>
+                <input type="text" class="form-control" data-inputmask='"mask": "(999) 9999-9999"' data-mask  id="editarTelefono" name="editarTelefono" value="" required>
+            </div>
+            <input type="hidden" id="editarIdProveedor" name="editarIdProveedor">
         </div>
 
         <!--=====================================
@@ -211,8 +204,8 @@ MODAL EDITAR PROVEEDOR
 
         <?php
 
-          $editarDocumento = new ControladorMantenimientos();
-          $editarDocumento->ctrEditarDocumento();
+          $editarProveedor = new ControladorMantenimientos();
+          $editarProveedor->ctrEditarProveedor();
 
         ?>
 
@@ -233,8 +226,8 @@ MODAL EDITAR PROVEEDOR
 
 <?php
 
-//  $borrarDocumento = new ControladorMantenimientos();
-//  $borrarDocumento->ctrBorrarDocumento();
+ $borrarProveedor = new ControladorMantenimientos();
+ $borrarProveedor->ctrBorrarProveedor();
 
 ?>
 

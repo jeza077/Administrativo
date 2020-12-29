@@ -215,12 +215,6 @@ redireccionDinamica('.btnGuardarCambiosEditar', 'rol');
 $(document).on('click', '.btnGuardarProveedor', function (e) {
     e.preventDefault();
     // console.log('clcik')
-
-    // $(this).html('');
-    // $(this).append('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Guardando...');
-
-    
-    // return;
     var nombre = $('input[name=nuevoNombre]').val();
     var correo = $('input[name=nuevoCorreo]').val();
     var telefono = $('input[name=nuevoTelefono]').val();
@@ -241,7 +235,7 @@ $(document).on('click', '.btnGuardarProveedor', function (e) {
         contentType:false,
         processData:false,
         success:function(respuesta){ 
-            console.log(respuesta)
+            // console.log(respuesta)
             
             if(respuesta == 'true'){
                 Swal.fire({
@@ -588,8 +582,39 @@ $(document).on("click", ".btnEditarDocumento", function(){
     });
 });
 
+/*===================================
+    EDITAR PROVEEDOR
+====================================*/
+$(document).on("click", ".btnEditarProveedor", function(){
+    
+    var idProveedor = $(this).attr("idProveedor");
+    console.log(idProveedor)
+
+    var datos = new FormData();
+    datos.append("idProveedor", idProveedor);
+
+    $.ajax({
+
+        url:"ajax/mantenimiento.ajax.php",
+        method:"POST",
+        data: datos,
+        cache: false,
+        contentType:false,
+        processData:false,
+        dataType: "json",
+        success:function(respuesta){ 
+            // console.log(respuesta)
+
+            $('#editarNombre').val(respuesta['nombre']);
+            $('#editarCorreo').val(respuesta['correo']);
+            $('#editarTelefono').val(respuesta['telefono']);
+            $('#editarIdProveedor').val(respuesta['id_proveedor']);
+        } 
+
+    });
 
 
+});
 
 
 /** ------------------------------------*/
@@ -702,6 +727,38 @@ $(document).on('click', '.btnEliminarDocumento', function () {
     });
 });
 
+/** ------------------------------------*/
+//         BORRAR DINAMICO
+// --------------------------------------*/ 
+function borrarDinamico(btnSelector, nombreGet, mensajeTitulo, mensajeTexto, ruta) {
+
+    $(document).on('click', btnSelector, function () {
+
+        var idEliminarProveedor = $(this).attr('idEliminarProveedor');
+
+        Swal.fire({
+            title: mensajeTitulo,
+            text: mensajeTexto,
+            icon: "info",
+            showCancelButton: true,
+            cancelButtonColor: "#DC3545",
+            heightAuto: false,
+            allowOutsideClick: false
+        }).then((result)=>{
+            if(result.value){
+                window.location = `index.php?ruta=${ruta}&${nombreGet}=${idEliminarProveedor}`;
+                
+            }
+        });
+    });
+
+}
+let boton = '.btnEliminarProveedor';
+let get = 'idProveedor';
+let titulo = "¿Estás seguro de querer borrar el proveedor?";
+let texto = "¡Si no lo estas, puedes cancelar la acción!";
+let ruta = 'proveedores';
+borrarDinamico(boton, get, titulo, texto, ruta);
 
 
 

@@ -2,11 +2,13 @@
 
 require_once "../controladores/mantenimiento.controlador.php";
 require_once "../modelos/mantenimiento.modelo.php";
+require_once "../controladores/usuarios.controlador.php";
+require_once "../modelos/usuarios.modelo.php";
 
 class AjaxMantenimiento{
 
     /*========================================
-        EDITAR DOCUMENTO
+        MOSTRAR-EDITAR DOCUMENTO
     ==========================================*/ 
     public $idDocumento;
 
@@ -79,11 +81,27 @@ class AjaxMantenimiento{
     
     }
     
+    /*========================================
+        MOSTRAR-EDITAR PROVEEDOR
+    ==========================================*/ 
+    public $idProveedor;
+
+    public function ajaxMostrarProveedor(){
+
+        $tabla = "tbl_proveedores";
+        $item = "id_proveedor";
+        $valor = $this->idProveedor;
+
+        $respuesta = ControladorUsuarios::ctrMostrar($tabla, $item, $valor);
+
+        echo json_encode($respuesta);
+    
+    }
 
 }
 
 /*========================================
-    EDITAR DOCUMENTO
+    MOSTRAR-EDITAR DOCUMENTO
 ==========================================*/ 
 if(isset($_POST["idDocumento"])){ 
     $editar = new AjaxMantenimiento();
@@ -111,7 +129,14 @@ if(isset($_POST["nombre"])){
     $nuevoProveedor->telefono = $_POST["telefono"];
     $nuevoProveedor->ajaxNuevoProveedor();
 }  
-
+/*========================================
+    MOSTRAR-EDITAR PROVEEDOR
+==========================================*/ 
+if(isset($_POST["idProveedor"])){ 
+    $mostrarProveedor = new AjaxMantenimiento();
+    $mostrarProveedor->idProveedor = $_POST["idProveedor"];
+    $mostrarProveedor->ajaxMostrarProveedor();
+}  
 
 
 

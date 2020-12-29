@@ -817,7 +817,20 @@
 
     }
 
+    /*=============================================
+        MOSTRAR PROVEEDOR
+    =============================================*/
 
+    // static public function ctrMostrarProveedores($item, $valor){
+
+    //   return true;
+    //   $tabla = "tbl_proveedores";
+      
+    //   $respuesta = ModeloMantenimiento::mdlMostrarProveedores($tabla, $item, $valor);
+
+    //   return $respuesta;
+
+    // }
 
     /*=============================================
       EDITAR ROL
@@ -1195,6 +1208,93 @@
 
     }
 
+    /*=============================================
+      EDITAR ROL
+    =============================================*/
+    
+    static public function ctrEditarProveedor(){
+
+      if(isset($_POST["editarIdProveedor"])){
+
+        if(preg_match('/^[A-ZñÑÁÉÍÓÚ ]+$/', $_POST["editarNombre"])){
+
+          $tabla = "tbl_proveedores";
+
+          $datos = array ("nombre"=> $_POST["editarNombre"],
+                          "correo"=>$_POST["editarCorreo"],
+                          "telefono"=>$_POST["editarTelefono"],
+                          "id_proveedor"=>$_POST["editarIdProveedor"]);
+
+
+          $respuesta =  ModeloMantenimiento::mdlEditarProveedor($tabla,$datos);
+
+      
+          if($respuesta == true){
+              
+              // $descripcionEvento = "Actualizo rol";
+              // $accion = "Actualizo";
+              // $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);          
+
+              echo'<script>
+      
+              Swal.fire({
+                  icon: "success",
+                    title: "Proveedor editado correctamente!",
+                    showConfirmButton: true,
+                    confirmButtonText: "Cerrar",
+                    closeOnConfirm: false
+                    }).then((result) => {
+                        if (result.value) {
+
+                        window.location = "proveedores";
+
+                        }
+                    })
+      
+              </script>';
+      
+          }else{
+
+            echo'<script>
+      
+              Swal.fire({
+                    icon: "error",
+                    title: "Opps, algo salio mal, intenta de nuevo!",
+                    showConfirmButton: true,
+                    confirmButtonText: "Cerrar",
+                    closeOnConfirm: false
+                    }).then((result) => {
+                        if (result.value) {
+
+                        window.location = "proveedores";
+
+                        }
+                    })
+      
+              </script>';
+          }
+        
+        } else {
+          echo '<script>
+  
+            Swal.fire({
+  
+              icon: "error",
+              title: "¡Los campos no pueden ir vacíos, escrito en minusculas o llevar caracteres especiales!",
+              showConfirmButton: true,
+              confirmButtonText: "Cerrar",
+              closeOnConfirm: false
+  
+            }); 
+  
+          </script>';
+  
+
+        }
+      
+      }
+
+    }
 
 
     
@@ -1529,7 +1629,72 @@
       }
     }
 
+    /*=============================================
+            BORRAR PROVEEDOR
+    =============================================*/
+    static public function ctrBorrarProveedor(){
+      // var_dump($_GET['idEliminarProveedor']);
+      // return;
 
+      if(isset($_GET['idProveedor'])){
+
+          $tabla = 'tbl_proveedores';
+          $item = 'id_proveedor';
+          $valor = $_GET['idProveedor'];
+
+          $respuesta = ModeloMantenimiento::mdlBorrarDinamico($tabla, $item, $valor);
+          
+          // var_dump($respuesta);
+          // return;
+          
+          if($respuesta == true){
+
+            // $descripcionEvento = "Elimino el Rol";
+            // $accion = "Elimino";
+
+            // $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
+
+            
+            echo'<script>
+
+            Swal.fire({
+                  icon: "success",
+                  title: "Proveedor eliminado exitosamente!",
+                  showConfirmButton: true,
+                  confirmButtonText: "Cerrar",
+                  closeOnConfirm: false
+                  }).then((result) => {
+                      if (result.value) {
+
+                      window.location = "proveedores";
+
+                      }
+                  })
+
+            </script>';
+
+        }else{
+
+          echo'<script>
+
+            Swal.fire({
+                  icon: "error",
+                  title: "Opps, algo salio mal, intenta de nuevo!",
+                  showConfirmButton: true,
+                  confirmButtonText: "Cerrar",
+                  closeOnConfirm: false
+                  }).then((result) => {
+                      if (result.value) {
+
+                      window.location = "proveedores";
+
+                      }
+                  })
+
+            </script>';
+        }
+      }
+    }
 
 
     /*=============================================
