@@ -620,6 +620,7 @@ $(document).on("click", ".btnEditarProveedor", function(){
 /** ------------------------------------*/
 //         BORRAR INSCRIPCION
 // --------------------------------------*/ 
+/*
 $(document).on('click', '.btnEliminarInscripcion', function () {
     var idEliminarInscripcion = $(this).attr('idEliminarInscripcion');
 
@@ -638,10 +639,12 @@ $(document).on('click', '.btnEliminarInscripcion', function () {
         }
     });
 });
+*/
 
 /** ------------------------------------*/
 //         BORRAR MATRICULA
 // --------------------------------------*/ 
+/*
 $(document).on('click', '.btnEliminarMatricula', function () {
     var ideliminarMatricula = $(this).attr('ideliminarMatricula');
 
@@ -660,10 +663,12 @@ $(document).on('click', '.btnEliminarMatricula', function () {
         }
     });
 });
+*/
 
 /** ------------------------------------*/
 //         BORRAR DESCUENTO
 // --------------------------------------*/ 
+/*
 $(document).on('click', '.btnEliminarDescuento', function () {
     var ideliminarDescuento = $(this).attr('ideliminarDescuento');
 
@@ -682,10 +687,12 @@ $(document).on('click', '.btnEliminarDescuento', function () {
         }
     });
 });
+*/
 
 /** ------------------------------------*/
 //         BORRAR ROlES
 // --------------------------------------*/ 
+/*
 $(document).on('click', '.btnEliminarRoles', function () {
     var ideliminarRoles = $(this).attr('ideliminarRoles');
 
@@ -704,10 +711,12 @@ $(document).on('click', '.btnEliminarRoles', function () {
         }
     });
 });
+*/
 
 /** ------------------------------------*/
 //         BORRAR DOCUMENTO
 // --------------------------------------*/ 
+/*
 $(document).on('click', '.btnEliminarDocumento', function () {
     var idEliminarDocumento = $(this).attr('idEliminarDocumento');
 
@@ -726,15 +735,16 @@ $(document).on('click', '.btnEliminarDocumento', function () {
         }
     });
 });
+*/
 
 /** ------------------------------------*/
 //         BORRAR DINAMICO
 // --------------------------------------*/ 
-function borrarDinamico(btnSelector, nombreGet, mensajeTitulo, mensajeTexto, ruta) {
+function borrarDinamico(btnSelector, atributo, nombreGet, mensajeTitulo, mensajeTexto, ruta) {
 
     $(document).on('click', btnSelector, function () {
 
-        var idEliminarProveedor = $(this).attr('idEliminarProveedor');
+        var id = $(this).attr(atributo);
 
         Swal.fire({
             title: mensajeTitulo,
@@ -746,19 +756,68 @@ function borrarDinamico(btnSelector, nombreGet, mensajeTitulo, mensajeTexto, rut
             allowOutsideClick: false
         }).then((result)=>{
             if(result.value){
-                window.location = `index.php?ruta=${ruta}&${nombreGet}=${idEliminarProveedor}`;
+                window.location = `index.php?ruta=${ruta}&${nombreGet}=${id}`;
                 
             }
         });
     });
 
 }
-let boton = '.btnEliminarProveedor';
-let get = 'idProveedor';
-let titulo = "¿Estás seguro de querer borrar el proveedor?";
+
+/*** Borrar Roles ***/
+let boton = '.btnEliminarRoles';
+let atributo = 'ideliminarRoles';
+let get = 'idEliminarRoles';
+let titulo = "¿Estás seguro de querer borrar el rol?";
 let texto = "¡Si no lo estas, puedes cancelar la acción!";
-let ruta = 'proveedores';
-borrarDinamico(boton, get, titulo, texto, ruta);
+let ruta = 'rol';
+borrarDinamico(boton, atributo, get, titulo, texto, ruta);
+
+/*** Borrar Matricula ***/
+boton = '.btnEliminarMatricula';
+atributo = 'ideliminarMatricula';
+get = 'idEliminarMatricula';
+titulo = "¿Estás seguro de querer borrar la matricula?";
+texto = "¡Si no lo estas, puedes cancelar la acción!";
+ruta = 'matricula';
+borrarDinamico(boton, atributo, get, titulo, texto, ruta);
+
+/*** Borrar Inscripcion ***/
+boton = '.btnEliminarInscripcion';
+atributo = 'idEliminarInscripcion';
+get = 'idEliminarInscripcion';
+titulo = "¿Estás seguro de querer borrar la inscripción?";
+texto = "¡Si no lo estas, puedes cancelar la acción!";
+ruta = 'inscripcion';
+borrarDinamico(boton, atributo, get, titulo, texto, ruta);
+
+/*** Borrar Descuentos ***/
+boton = '.btnEliminarDescuento';
+atributo = 'ideliminarDescuento';
+get = 'idEliminarDescuento';
+titulo = "¿Estás seguro de querer borrar el descuento?";
+texto = "¡Si no lo estas, puedes cancelar la acción!";
+ruta = 'descuento';
+borrarDinamico(boton, atributo, get, titulo, texto, ruta);
+
+/*** Borrar Documento ***/
+boton = '.btnEliminarDocumento';
+atributo = 'idEliminarDocumento';
+get = 'idEliminarDocumento';
+titulo = "¿Estás seguro de querer borrar el documento?";
+texto = "¡Si no lo estas, puedes cancelar la acción!";
+ruta = 'documentos';
+borrarDinamico(boton, atributo, get, titulo, texto, ruta);
+
+/*** Borrar Proveedores ***/
+boton = '.btnEliminarProveedor';
+atributo = 'idEliminarProveedor';
+get = 'idProveedor';
+titulo = "¿Estás seguro de querer borrar el proveedor?";
+texto = "¡Si no lo estas, puedes cancelar la acción!";
+ruta = 'proveedores';
+borrarDinamico(boton, atributo, get, titulo, texto, ruta);
+
 
 
 
@@ -767,7 +826,7 @@ borrarDinamico(boton, get, titulo, texto, ruta);
 /*=====================================
     ACTIVAR ROL
 ========================================*/
-$(".btnActivar").click(function(){
+$(document).on("click", ".btnActivarRol", function(){
 
     var idRol = $(this).attr("idRol");
     var estadoRol = $(this).attr("estadoRol");

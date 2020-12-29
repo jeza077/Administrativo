@@ -70,10 +70,10 @@
                     
                     
                         if($value["estado"] != 0){
-                        echo' <td><button class="btn btn-success btn-md btnActivar" idRol="'.$value["id_rol"].'" estadoRol="0" >Activado</button></td>';
+                        echo' <td><button class="btn btn-success btn-md btnActivarRol" idRol="'.$value["id_rol"].'" estadoRol="0" >Activado</button></td>';
                         
                         }else{
-                        echo' <td><button class="btn btn-danger btn-md btnActivar" idRol="'.$value["id_rol"].'" estadoRol="1" >Desactivado</button></td>';
+                        echo' <td><button class="btn btn-danger btn-md btnActivarRol" idRol="'.$value["id_rol"].'" estadoRol="1" >Desactivado</button></td>';
                         
                         }
 
