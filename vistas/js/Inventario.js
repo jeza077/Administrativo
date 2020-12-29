@@ -69,28 +69,36 @@ $(document).on("click",".btnEditarEquipo",function(){
         processData: false,
         dataType: "json",
         success: function(respuesta){
-            // console.log("respuesta",respuesta["stock"])
+            // console.log("respuesta",respuesta["foto"])
 
 
             $("#editarCodigoE").val(respuesta["codigo"]);
             $("#editarNombreEquipo").val(respuesta["nombre_producto"]);
             $("#editarTipoEquipo").val(respuesta["id_inventario"]);
 
-            if(respuesta["stock"] == 'null'){
-                console.log('es nulo')
+            if(respuesta["stock"] == null){
+                // console.log('es nulo')
                 $("#editarStockEquipo").val(0);
 
             } else {
-                console.log('no es nulo')
+                // console.log('no es nulo')
 
                 $("#editarStockEquipo").val(respuesta["stock"]);
             }
 
-            if(respuesta["foto"] !=""){
-               
-                $("#editarFotoEquipo").val(respuesta["foto"]); 
-                $("#previsualizar").attr("src", respuesta["foto"]);
-            }  
+            if(respuesta["foto"] != "" && respuesta["foto"] != null){
+
+                $('.previsualizar').attr('src', respuesta['foto']);
+
+            } else if(respuesta["foto"] != "" && respuesta["foto"] == null){
+
+                $('.previsualizar').attr('src', 'vistas/img/productos/default/product.png');
+
+            } else {
+
+                $('.previsualizar').attr('src', 'vistas/img/productos/default/product.png');
+
+            }
         }    
     });
 
@@ -182,8 +190,8 @@ function sinLetras(event) {
 /*=============================================
     EJECUCION DE VALIDACIONES
 =============================================*/
-var identidad = $('.nombre_producto');
-validarDoc(identidad);
+// var identidad = $('.nombre_producto');
+// validarDoc(identidad);
 $('.nombre_producto').keydown(sinNumeros)
 $('.editar_Nombre_Producto').keydown(sinNumeros)
 $('.precio').keydown(sinLetras)
