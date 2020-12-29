@@ -16,7 +16,7 @@ $(document).on("click",".btnEditarInventario",function(){
         processData: false,
         dataType: "json",
         success: function(respuesta){
-            console.log("respuesta",respuesta)
+            // console.log("respuesta",respuesta)
 
 
             $("#editarCodigo").val(respuesta["codigo"]);
@@ -28,6 +28,15 @@ $(document).on("click",".btnEditarInventario",function(){
             // $("#editarProveedor").val(respuesta["proveedor"]);
             $("#editarProductoMinimo").val(respuesta["producto_minimo"]);
             $("#editarProductoMaximo").val(respuesta["producto_maximo"]);
+
+            if(respuesta["stock"] == null){
+
+                $("#editarStock").val(0);
+
+            } else {
+
+                $("#editarStock").val(respuesta["stock"]);
+            }
 
             if (respuesta["foto"] !=""){
                
@@ -44,8 +53,6 @@ $(document).on("click",".btnEditarInventario",function(){
 
 
 //** ----------------- EDITAR EQUIPO  --------------------------*/
-
-
 $(document).on("click",".btnEditarEquipo",function(){
     var idEquipo = $(this).attr("idInventario");
     // console.log("idEquipo", idEquipo)
@@ -62,15 +69,24 @@ $(document).on("click",".btnEditarEquipo",function(){
         processData: false,
         dataType: "json",
         success: function(respuesta){
-            console.log("respuesta",respuesta)
+            // console.log("respuesta",respuesta["stock"])
 
 
             $("#editarCodigoE").val(respuesta["codigo"]);
             $("#editarNombreEquipo").val(respuesta["nombre_producto"]);
             $("#editarTipoEquipo").val(respuesta["id_inventario"]);
-            $("#editarStockEquipo").val(respuesta["stock"]);
 
-            if (respuesta["foto"] !=""){
+            if(respuesta["stock"] == 'null'){
+                console.log('es nulo')
+                $("#editarStockEquipo").val(0);
+
+            } else {
+                console.log('no es nulo')
+
+                $("#editarStockEquipo").val(respuesta["stock"]);
+            }
+
+            if(respuesta["foto"] !=""){
                
                 $("#editarFotoEquipo").val(respuesta["foto"]); 
                 $("#previsualizar").attr("src", respuesta["foto"]);

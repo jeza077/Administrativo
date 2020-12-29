@@ -1,13 +1,12 @@
 <?php
 
-class ControladorInventario
+class ControladorInventario{
 
         /*=============================================
                 MOSTRAR INVENTARIO
         =============================================*/
-{
-        static public function ctrMostrarInventario($tabla, $item, $valor,$order)
-        {
+
+        static public function ctrMostrarInventario($tabla, $item, $valor,$order){
                 $tabla1 = $tabla;
                 $tabla2 = "tbl_tipo_producto";
                 $respuesta = ModeloInventario::mdlMostrarInventario($tabla1, $tabla2, $item, $valor,$order);
@@ -17,8 +16,7 @@ class ControladorInventario
         /*=============================================
                MOSTRAR COMPRAS
         =============================================*/
-        static public function ctrMostrarCompras($tabla, $item, $valor)
-        {
+        static public function ctrMostrarCompras($tabla, $item, $valor){
                 $tabla1 = $tabla;
                 $respuesta = ModeloInventario::mdlMostrarCompras($tabla1,$item, $valor);
                 return $respuesta;
@@ -27,9 +25,7 @@ class ControladorInventario
         /*=============================================
                MOSTRAR TIPOS DE PRODUCTOS
         =============================================*/
-        static public function ctrMostrarTipoProducto($tabla, $item, $valor)
-
-        {
+        static public function ctrMostrarTipoProducto($tabla, $item, $valor){
                 $respuesta = ModeloInventario::mdlMostrarTipoProducto($tabla, $item, $valor);
                 return $respuesta;
         }
@@ -37,9 +33,7 @@ class ControladorInventario
         /*=============================================
                MOSTRAR PRODUCTOS
         =============================================*/
-        static public function ctrMostrarProducto($tabla, $item, $valor)
-
-        {
+        static public function ctrMostrarProducto($tabla, $item, $valor){
                 $respuesta = ModeloInventario::mdlMostrarProducto($tabla, $item, $valor);
                 return $respuesta;
         }
@@ -63,11 +57,10 @@ class ControladorInventario
             // var_dump($_POST);
             // echo $tipostock;
             // return;
-            if(isset($_POST["nuevoTipoProducto"])){
+            if(isset($_POST["nuevoNombreProducto"])){
     
-                if(preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombreProducto"])){
-
-        
+                if(preg_match('/^[A-ZñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombreProducto"])){
+       
                     /*=============================================
 							VALIDAR IMAGEN
 					=============================================*/
@@ -134,11 +127,12 @@ class ControladorInventario
 
 						}
 
-					}
+					}           
 
-           
-
+                    // echo $ruta;
+                    // return;
                     $tabla = "tbl_inventario";
+
                     if($tipostock == 'Productos'){
                         $datos = array("id_tipo_producto" => $_POST["nuevoTipoProducto"],
                         "codigo" => $_POST["nuevoCodigo"],
@@ -150,46 +144,44 @@ class ControladorInventario
                         "producto_minimo" => $_POST["nuevoProductoMinimo"],
                         "producto_maximo" => $_POST["nuevoProductoMaximo"],
                         "foto" => $ruta);
+
                         // var_dump($datos);
                         // return;
-
-                     
 
                         $crearInventario = ModeloInventario::mdlCrearStock($tabla, $datos);
                         // var_dump($datos);
                         // return;
 
-                                if($crearInventario == true){
-                                    
-                                    $descripcionEvento = " Nuevo Producto";
-                                    $accion = "Nuevo";
-            
-                                    $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 4,$accion, $descripcionEvento);
+                        if($crearInventario == true){
+                            
+                            $descripcionEvento = " Nuevo Producto";
+                            $accion = "Nuevo";
+    
+                            $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 4,$accion, $descripcionEvento);
 
-                                    echo '<script>
-                                            Swal.fire({
-                                                title: "Tus datos han sido guardados correctamente!",
-                                                icon: "success",
-                                                heightAuto: false,
-                                                allowOutsideClick: false
-                                            }).then((result)=>{
-                                                if(result.value){
-                                                    window.location = "'.$pantalla.'";
-                                                }
-                                            });                       
-                                        </script>';
-                                }
-                                else {
-                                    echo '<script>
-                                            Swal.fire({
-                                                title: "No se pudo guardar tus datos. Intenta de nuevo!",
-                                                icon: "error",
-                                                heightAuto: false,
-                                                allowOutsideClick: false,
-                                                timer: 4000
-                                            });					
-                                        </script>';
-                                }
+                            echo '<script>
+                                    Swal.fire({
+                                        title: "Producto creado exitosamente!",
+                                        icon: "success",
+                                        heightAuto: false,
+                                        allowOutsideClick: false
+                                    }).then((result)=>{
+                                        if(result.value){
+                                            window.location = "'.$pantalla.'";
+                                        }
+                                    });                       
+                                </script>';
+                        } else {
+                            echo '<script>
+                                    Swal.fire({
+                                        title: "Opps, algo salio mal, intenta de nuevo!",
+                                        icon: "error",
+                                        heightAuto: false,
+                                        allowOutsideClick: false,
+                                        timer: 4000
+                                    });					
+                                </script>';
+                        }
     
                     } 
               
@@ -574,7 +566,6 @@ class ControladorInventario
                     // AQUI CAMBIE A PRODUCTOS CON S
 
                     if($tipostock == 'Productos'){
-
                         
                         $descripcionEvento = "Actualizo un Producto del Stock";
                         $accion = "Actualizo";
@@ -593,35 +584,35 @@ class ControladorInventario
                             // var_dump($datos);
                             // return;
                         $crearInventario = ModeloInventario::mdlEditarStock($tabla, $datos);
-                                // var_dump($crearInventario);
-                                // return;
-                                if($crearInventario == true){
-                                        
-                                    echo '<script>
-                                            Swal.fire({
-                                                title: "Tus datos han sido EDITADO correctamente!",
-                                                icon: "success",
-                                                heightAuto: false,
-                                                allowOutsideClick: false
-                                            }).then((result)=>{
-                                                if(result.value){
-                                                    window.location = "'.$pantalla.'";
-                                                }
-                                            });                       
-                                        </script>';
-                                }
-                                else {
-                                    echo '<script>
-                                            Swal.fire({
-                                                title: "No se pudo guardar tus datos. Intenta de nuevo!",
-                                                icon: "error",
-                                                heightAuto: false,
-                                                allowOutsideClick: false,
-                                                timer: 4000
-                                            });					
-                                        </script>';
-                                }
-    
+                        // var_dump($crearInventario);
+                        // return;
+                        if($crearInventario == true){
+                                
+                            echo '<script>
+                                    Swal.fire({
+                                        title: "Producto editado correctamente!",
+                                        icon: "success",
+                                        heightAuto: false,
+                                        allowOutsideClick: false
+                                    }).then((result)=>{
+                                        if(result.value){
+                                            window.location = "'.$pantalla.'";
+                                        }
+                                    });                       
+                                </script>';
+                        }
+                        else {
+                            echo '<script>
+                                    Swal.fire({
+                                        title: "No se pudo guardar tus datos. Intenta de nuevo!",
+                                        icon: "error",
+                                        heightAuto: false,
+                                        allowOutsideClick: false,
+                                        timer: 4000
+                                    });					
+                                </script>';
+                        }
+
                     } 
                 } 
             }
