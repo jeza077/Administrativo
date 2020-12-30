@@ -35,7 +35,7 @@
       <div class="card">
 
         <div class="card-body">
-          <table class="table table-striped table-bordered tablas text-center">
+          <table class="table table-hover tablas text-center">
             <thead>
                 <tr>
                 <th scope="col">#</th>
@@ -72,12 +72,13 @@
                           <td>'.$value["stock"].'</td>';
                       echo '     
                           <td>
-                          <button class="btn btn-warning btnEditarEquipo" idInventario="'.$value["id_inventario"].'" data-toggle="modal" data-target="#modalEditarBodega" data-toggle="tooltip" data-placement="left" title="Editar"><i class="fas fa-pencil-alt" style="color:#fff"></i></button>
-                          <button class="btn btn-danger btnEliminarEquipo" idEquipo="'.$value["id_inventario"].'" fotoEquipo="'.$value["foto"].'" equipo="'.$value["nombre_producto"].'" data-toggle="tooltip" data-placement="left" title="Borrar"><i class="fas fa-trash-alt"></i></button>
+                          <button class="btn btn-outline-warning btnEditarEquipo" idInventario="'.$value["id_inventario"].'" data-toggle="modal" data-target="#modalEditarBodega" data-toggle="tooltip" data-placement="left" title="Editar"><i class="fas fa-pencil-alt"></i></button>
+                          
                           </td>
-                      </tr>
-                  ';
-                  }
+                          </tr>
+                          ';
+                        }
+                        // <button class="btn btn-danger btnEliminarEquipo" idEquipo="'.$value["id_inventario"].'" fotoEquipo="'.$value["foto"].'" equipo="'.$value["nombre_producto"].'" data-toggle="tooltip" data-placement="left" title="Borrar"><i class="fas fa-trash-alt"></i></button>
               ?>
             </tbody>
           </table>
