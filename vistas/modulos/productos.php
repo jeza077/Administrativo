@@ -74,30 +74,29 @@
                 // echo"</pre>";
                 foreach ($inventarios as $key => $value) {
                   echo '
-                      <tr>
-                          <td scope="row">'.($key+1).'</td>
-                          <td>'.$value["codigo"].'</td>';
+                    <tr>
+                      <td scope="row">'.($key+1).'</td>
+                      <td>'.$value["codigo"].'</td>';
 
-                              if($value["foto"] != ""){
-                                echo '<td><img src="'.$value["foto"].'" class="img-thumbnail" width="40px"></td>';
-                              } else {
-                                echo '<td><img src="vistas/img/productos/default/product.png" class="img-thumbnail" width="40px"></td>';
-                              }
-                                echo '<td>'.$value["nombre_producto"].'</td>
-      
-                          
-                          
-                          <td>'.$value["precio_venta"].'</td>
-                          
-                          <td>'.$value["producto_minimo"].'</td>
-                          <td>'.$value["producto_maximo"].'</td>     
-                          <td>
-                          <button class="btn btn-warning btnEditarInventario" idInventario="'.$value["id_inventario"].'" data-toggle="modal" data-target="#modalEditarProducto"><i class="fas fa-pencil-alt" style="color:#fff"></i></button>
-                          </td>
-                          </tr>
-                          ';
-                          // <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                  }
+                          if($value["foto"] != ""){
+                            echo '<td><img src="'.$value["foto"].'" class="img-thumbnail" width="40px"></td>';
+                          } else {
+                            echo '<td><img src="vistas/img/productos/default/product.png" class="img-thumbnail" width="40px"></td>';
+                          }
+                            echo '<td>'.$value["nombre_producto"].'</td>
+  
+                      
+                      
+                      <td>'.$value["precio_venta"].'</td>                    
+                      <td>'.$value["producto_minimo"].'</td>
+                      <td>'.$value["producto_maximo"].'</td>     
+                      <td>
+                      <button class="btn btn-warning btnEditarInventario" idInventario="'.$value["id_inventario"].'" data-toggle="modal" data-target="#modalEditarProducto"><i class="fas fa-pencil-alt" style="color:#fff"></i></button>
+                      </td>
+                      </tr>
+                      ';
+                      // <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                }
               ?>
             </tbody>
           </table>
@@ -160,22 +159,22 @@
               <div class="form-group col-md-12">
                 <label for="nombreproducto">Nombre Producto</label>
                 <html>
-                <input type="text" class="form-control mayus nombre_producto" id="nuevoNombreProducto" name="nuevoNombreProducto" placeholder="Ingrese Producto" required>
+                <input type="text" class="form-control mayus sinCaracteres sinNumeros" id="nuevoNombreProducto" name="nuevoNombreProducto" placeholder="Ingrese Producto" required>
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group col-md-4">
                 <label for="precio">Precio de venta</label>
-                <input type="text" class="form-control precio" id="nuevoPrecio" name="nuevoPrecio" placeholder="Ingrese Precio"  required>
+                <input type="text" class="form-control sinLetras" id="nuevoPrecio" name="nuevoPrecio" placeholder="Ingrese Precio"  required>
               </div>
               <div class="form-group col-md-4">
                 <label for="productominimo">Producto Minimo</label>
-                <input type="number" class="form-control precio" id="nuevoProductoMinimo" name="nuevoProductoMinimo" placeholder="Cantidad Minima" min="0" required class="fa fa-arrow-up"></i></span>
+                <input type="number" class="form-control sinLetras sinCaracteres" id="nuevoProductoMinimo" name="nuevoProductoMinimo" placeholder="Cantidad Minima" min="0" required class="fa fa-arrow-up"></i></span>
               </div>
               <div class="form-group col-md-4">
                 <label for="productomaximo">Producto Maximo</label>
-                <input type="number" class="form-control precio" id="nuevoProductoMaximo" name="nuevoProductoMaximo" placeholder="Cantidad Maximo" min="0" required class="fa fa-arrow-up"></i></span>
+                <input type="number" class="form-control sinLetras sinCaracteres" id="nuevoProductoMaximo" name="nuevoProductoMaximo" placeholder="Cantidad Maximo" min="0" required class="fa fa-arrow-up"></i></span>
               </div>
             </div>
 
@@ -238,27 +237,27 @@
             <div class="form-group col-md-4">
               <label for="nombreproducto">Nombre Producto</label>
               <html>
-              <input type="text" value="" class="form-control mayus editar_Nombre_Producto"  name="editarNombreProducto" id="editarNombreProducto" required>
+              <input type="text" value="" class="form-control mayus sinCaracteres sinNumeros"  name="editarNombreProducto" id="editarNombreProducto" required>
             </div>
             
             <div class="form-group col-md-4">
               <label for="stock">Cantidad en stock</label>
-              <input type="number" value="" class="form-control" readonly name="editarStock" id="editarStock"  min="0" required class="fa fa-arrow-up"></i></span>
+              <input type="number" value="" class="form-control sinCaracteres sinLetras" readonly name="editarStock" id="editarStock"  min="0" required class="fa fa-arrow-up"></i></span>
             </div>
           </div>
 
               <div class="form-row">
                 <div class="form-group col-md-4">
                   <label for="precio">Precio Venta</label>
-                  <input type="text" value="" class="form-control editar_Precio" name="editarPrecio" id="editarPrecio" required>
+                  <input type="text" value="" class="form-control sinLetras" name="editarPrecio" id="editarPrecio" required>
                 </div>
                 <div class="form-group col-md-4">
                   <label for="productominimo">Producto Minimo</label>
-                  <input type="number" value="" class="form-control" name="editarProductoMinimo" id="editarProductoMinimo" min="0" required class="fa fa-arrow-up"></i></span>
+                  <input type="number" value="" class="form-control sinCaracteres sinLetras" name="editarProductoMinimo" id="editarProductoMinimo" min="0" required class="fa fa-arrow-up"></i></span>
                 </div>
                 <div class="form-group col-md-4">
                   <label for="productomaximo">Producto Maximo</label>
-                  <input type="number" value="" class="form-control" name="editarProductoMaximo" id="editarProductoMaximo" min="0" required class="fa fa-arrow-up"></i></span>
+                  <input type="number" value="" class="form-control sinCaracteres sinLetras" name="editarProductoMaximo" id="editarProductoMaximo" min="0" required class="fa fa-arrow-up"></i></span>
                 </div>
               </div>
 

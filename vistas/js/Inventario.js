@@ -147,45 +147,18 @@ $(document).on('click', '.btnEliminarEquipo', function () {
 
 
 /*=============================================
-    Sin numeros
-=============================================*/
-function sinNumeros(event) {
-    var codigo = event.which || event.keyCode;
-    // console.log(codigo);
-    if(codigo >= 48 && codigo <= 57  || codigo >= 97  && codigo <= 105){
-        event.preventDefault();
-
-    } else {
-        $('.alert').remove();
-    }
-     
-}
-
-/*=============================================
-    Sin letras
-=============================================*/
-function sinLetras(event) {
-    var codigo = event.which || event.keyCode;
-    // console.log(codigo);
-
-    if(codigo >= 65 && codigo <= 90 || codigo == 192){
-        event.preventDefault();
-
-    } else {
-        $('.alert').remove();
-    }
-     
-}
-
-/*=============================================
     EJECUCION DE VALIDACIONES
 =============================================*/
 // var identidad = $('.nombre_producto');
 // validarDoc(identidad);
-$('.nombre_producto').keydown(sinNumeros)
-$('.editar_Nombre_Producto').keydown(sinNumeros)
-$('.precio').keydown(sinLetras)
-$('.editar_Precio').keydown(sinLetras)
+// $('.nombre_producto').keydown(sinNumeros)
+// $('.editar_Nombre_Producto').keydown(sinNumeros)
+// $('.precio').keydown(sinLetras)
+// $('.editar_Precio').keydown(sinLetras)
+$('.sinLetras').keydown(sinLetras)
+$('.sinCaracteres').keydown(sinCaracteres)
+$('.sinNumeros').keydown(sinNumeros)
+
 
 
 
