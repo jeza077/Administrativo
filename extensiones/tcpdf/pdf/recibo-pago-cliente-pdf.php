@@ -15,10 +15,7 @@ require_once('../examples/tcpdf_include.php');
 
 class imprimirReciboPagoCliente{
 
-	
-
 	public $codigo;
-
 	
 	public function traerImpresionFactura(){
 
@@ -52,14 +49,24 @@ class imprimirReciboPagoCliente{
 		$valor = $this->codigo;
 
 		$clientes = ControladorClientes::ctrMostrarPagosClientes($item, $valor);
+		// var_dump($clientes['pago_descuento']); 
+		if($clientes['pago_matricula'] == null){
+			$pagoMatricula = 0;
+		} else {
+			$pagoMatricula = $clientes['pago_matricula'];
+		}
 
-		// var_dump($clientes);
+		if($clientes['pago_matricula'] == null){
+			$pagoDescuento = 0;
+		} else {
+			$pagoDescuento = $clientes['pago_descuento'];
+		}
+
+		$pagoInscripcion = $clientes['pago_inscripcion'];
+
+
 
 		if(!empty($clientes)){
-
-			
-			
-		## 07/12/2020
 
 		ob_start();
 		error_reporting(E_ALL & ~E_NOTICE);
@@ -166,7 +173,7 @@ $bloque3 = <<<EOF
 			
 		</tr>
 
-</table>
+	</table>
 EOF;
 
 $pdf->writeHTML($bloque3, false, false, false, false, '');
@@ -255,11 +262,11 @@ $bloque6 = <<<EOF
 		
 			<strong></strong>
 			<br>
-			  $clientes[pago_matricula] 
+			  $pagoMatricula 
 			<br>
-			 $clientes[pago_descuento] 
+			 $pagoDescuento 
 			<br>
-			 $clientes[pago_inscripcion] 
+			 $pagoInscripcion 
 
 		</td>
 
