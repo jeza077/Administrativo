@@ -208,7 +208,8 @@ class ControladorInventario{
 
     static public function ctrCrearBodega($tipostock, $pantalla){
         // var_dump($_POST);
-        // echo $tipostock;
+        // var_dump($_FILES);
+        // // echo $tipostock;
         // return;
         if(isset($_POST["nuevoTipoProducto"])){
 
@@ -232,7 +233,7 @@ class ControladorInventario{
                     CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO DEL USUARIO
                     ===============================================================*/
 
-                    $directorio = "vistas/img/productos/".$_POST["nuevaFotoBodega"];
+                    $directorio = "vistas/img/productos/".$_POST["nuevoNombreProducto"];
 
                     mkdir($directorio, 0755); 
 
@@ -298,9 +299,7 @@ class ControladorInventario{
                     // "producto_maximo" => $_POST["nuevoProductoMaximo"],
                     "foto" => $ruta);
                     // var_dump($datos);
-                    // return;
-
-                    
+                    // return;                    
 
                     $crearInventario = ModeloInventario::mdlCrearBodega($tabla, $datos);
                     // var_dump($datos);
@@ -636,7 +635,7 @@ class ControladorInventario{
                         VALIDAR IMAGEN
                 =============================================*/
 
-                $ruta = $POST["imagenActual"];
+                $ruta = $_POST["imagenActual"];
 
                 if(isset($_FILES["editarFotoEquipo"]["tmp_name"]) && !empty($_FILES["editarFotoEquipo"]["tmp_name"])){
 
@@ -727,8 +726,10 @@ class ControladorInventario{
                     "id_inventario" => $_POST["editarTipoEquipo"],
                     "stock" => $_POST["editarStockEquipo"],
                     "foto" => $ruta);
-                        // var_dump($datos);
-                        // return;
+
+                    // var_dump($datos);
+                    // return;
+
                     $crearInventario = ModeloInventario::mdlEditarEquipo($tabla, $datos);
                     // var_dump($crearInventario);
                     // return;
@@ -759,6 +760,7 @@ class ControladorInventario{
                     }
 
                 } 
+
             } else {
                 echo '<script>
                     Swal.fire({
@@ -772,6 +774,66 @@ class ControladorInventario{
             }
         }
     }
+
+
+	/*=============================================
+            BORRAR PERSONAS (USUARIO/CLIENTE)
+	=============================================*/
+    static public function ctrBorrarEquipo(){
+        // var_dump($_GET);
+        // return;
+
+        if(isset($_GET['idEquipo'])){
+            $tabla = 'tbl_inventario';
+            $item = 'id_inventario';
+            $valor = $_GET['idEquipo'];
+
+            $respuesta = ModeloInventario::mdlBorrarEquipo($tabla, $item, $valor);
+            
+            // var_dump($respuesta);
+            // return;
+            
+            if($respuesta == true){
+        
+                if($_GET['fotoEquipo'] != ""){
+                    unlink($_GET['fotoEquipo']);
+                    rmdir('vistas/img/productos/'.$_GET['equipo']);
+                }
+
+                echo '<script>
+                    Swal.fire({
+                        title: "Equipo borrado correctamente!",
+                        icon: "success",
+                        heightAuto: false
+                    }).then((result)=>{
+                        if(result.value){
+                            window.location = "equipo";
+                        }
+                    });                                      
+                </script>';
+                    
+            } else {
+                
+                // $descripcionEvento = " Elimino un cliente.";
+                // $accion = "Elimino";
+    
+                // $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 3,$accion, $descripcionEvento);
+                  
+                echo '<script>
+                        Swal.fire({
+                            title: "Opps, algo salio mal, intenta de nuevo!",
+                            icon: "error",
+                            heightAuto: false
+                        }).then((result)=>{
+                            if(result.value){
+                                window.location = "equipo";
+                            }
+                        });                                      
+                    </script>';
+            }
+        }
+    }
+
 
     /*=============================================
 			SUMA TOTAL VENTAS

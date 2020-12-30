@@ -737,32 +737,7 @@ $(document).on('click', '.btnEliminarDocumento', function () {
 });
 */
 
-/** ------------------------------------*/
-//         BORRAR DINAMICO
-// --------------------------------------*/ 
-function borrarDinamico(btnSelector, atributo, nombreGet, mensajeTitulo, mensajeTexto, ruta) {
 
-    $(document).on('click', btnSelector, function () {
-
-        var id = $(this).attr(atributo);
-
-        Swal.fire({
-            title: mensajeTitulo,
-            text: mensajeTexto,
-            icon: "info",
-            showCancelButton: true,
-            cancelButtonColor: "#DC3545",
-            heightAuto: false,
-            allowOutsideClick: false
-        }).then((result)=>{
-            if(result.value){
-                window.location = `index.php?ruta=${ruta}&${nombreGet}=${id}`;
-                
-            }
-        });
-    });
-
-}
 
 /*** Borrar Roles ***/
 let boton = '.btnEliminarRoles';

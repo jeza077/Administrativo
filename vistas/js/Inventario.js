@@ -75,6 +75,7 @@ $(document).on("click",".btnEditarEquipo",function(){
             $("#editarCodigoE").val(respuesta["codigo"]);
             $("#editarNombreEquipo").val(respuesta["nombre_producto"]);
             $("#editarTipoEquipo").val(respuesta["id_inventario"]);
+            $("#imagenActualEquipo").val(respuesta["foto"]);
 
             if(respuesta["stock"] == null){
                 // console.log('es nulo')
@@ -104,39 +105,28 @@ $(document).on("click",".btnEditarEquipo",function(){
 
 })
 
-//** ----------------- GENERAR CODIGO  --------------------------*/
 
+//** ----------------- BORRAR EQUIPO  --------------------------*/
+$(document).on('click', '.btnEliminarEquipo', function () {
+    var idEquipo = $(this).attr('idEquipo');
+    var fotoEquipo = $(this).attr('fotoEquipo');
+    var equipo = $(this).attr('equipo');
 
-$("#nuevoTipoProducto").change(function(){
-    var idCategoria = $(this).val();
-    var datos = new FormData();
-    datos.append("idCategoria", idCategoria);
-    console.log("idCategoria", idCategoria)
-    $.ajax({ 
-        url:"ajax/inventario.ajax.php",
-        method: "POST",
-        data: datos,
-        cache: false,
-        contentType: false,
-        processData: false,
-        dataType: "json",
-        success: function(respuesta){
-            console.log("respuesta",respuesta);
-            var nuevoCodigo = parseInt(respuesta["codigo"]) + 1;
-            console.log("nuevoCodigo",nuevoCodigo);
-
-            if(!respuesta && idCategoria == 1){
-                $(".nuevoCodigo").val(100)
-            } 
-            else if (!respuesta && idCategoria == 2){
-                $(".nuevoCodigo").val(700)
-            }
-            else {
-                $(".nuevoCodigo").val(nuevoCodigo)
-            }
+    Swal.fire({
+        title: "¿Estás seguro de borrar el equipo?",
+        text: "¡Si no lo estas, puedes cancelar la acción!",
+        icon: "info",
+        showCancelButton: true,
+        cancelButtonColor: "#DC3545",
+        heightAuto: false,
+        allowOutsideClick: false
+    }).then((result)=>{
+        if(result.value){
+            window.location = "index.php?ruta=equipo&idEquipo="+idEquipo+"&equipo="+equipo+"&fotoEquipo="+fotoEquipo;
         }
     });
-})
+});
+
 
 
 //** ------------------------------------*/
