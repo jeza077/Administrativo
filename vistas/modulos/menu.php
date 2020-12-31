@@ -200,13 +200,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="administrar-venta" class="nav-link">
+                  <a href="administrar-ventas" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Administrar Venta</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="crear-venta" class="nav-link">
+                  <a href="nueva-venta" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Nueva Venta</p>
                   </a>

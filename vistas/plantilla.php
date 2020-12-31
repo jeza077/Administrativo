@@ -94,7 +94,7 @@
             // $_GET["ruta"] == "ajustes-cuenta" ||
             $_GET["ruta"] == "productos" ||
             $_GET["ruta"] == "clientes" ||
-            $_GET["ruta"] == "administrar-venta" ||
+            $_GET["ruta"] == "administrar-ventas" ||
             $_GET["ruta"] == "ventas" ||
             $_GET["ruta"] == "mantenimiento" ||
             $_GET["ruta"] == "rol" ||
@@ -107,7 +107,7 @@
             $_GET["ruta"] == "connet2" ||
             $_GET["ruta"] == "backup" ||
             $_GET["ruta"] == "restore2" ||
-            $_GET["ruta"] == "crear-venta" ||
+            $_GET["ruta"] == "nueva-venta" ||
             $_GET["ruta"] == "editar-venta" ||
             $_GET["ruta"] == "reportes" ||
             $_GET["ruta"] == "permisos-rol" ||

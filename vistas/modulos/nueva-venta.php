@@ -14,15 +14,14 @@
                  FORMULARIO 
       ======================================-->
     <section class="content"> 
-                      <?php
-                        $descripcionEvento = " Consulto la pantalla de crear ventas";
-                        $accion = "consulta";
+      <?php
+        $descripcionEvento = " Consulto la pantalla de crear ventas";
+        $accion = "consulta";
 
-                        $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 5,$accion, $descripcionEvento);
-    
-                      ?>
+        $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 5,$accion, $descripcionEvento);
+
+      ?>
                     
-
       <div class="row">
         <div class="col-md-5">
           <form role="form" method="post" class="formularioVenta">
@@ -213,7 +212,7 @@
 
 
 <div class="modal fade" id="modalAgregarCliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xs" role="document">
+    <div class="modal-dialog modal-md" role="document">
       <div class="modal-content">
       
         <div class="modal-header">
@@ -224,53 +223,37 @@
         </div>
         <div class="modal-body">
           <form role="form" method="post" class="formulario">
-            <!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
-              <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="datosPersona" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Datos personales</a>
-              </li>
-            </ul> -->
-            
-            <div class="tab-content" id="myTabContent">
-              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="datoscliente">
-                <div class="container-fluid mt-4">
-                  <div class="form-row">
-                    <div class="form-group col-md-4">
-                      <label for="nombre">Nombre</label>
-                      <input type="text" class="form-control nombre mayus" name="nuevoNombre" placeholder="Ingrese Nombre" required>
-                    </div>
-                    <div class="form-group col-md-4">
-                      <label for="apellido">Apellido</label>
-                      <input type="text" class="form-control apellidos mayus" name="nuevoApellido" placeholder="Ingrese Apellidos" required>
-                    </div>
-                    <div class="form-group col-md-4">
-                    <label>Teléfono</label>
-                      <input type="text" class="form-control" data-inputmask='"mask": "(999) 9999-9999"' data-mask  name="nuevoTelefono" placeholder="Ingrese Tel." required>
-                    </div>
-                  </div>
-      
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <label for="email">Email</label>
-                      <input type="email" class="form-control email" name="nuevoEmail" placeholder="Ingrese Email" required>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-                <div class="form-group mt-4 float-right">
-                  
-                  <button type="" class="btn btn-primary">Guardar</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
-                </div>
-            
-                <?php
-                  $tipoPersona = 'clientes';
-                  $pantalla = 'crear-venta';
-                  $ingresarPersona = new ControladorPersonas();
-                  $ingresarPersona->ctrCrearPersona($tipoPersona, $pantalla);
-                ?>
-             
+              
+            <div class="form-group col-md-12">
+              <label for="nombre">Nombre</label>
+              <input type="text" class="form-control nombre mayus" name="nuevoNombre" placeholder="Ingrese Nombre" required>
             </div>
+            <div class="form-group col-md-12">
+              <label for="apellido">Apellido</label>
+              <input type="text" class="form-control apellidos mayus" name="nuevoApellido" placeholder="Ingrese Apellidos" required>
+            </div>
+            <div class="form-group col-md-12">
+            <label>Teléfono</label>
+              <input type="text" class="form-control" data-inputmask='"mask": "(999) 9999-9999"' data-mask  name="nuevoTelefono" placeholder="Ingrese Tel." required>
+            </div>
+
+            <div class="form-group col-md-12">
+              <label for="email">Email</label>
+              <input type="email" class="form-control email" name="nuevoEmail" placeholder="Ingrese Email" required>
+            </div>
+
+            <div class="form-group mt-4 float-right">        
+              <button type="" class="btn btn-primary">Guardar</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+            </div>
+        
+            <?php
+              $tipoPersona = 'clientes';
+              $pantalla = 'crear-venta';
+              $ingresarPersona = new ControladorPersonas();
+              $ingresarPersona->ctrCrearPersona($tipoPersona, $pantalla);
+            ?>
+            
           </form>
         </div>
       </div>
