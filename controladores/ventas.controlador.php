@@ -1284,10 +1284,10 @@ class ControladorVentas {
 				array_push($totalProductosComprados, $value["cantidad"]);
 
 				$item = "id_inventario";
-				$valor = $value["id"];
-				
-				$tablaProductos = "tbl_inventario"; 
-				$traerProducto = ModeloProductos::mdlMostrarProductos($tablaProductos, $item, $valor);
+				$valor = $value["id"];				
+				$tablaProductos = "tbl_inventario";
+				$all = null; 
+				$traerProducto = ModeloProductos::mdlMostrarProductos($tablaProductos, $item, $valor, $all);
 
 				$item1 = "devolucion";
 				// $item1 = "devolucion";
@@ -1340,14 +1340,14 @@ class ControladorVentas {
 
 				Swal.fire({
 					  icon: "success",
-					  title: "La venta ha sido borrada correctamente",
+					  title: "Venta borrada correctamente!",
 					  showConfirmButton: true,
 					  confirmButtonText: "Cerrar",
 					  closeOnConfirm: false
 					  }).then((result) => {
 								if (result.value) {
 
-								window.location = "administrar-venta";
+								window.location = "administrar-ventas";
 
 								}
 							})
