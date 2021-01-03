@@ -360,7 +360,7 @@
                   <div class="form-row">
                     <div class="form-group col-md-3">
                       <label for="">Tipo de documento <?php echo $i?></label>
-                      <select class="form-control select2 tipoDocumento" name="editarTipoDocumento">
+                      <select class="form-control tipoDocumento" name="editarTipoDocumento">
                           <option value="" id="editarTipoDocumento"></option>
                           <?php 
                               $tabla = "tbl_documento";
@@ -414,7 +414,7 @@
                   
                     <div class="form-group col-md-3">
                       <label>Sexo</label>
-                      <select class="form-control select2" name="editarSexo" style="width: 100%;" required>
+                      <select class="form-control" name="editarSexo" style="width: 100%;" required>
                         <option value="" id="editarSexo"></option>
                         <option value="M">Masculino</option>
                         <option value="F">Femenino</option>
@@ -435,7 +435,7 @@
                     </div>
                     <div class="form-group col-md-3">
                       <label>Rol</label>
-                      <select class="form-control select2" style="width: 100%;" name="editarRol">
+                      <select class="form-control" style="width: 100%;" name="editarRol">
                         <option value="" id="editarRol"></option>
                           <?php 
                               $tabla = "tbl_roles";
