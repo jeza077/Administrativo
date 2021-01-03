@@ -27,6 +27,9 @@
   <!-- SweetAlert2 -->
   <!-- <link rel="stylesheet" href="vistas/plugins/sweetalert2/dist/sweetalert2.min.css"> -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <!-- Select2 -->
+  <link rel="stylesheet" href="vistas/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="vistas/plugins/select2/css/select2-bootstrap4.min.css">
   <!-- Css propio -->
   <link rel="stylesheet" href="vistas/dist/css/main.css">
   <!-- Google Font: Source Sans Pro -->
@@ -220,6 +223,10 @@
 <script src="vistas/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
 <script src="vistas/plugins/datatables/js/dataTables.responsive.min.js"></script>
 <script src="vistas/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+
+<!-- Select2 -->
+<script src="vistas/plugins/select2/js/select2.full.min.js"></script>
+
 <!-- AdminLTE App -->
 <script src="vistas/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->

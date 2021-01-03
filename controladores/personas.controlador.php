@@ -4,15 +4,17 @@ class ControladorPersonas{
     /*=============================================
 				MOSTRAR PERSONAS
 	=============================================*/
-	static public function ctrMostrarPersonas($item, $valor) {
+	static public function ctrMostrarPersonas($item, $valor, $all) {
 
 		$tabla = "tbl_personas";
-		$respuesta = ModeloPersonas::mdlMostrarPersona($tabla, $item, $valor);
+        $respuesta = ModeloPersonas::mdlMostrarPersonas($tabla, $item, $valor, $all);
+		// $respuesta = ModeloPersonas::mdlMostrarPersona($tabla, $item, $valor);    
 
 		return $respuesta;
 
     }
     
+
 
     /*=============================================
 				REGISTRAR PERSONAS
@@ -55,10 +57,11 @@ class ControladorPersonas{
                             $totalId = array();
                             $tabla = "tbl_personas";
                             // $tabla2 = null;
-                            // $item = null;
-                            // $valor = null;
+                            $item = null;
+                            $valor = null;
+                            $all = null;
     
-                            $personaTotal = ModeloPersonas::mdlMostrarPersonas($tabla);
+                            $personaTotal = ModeloPersonas::mdlMostrarPersonas($tabla, $item, $valor, $all);
                             
                             foreach($personaTotal as $keyPersona => $valuePersona){
                             array_push($totalId, $valuePersona["id_personas"]);
@@ -145,10 +148,11 @@ class ControladorPersonas{
                         $totalId = array();
                         $tabla = "tbl_personas";
                         // $tabla2 = null;
-                        // $item = null;
-                        // $valor = null;
+                        $item = null;
+                        $valor = null;
+                        $all = null;
 
-                        $personaTotal = ModeloPersonas::mdlMostrarPersonas($tabla);
+                        $personaTotal = ModeloPersonas::mdlMostrarPersonas($tabla, $item, $valor, $all);
                         
                         foreach($personaTotal as $keyPersona => $valuePersona){
                         array_push($totalId, $valuePersona["id_personas"]);
@@ -174,7 +178,7 @@ class ControladorPersonas{
                             if($crearUsuario == true){
                                 echo '<script>
                                         Swal.fire({
-                                            title: "Usuario guardado correctamente!",
+                                            title: "Usuario creado correctamente!",
                                             icon: "success",
                                             heightAuto: false
                                         }).then((result)=>{
@@ -229,10 +233,11 @@ class ControladorPersonas{
                             $totalId = array();
                             $tabla = "tbl_personas";
                             // $tabla2 = "tbl_clientes";
-                            // $item = null;
-                            // $valor = null;
+                            $item = null;
+                            $valor = null;
+                            $all = null;
 
-                            $personaTotal = ModeloPersonas::mdlMostrarPersonas($tabla);
+                            $personaTotal = ModeloPersonas::mdlMostrarPersonas($tabla, $item, $valor, $all);
                             
                             foreach($personaTotal as $keyPersona => $valuePersona){
                             array_push($totalId, $valuePersona["id_personas"]);
@@ -279,7 +284,7 @@ class ControladorPersonas{
                             if($crearCliente == true){
                                 echo '<script>
                                         Swal.fire({
-                                            title: "Cliente guardado correctamente!",
+                                            title: "Cliente creado correctamente!",
                                             icon: "success",
                                             heightAuto: false,
                                             allowOutsideClick: false

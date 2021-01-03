@@ -592,6 +592,211 @@ class ControladorUsuarios{
 
 
 	/*=============================================
+		REGISTRO DE USUARIOS YA REGISTRADO
+	=============================================*/
+	static public function ctrCrearUsuarioYaRegistrado(){
+
+		// var_dump($_POST);
+		// var_dump($_FILES);
+		// return;
+
+		if(isset($_POST["nuevoIdPersona"])){
+
+			if(preg_match('/^[A-Z]+$/', $_POST["nuevoUsuario"]) &&
+			   preg_match('/^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%.])\S{8,16}$/', $_POST["nuevoPassword"])){
+
+				$contraSinEncriptar = $_POST["nuevoPassword"];
+
+				$item = 'id_personas';
+				$valor = $_POST["nuevoIdPersona"];
+				$all = null;
+
+				$personas = ControladorPersonas::ctrMostrarPersonas($item, $valor, $all);
+
+				$nombre = $personas["nombre"];
+				$emailUsuario = $personas["correo"];
+				
+				/*=============================================
+						VALIDAR IMAGEN
+				=============================================*/
+
+				$ruta = "";
+
+				if(isset($_FILES["nuevaFoto"]["tmp_name"])){
+
+					list($ancho, $alto) = getimagesize($_FILES["nuevaFoto"]["tmp_name"]);
+
+					$nuevoAncho = 500;
+					$nuevoAlto = 500;
+
+					/*==============================================================
+					CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO DEL USUARIO
+					===============================================================*/
+
+					$directorio = "vistas/img/usuarios/".$_POST["nuevoUsuario"];
+
+					mkdir($directorio, 0755); 
+
+					/*=====================================================================
+					DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES POR DEFECTO DE PHP
+					======================================================================*/
+
+					if($_FILES["nuevaFoto"]["type"] == "image/jpeg"){
+
+						/*=============================================
+						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+						=============================================*/
+
+						$aleatorio = mt_rand(100,999);
+
+						$ruta = "vistas/img/usuarios/".$_POST["nuevoUsuario"]."/".$aleatorio.".jpg";
+
+						$origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);
+
+						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+
+						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+						imagejpeg($destino, $ruta);
+
+					}
+
+					if($_FILES["nuevaFoto"]["type"] == "image/png"){
+
+						/*=============================================
+						GUARDAMOS LA IMAGEN EN EL DIRECTORIO
+						=============================================*/
+
+						$aleatorio = mt_rand(100,999);
+
+						$ruta = "vistas/img/usuarios/".$_POST["nuevoUsuario"]."/".$aleatorio.".png";
+
+						$origen = imagecreatefrompng($_FILES["nuevaFoto"]["tmp_name"]);
+
+						$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+
+						imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+						imagepng($destino, $ruta);
+
+					}
+
+				}
+					
+				//**================= ENCRIPTAMOS LA CONTRASEÑA ===================*/
+				$encriptar = crypt($_POST["nuevoPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+
+
+				//** =============== CREAMOS LA FECHA VENCIMIENTO DEL USUARIO =================*/
+				$item = 'parametro';
+				$valor = 'ADMIN_DIAS_VIGENCIA';
+				$parametros = ControladorUsuarios::ctrMostrarParametros($item, $valor);
+		
+				$vigenciaUsuario = $parametros['valor'];
+				
+				date_default_timezone_set("America/Tegucigalpa");
+				$fechaVencimiento = date("Y-m-d H:i:s", strtotime('+'.$vigenciaUsuario.' days'));
+
+				$tabla = "tbl_usuarios";
+				$datos = array("id_persona" => $_POST["nuevoIdPersona"],
+								"usuario" => $_POST["nuevoUsuario"],
+								"password" => $encriptar,
+								"rol" => $_POST["nuevoRol"],
+								"foto" => $ruta,
+								"fecha_vencimiento" => $fechaVencimiento);
+
+				// var_dump($datos);
+				// return;
+
+				$respuestaUsuario = ModeloUsuarios::mdlIngresarUsuarioEmpleado($tabla, $datos);
+
+				// return var_dump($respuestaUsuario);
+
+				if($respuestaUsuario == true){
+
+					$email = $emailUsuario;
+					$nombreUsuario = $datos["usuario"];
+					$contraseña =  $contraSinEncriptar;
+					$asunto = 'Envio de Usuario y Contraseña';
+					$require = false;
+
+					$template = 'Hola '.$nombre.'! <br><br> Tu usuario es: '.$nombreUsuario.' <br> Tu contraseña es: '.$contraseña; 
+					
+					$respuestaCorreo = ControladorUsuarios::ctrGenerarCorreo($email, $nombreUsuario, $asunto, $template, $require);
+
+					if($respuestaCorreo = true){
+
+					
+						$descripcionEvento = "Nuevo Usuario";
+						$accion = "Nuevo";
+						$bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 2,$accion, $descripcionEvento);
+	
+						echo '<script>
+							Swal.fire({
+								title: "Usuario creado correctamente!",
+								icon: "success",
+								heightAuto: false,
+								allowOutsideClick: false
+							}).then((result)=>{
+								if(result.value){
+									window.location = "usuarios";
+								}
+							});                       
+						</script>';
+					
+						
+					} else {
+
+						echo '<script>
+							Swal.fire({
+								title: "Opps, algo salio mal, intenta de nuevo!",
+								icon: "error",
+								heightAuto: false,
+								allowOutsideClick: false
+							}).then((result)=>{
+								if(result.value){
+									window.location = "usuarios";
+								}
+							});                       
+						</script>';
+
+					}
+
+				} else {
+					
+					echo '<script>
+						Swal.fire({
+							title: "Opps, algo salio mal, intenta de nuevo!",
+							icon: "error",
+							heightAuto: false,
+							allowOutsideClick: false
+						}).then((result)=>{
+							if(result.value){
+								window.location = "usuarios";
+							}
+						});                       
+					</script>';
+
+				}
+
+			} else {
+
+				echo "<script>
+					Swal.fire({
+							icon: 'error',
+							title: '¡Llenar campos correctamente!',
+						})
+					</script>";
+
+			}
+
+						
+
+		} 
+
+	}
+
+	/*=============================================
 			EDITAR USUARIOS
 	=============================================*/
 	

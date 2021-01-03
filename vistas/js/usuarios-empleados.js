@@ -405,3 +405,31 @@ $('.salirFoto').click(function (e) {
     $('#datos-generales .user').show();
     toggleCambiarFoto();
 });
+
+
+$(document).on('click', '#usuarioNuevo', function (e) {
+    e.preventDefault();
+    // console.log('click')
+    Swal.fire({
+        icon: 'info',
+        title: '¿Crear nuevo usuario desde una persona ya registrada?',
+        html: '<button type="submit" role="button" class="SwalBtnGuardarUsuarioYaRegistrado btn btn-success customSwalBtn" data-toggle="modal" data-target="#modalAgregarUsuarioYaRegistrado" data-dismiss="modal">' + 'Ya registrado' + '</button>' +
+            '<button type="button" role="button" class="SwalGuardarUsuarioNuevo btn btn-primary customSwalBtn" data-toggle="modal" data-target="#modalAgregarUsuarioNuevo" data-dismiss="modal">' + 'No, nuevo' + '</button>'+ 
+            '<button type="button" role="button" class="SwalBtnCancelar btn btn-danger customSwalBtn">' + 'Cancelar' + '</button>',
+        width: 550,
+        allowOutsideClick: false,
+        showCancelButton: false,
+        showConfirmButton: false
+    });
+});
+
+function cancelarAlerta(btnCancelar) {
+    $(document).on('click', btnCancelar, function (e) { 
+        e.preventDefault();
+        Swal.close();
+    });
+}
+
+cancelarAlerta('.SwalBtnGuardarUsuarioYaRegistrado');
+cancelarAlerta('.SwalGuardarUsuarioNuevo');
+cancelarAlerta('.SwalBtnCancelar');

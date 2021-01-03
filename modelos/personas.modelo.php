@@ -42,13 +42,31 @@ class ModeloPersonas{
     /*=============================================
 				MOSTRAR PERSONAS	
 	=============================================*/
-    static public function mdlMostrarPersonas($tabla){
+    static public function mdlMostrarPersonas($tabla, $item, $valor, $all){
 
-        $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
-        $stmt -> execute();
-        return $stmt -> fetchAll();
+		if($item != null && $all != null){
 
-        $stmt -> close();
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
+			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+			$stmt -> execute();
+			return $stmt -> fetchAll();
+
+		} else if($item != null && $all == null){
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
+			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+			$stmt -> execute();
+			return $stmt -> fetch();
+
+		} 
+		else {
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+			$stmt -> execute();
+			return $stmt -> fetchAll();
+
+		}
+		
+		$stmt -> close();
 		$stmt = null;	
 	}
 

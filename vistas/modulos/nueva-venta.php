@@ -71,21 +71,9 @@
                     <!--=====================================
                     ENTRADA DEL CLIENTE
                     ======================================--> 
-                    <?php 
-                    
-                    // $item= null;
-                    // $valor= null;
-                    // $tabla= "tbl_clientes";
-
-                    // $clientes= ControladorClientes::ctrMostrarClientes($tabla, $item, $valor);
-                    // echo "<pre>";
-                    //  var_dump($clientes);
-                    //  echo "</pre>";
-                    ?>
-
                     <label for="cliente">Cliente</label>
                       
-                    <select class="form-control select2-dropdown select2-search-dropdown" id="seleccionarCliente" name="seleccionarCliente" required>
+                    <select class="form-control select2" id="seleccionarCliente" name="seleccionarCliente" required>
                         <option value="">Seleccionar cliente</option>
                         <?php
                           $tabla = "tbl_clientes";
@@ -95,14 +83,14 @@
 
                             foreach ($clientes as $key => $value)
                             {
-                              echo '<option value="'.$value["id_personas"].'">' .$value["nombre"]. ' '.$value["apellidos"]. '</option>';
+                              echo '<option value="'.$value["id_personas"].'">'.$value["nombre"]. ' '.$value["apellidos"]. '</option>';
                             }
                         ?>       
                     </select>
                     <!-- <input type="hidden" value="<?php echo $value["id_personas"]?>" name="idPersona"> -->
                   </div>    
                   <div class="form-group col-md-3 mt-4">
-                    <span class="input-group-addon"><button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalAgregarCliente" data-dismiss="modal">Agregar cliente</button></span> 
+                    <span class="input-group-addon"><button type="button" class="btn btn-outline-primary btn-xs p-2" data-toggle="modal" data-target="#modalAgregarCliente" data-dismiss="modal">Agregar cliente</button></span> 
                   </div>
                 </div>
                 <!--=====================================
