@@ -553,6 +553,16 @@ function borrarDinamico(btnSelector, atributo, nombreGet, mensajeTitulo, mensaje
 
 }
 
+/** ------------------------------------*/
+//     FUNCION CANCELAR ALERTA
+// --------------------------------------*/ 
+function cancelarAlerta(btnCancelar) {
+    $(document).on('click', btnCancelar, function (e) { 
+        e.preventDefault();
+        Swal.close();
+    });
+}
+
 /*=============================================
     FUNCION VERIFCAR DOCUMENTO
 =============================================*/

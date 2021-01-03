@@ -69,22 +69,22 @@ $('.numeroDocumentoClienteVentas').keydown(impedirEspacios);
 // AGREGAR CLIENTE 
 // MUESTRA LOS DATOS DE PAGO DEL CLIENTE, AL ELEGIR TIPO CLIENTE GIMNASIO
 // --------------------------------------*/
-$('#datosClientes').hide();
-$('#btnNuevoClienteVentas').hide();
+$('.datosClientes').hide();
+$('.btnNuevoClienteVentas').hide();
 
 $(document).on('change', '.tipoCliente', function () {
     var valor = $(this).val();
     // console.log(valor)
     if (valor == "Gimnasio") {
         // SumaTotal()
-        $('#btnNuevoClienteVentas').hide();
+        $('.btnNuevoClienteVentas').hide();
        
-        $('#datosClientes').show();
+        $('.datosClientes').show();
         // sumar();
     } else {
-        $('#btnNuevoClienteVentas').show();
-        $('#btnConfirmarPago').hide();
-        $('#datosClientes').hide();
+        $('.btnNuevoClienteVentas').show();
+        $('.btnConfirmarPago').hide();
+        $('.datosClientes').hide();
     }
    
 });
@@ -93,9 +93,9 @@ $(document).on('change', '.tipoCliente', function () {
 //** ------------------------------------*/
 // ALERTA PARA CONFIRMAR PAGO ANTES DE GUARDAR CLIENTE
 // --------------------------------------*/ 
-$('#btnNuevoClienteGym').hide();
+$('.btnNuevoClienteGym').hide();
 
-$(document).on('click', '#btnConfirmarPago', function (e) {
+$(document).on('click', '.btnConfirmarPago', function (e) {
     e.preventDefault();
     // console.log('click')
     Swal.fire({
@@ -112,9 +112,9 @@ $(document).on('click', '#btnConfirmarPago', function (e) {
 
 $(document).on('click', '.SwalBtnGuardarCliente', function () {
     // $('#btnNuevoCliente').show();
-    // $('#btnConfirmarPago').hide();
+    // $('.btnConfirmarPago').hide();
     console.log('click')
-    var btnGuardar = $('#btnNuevoClienteGym');
+    var btnGuardar = $('.btnNuevoClienteGym');
     btnGuardar.click(); 
     // window.location = ruta;
 });
@@ -143,8 +143,34 @@ $(document).on('change', '.tipoClienteVenta', function () {
    
 });
 
+
 //** ------------------------------------*/
-//         IMPRIMIR USUARIOS 
+//     ALERTA AL AGREGAR NUEVO USUARIO
+// --------------------------------------*/
+$(document).on('click', '#clienteNuevo', function (e) {
+    e.preventDefault();
+    // console.log('click')
+    Swal.fire({
+        icon: 'info',
+        title: '¿Crear un cliente desde una persona ya registrada?',
+        html: '<button type="submit" role="button" class="SwalBtnGuardarClienteYaRegistrado btn btn-success customSwalBtn px-5" data-toggle="modal" data-target="#modalAgregarClienteYaRegistrado" data-dismiss="modal">' + 'Si' + '</button>' +
+            '<button type="button" role="button" class="SwalGuardarClienteNuevo btn btn-primary customSwalBtn" data-toggle="modal" data-target="#modalAgregarClienteNuevo" data-dismiss="modal">' + 'No, nuevo' + '</button>'+ 
+            '<button type="button" role="button" class="SwalBtnCancelar btn btn-danger customSwalBtn">' + 'Cancelar' + '</button>',
+        width: 550,
+        allowOutsideClick: false,
+        showCancelButton: false,
+        showConfirmButton: false
+    });
+});
+
+
+cancelarAlerta('.SwalBtnGuardarClienteYaRegistrado');
+cancelarAlerta('.SwalGuardarClienteNuevo');
+cancelarAlerta('.SwalBtnCancelar');
+
+
+//** ------------------------------------*/
+//        IMPRIMIR PDF CLIENTES 
 // --------------------------------------*/ 
 exportarPdf('.btnExportarClientes', 'clientes');
 exportarPdf('.btnExportarClientesInscripciones', 'clientes-inscripciones');
@@ -853,6 +879,8 @@ $(document).on('click', '.btnEditarClienteVenta', function () {
         }
     });
 });
+
+
 
 /*=============================================
 IMPRIMIR PAGO EN PDF
