@@ -283,7 +283,7 @@
                                 <span class="input-group-text">%</span>  
                               </div>
                             <input type="text" class="form-control text-right nuevoPrecioPromocion totalDescuento" name="" value="" readonly>
-                            <input type="hidden" id="nuevoPrecioDescuento" name="nuevoPrecioDescuento">  
+                            <input type="hidden" name="nuevoPrecioDescuento">  
                          </div>
                       </div>
                     </div>
@@ -761,7 +761,7 @@
 
                   <div class="form-group col-md-6">
                     <label>Tipo Cliente</label>
-                    <select class="form-control select2 tipoCliente" name="tipoCliente" style="width: 100%;" required>
+                    <select class="form-control select2 tipoCliente" name="tipoClienteRegistrado" style="width: 100%;" required>
                       <option selected="selected">Seleccionar...</option>
                       <option value="Gimnasio">Clientes del gimnasio</option>
                       <option value="Ventas">Cliente de ventas</option>
@@ -773,7 +773,7 @@
                 <div class="form-row">
                   <div class="form-group col-md-6">
                       <label>Tipo matricula</label>
-                      <select class="form-control select2 nuevaMatricula" style="width: 100%;" name="nuevaMatricula">
+                      <select class="form-control select2 nuevaMatriculaRegistrado" style="width: 100%;" name="nuevaMatriculaRegistrado">
                       <option selected="selected">Seleccionar...</option>
                         <?php 
                             $tabla = "tbl_matricula";
@@ -795,7 +795,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">$</span>  
                           </div>
-                        <input type="text" class="form-control text-right nuevoPrecioMatricula totalMatricula" name="nuevoPrecioMatricula" value="" readonly>
+                        <input type="text" class="form-control text-right nuevoPrecioMatriculaRegistrado totalMatriculaRegistrado" name="nuevoPrecioMatriculaRegistrado" value="" readonly>
                         <!-- <input type="hidden" id="pagoMatricula" name="pagoMatricula">   -->
                       </div>
                   </div>
@@ -803,7 +803,7 @@
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label>Promociones</label>
-                    <select class="form-control select2 nuevaPromocion" style="width: 100%;" name="nuevaPromocion">
+                    <select class="form-control select2 nuevaPromocionRegistrado" style="width: 100%;" name="nuevaPromocionRegistrado">
                       <option selected="selected">Seleccionar...</option>
                       
                         <?php 
@@ -826,15 +826,15 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">%</span>  
                           </div>
-                        <input type="text" class="form-control text-right nuevoPrecioPromocion totalDescuento" name="" value="" readonly>
-                        <input type="hidden" id="nuevoPrecioDescuento" name="nuevoPrecioDescuento">  
+                        <input type="text" class="form-control text-right nuevoPrecioPromocionRegistrado totalDescuentoRegistrado" name="" value="" readonly>
+                        <input type="hidden" id="nuevoPrecioDescuento" name="nuevoPrecioDescuentoRegistrado">  
                       </div>
                   </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6"> 
                       <label>Tipo inscripcion</label>
-                      <select class="form-control select2 nuevaInscripcion" style="width: 100%;" name="nuevaInscripcion">
+                      <select class="form-control select2 nuevaInscripcionRegistrado" style="width: 100%;" name="nuevaInscripcionRegistrado">
                           <option selected="selected">Seleccionar...</option>
                           <?php 
                               $tabla = "tbl_inscripcion";
@@ -857,14 +857,14 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">$</span>  
                           </div>
-                        <input type="text" class="form-control text-right nuevoPrecioInscripcion totalInscripcion" name="nuevoPrecioInscripcion" value="" readonly>    
+                        <input type="text" class="form-control text-right nuevoPrecioInscripcionRegistrado totalInscripcionRegistrado" name="nuevoPrecioInscripcionRegistrado" value="" readonly>    
                         <!-- <input type="hidden" id="pagoInscripcion" name="pagoInscripcion">-->
                       </div>
                   </div>
                 </div>
                 
                 <div class="form-row">
-                  <button type="" class="btn btn-success btn-block col-md-6 mt-4 mb-3 verTotalPago"><i class="fas fa-dollar-sign"></i> Calcular</button>       
+                  <button type="" class="btn btn-success btn-block col-md-6 mt-4 mb-3 verTotalPagoRegistrado"><i class="fas fa-dollar-sign"></i> Calcular</button>       
 
                   <div class="form-group col-md-6">
                     <label for="">Total a pagar:</label>
@@ -872,7 +872,7 @@
                       <div class="input-group-prepend">
                           <span class="input-group-text">$</span>  
                       </div>
-                      <input type="text" class="form-control float-right text-right totalPagar" name="nuevoTotalCliente" value="" readonly>  
+                      <input type="text" class="form-control float-right text-right totalPagarRegistrado" name="nuevoTotalClienteRegistrado" value="" readonly>  
                       </div>
                   </div>
 
@@ -889,10 +889,8 @@
             </div>
         
             <?php
-              // $tipoPersona = 'clientes';
-              // $pantalla = 'clientes';
-              // $ingresarPersona = new ControladorPersonas();
-              // $ingresarPersona->ctrCrearPersona($tipoPersona, $pantalla);
+              $ingresarCliente = new ControladorClientes();
+              $ingresarCliente->ctrCrearClienteYaRegistrado();
             ?>
 
           </form>

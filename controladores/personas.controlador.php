@@ -2,7 +2,7 @@
 
 class ControladorPersonas{
     /*=============================================
-				MOSTRAR PERSONAS
+    MOSTRAR PERSONAS
 	=============================================*/
 	static public function ctrMostrarPersonas($item, $valor, $all) {
 
@@ -17,7 +17,7 @@ class ControladorPersonas{
 
 
     /*=============================================
-				REGISTRAR PERSONAS
+    REGISTRAR PERSONAS
 	=============================================*/
     static public function ctrCrearPersona($tipoPersona, $pantalla){
 

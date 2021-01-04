@@ -136,7 +136,7 @@ class ModeloClientes{
             // . "LEFT JOIN tbl_inscripcion as i ON c.id_inscripcion = i.id_inscripcion\n"
 			// . "LEFT JOIN tbl_descuento as pd ON c.id_descuento = pd.id_descuento\n"
 			// . "LEFT JOIN tbl_pagos_cliente as pc ON c.id_cliente = pc.id_cliente\n"
-		    . "WHERE p.tipo_persona = 'clientes'");
+		    . "WHERE p.tipo_persona = 'clientes' OR p.tipo_persona = 'ambos' ");
 			
 			$stmt -> execute();
 			return $stmt -> fetchAll();
@@ -497,7 +497,7 @@ class ModeloClientes{
 	}
 
 	/*=============================================
-				REGISTRAR  CLIENTE INSCRIPCION
+	REGISTRAR  CLIENTE INSCRIPCION
 	=============================================*/
 	static public function mdlCrearClienteInscripcion($tabla, $datos){
 

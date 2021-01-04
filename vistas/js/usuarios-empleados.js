@@ -415,7 +415,7 @@ $(document).on('click', '#usuarioNuevo', function (e) {
     // console.log('click')
     Swal.fire({
         icon: 'info',
-        title: '¿Crear un usuario desde una persona ya registrada?',
+        title: '¿Crear usuario desde una persona ya registrada?',
         html: '<button type="submit" role="button" class="SwalBtnGuardarUsuarioYaRegistrado btn btn-success customSwalBtn px-5" data-toggle="modal" data-target="#modalAgregarUsuarioYaRegistrado" data-dismiss="modal">' + 'Si' + '</button>' +
             '<button type="button" role="button" class="SwalGuardarUsuarioNuevo btn btn-primary customSwalBtn" data-toggle="modal" data-target="#modalAgregarUsuarioNuevo" data-dismiss="modal">' + 'No, nuevo' + '</button>'+ 
             '<button type="button" role="button" class="SwalBtnCancelar btn btn-danger customSwalBtn">' + 'Cancelar' + '</button>',
