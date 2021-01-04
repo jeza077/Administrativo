@@ -1,3 +1,42 @@
+/*=============================================
+// TABLA BITACORA DINAMICA
+=============================================*/
+  
+$('.tablaBitacora').DataTable( {
+    "ajax": "ajax/datatable-bitacora.ajax.php",
+    "deferRender": true,
+    "retrieve": true,
+    "processing": true,
+    "language": {
+
+      "sProcessing":     "Procesando...",
+      "sLengthMenu":     "Mostrar _MENU_ registros",
+      "sZeroRecords":    "No se encontraron resultados",
+      "sEmptyTable":     "Ningún dato disponible en esta tabla",
+      "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
+      "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0",
+      "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+      "sInfoPostFix":    "",
+      "sSearch":         "Buscar:",
+      "sUrl":            "",
+      "sInfoThousands":  ",",
+      "sLoadingRecords": "Cargando...",
+      "oPaginate": {
+      "sFirst":    "Primero",
+      "sLast":     "Último",
+      "sNext":     "Siguiente",
+      "sPrevious": "Anterior"
+      },
+      "oAria": {
+        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+      }
+
+  }
+
+} );
+
+
 /*=====================================
     GUARDAR ROL
 ========================================*/
@@ -210,7 +249,7 @@ redireccionDinamica('.btnGuardarCambiosEditar', 'rol');
 
 
 /* ========================================
-        GUARDAR PROVEEDOR
+//        GUARDAR PROVEEDOR
 =========================================== */
 $(document).on('click', '.btnGuardarProveedor', function (e) {
     e.preventDefault();
@@ -247,7 +286,10 @@ $(document).on('click', '.btnGuardarProveedor', function (e) {
                     }).then((result) => {
                         if (result.value) {
 
-                        window.location = "proveedores";
+                            // window.location = "proveedores";
+
+                            var btnSalirModal = $('.salirModal');
+                            btnSalirModal.click();
 
                         }
                     })
@@ -260,7 +302,7 @@ $(document).on('click', '.btnGuardarProveedor', function (e) {
 
 
 /*===================================
-    EDITAR ROL
+//    EDITAR ROL
 ====================================*/
 $(document).on("click", ".btnEditarRol", function(){
     
@@ -414,7 +456,7 @@ $(document).on("click", ".btnEditarRol", function(){
 });
 
 /*===================================
-    EDITAR PARAMETROS
+//    EDITAR PARAMETROS
 ====================================*/
 $(document).on("click", ".btnEditarParametro", function(){
     
@@ -451,7 +493,7 @@ $(document).on("click", ".btnEditarParametro", function(){
 });
 
 /*===================================
-    EDITAR INSCRIPCION
+//    EDITAR INSCRIPCION
 ====================================*/
 $(document).on("click", ".btnEditarInscripcion", function(){
     
@@ -486,7 +528,7 @@ $(document).on("click", ".btnEditarInscripcion", function(){
 });
 
 /*===================================
-    EDITAR MATRIUCLA
+//    EDITAR MATRIUCLA
 ====================================*/
 $(document).on("click", ".btnEditarMatricula", function(){
     
@@ -519,7 +561,7 @@ $(document).on("click", ".btnEditarMatricula", function(){
 });
 
 /*===================================
-    EDITAR DESCUENTO
+//    EDITAR DESCUENTO
 ====================================*/
 $(document).on("click", ".btnEditarDescuento", function(){
     
@@ -553,7 +595,7 @@ $(document).on("click", ".btnEditarDescuento", function(){
 });
 
 /*===================================
-    EDITAR DOCUMENTO
+//    EDITAR DOCUMENTO
 ====================================*/
 $(document).on("click", ".btnEditarDocumento", function(){
     
@@ -799,7 +841,7 @@ borrarDinamico(boton, atributo, get, titulo, texto, ruta);
 
 
 /*=====================================
-    ACTIVAR ROL
+ACTIVAR ROL
 ========================================*/
 $(document).on("click", ".btnActivarRol", function(){
 
@@ -843,7 +885,7 @@ $(document).on("click", ".btnActivarRol", function(){
 })
 
 /*=====================================
-    ACTIVAR PERMISOS ROL
+ACTIVAR PERMISOS ROL
 ========================================*/
 $(document).on("click", ".btnActivarPermisos", function(){
 
@@ -896,7 +938,7 @@ $(document).on("click", ".btnActivarPermisos", function(){
 })
 
 /*=====================================
-    ACTIVAR INSCRIPCIONES
+ACTIVAR INSCRIPCIONES
 ========================================*/
 $(document).on("click", ".btnActivarInscripcion", function(){
 
@@ -940,7 +982,7 @@ $(document).on("click", ".btnActivarInscripcion", function(){
 })
 
 /*=====================================
-    ACTIVAR MATRICULA
+ACTIVAR MATRICULA
 ========================================*/
 $(document).on("click", ".btnActivarMatricula", function(){
 
@@ -983,7 +1025,7 @@ $(document).on("click", ".btnActivarMatricula", function(){
 })
 
 /*=====================================
-    ACTIVAR DESCUENTO
+ACTIVAR DESCUENTO
 ========================================*/
 $(document).on("click", ".btnActivarDescuento", function(){
 
@@ -1027,7 +1069,7 @@ $(document).on("click", ".btnActivarDescuento", function(){
 })
 
 /*=====================================
-    ACTIVAR DOCUMENTO
+ACTIVAR DOCUMENTO
 ========================================*/
 $(document).on("click", ".btnActivarDocumento", function(){
 
