@@ -713,6 +713,22 @@ class ControladorUsuarios{
 				// return var_dump($respuestaUsuario);
 
 				if($respuestaUsuario == true){
+			
+					$tabla = "tbl_personas";
+
+					$item1 = "tipo_persona";
+					$valor1 = "ambos";
+			
+					$item2 = 'id_personas';
+					$valor2 = $_POST["nuevoIdPersona"];
+
+					$item3 = null;
+					$valor3 = null;
+
+					$item4 = null;
+					$valor4 = null;
+
+					$respuestaAct = ModeloUsuarios::mdlActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2, $item3, $valor3, $item4, $valor4);
 
 					$email = $emailUsuario;
 					$nombreUsuario = $datos["usuario"];
@@ -726,7 +742,6 @@ class ControladorUsuarios{
 
 					if($respuestaCorreo = true){
 
-					
 						$descripcionEvento = "Nuevo Usuario";
 						$accion = "Nuevo";
 						$bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 2,$accion, $descripcionEvento);
