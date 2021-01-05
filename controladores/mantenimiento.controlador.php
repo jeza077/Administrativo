@@ -291,7 +291,7 @@
             Swal.fire({
   
               icon: "success",
-              title: "¡La inscripcion ha sido creada exitosamente!",
+              title: "¡Inscripcion creada exitosamente!",
               showConfirmButton: true,
               confirmButtonText: "Cerrar",
               closeOnConfirm: false
@@ -1386,60 +1386,75 @@
 
       if(isset($_GET['idEliminarInscripcion'])){
           $tabla = 'tbl_inscripcion';
-          $datos = $_GET['idEliminarInscripcion'];
+          $item = 'id_inscripcion';
+          $valor = $_GET['idEliminarInscripcion'];
 
-
-          $respuesta = ModeloMantenimiento::mdlBorrarInscripcion($tabla, $datos);
+          $respuesta = ModeloMantenimiento::mdlBorrarDinamico($tabla, $item, $valor);
           
           // var_dump($respuesta);
           // return;
-          
-          if($respuesta == true){
 
-          
-            $descripcionEvento = "Elimino la Inscripcion";
-            $accion = "Elimino";
+          if($respuesta[1] == 1451){
 
-            $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
+            // $descripcionEvento = "Elimino el Rol";
+            // $accion = "Elimino";
+
+            // $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
+
+            echo '<script>
+                Swal.fire({
+                    title: "¡No se pudo borrar el inscripción!",
+                    text: "Abóquese con el administrador",
+                    icon: "error",
+                    heightAuto: false
+                }).then((result)=>{
+                    if(result.value){
+                        window.location = "inscripcion";
+                    }
+                });                                      
+            </script>';
+            
+            
+          }else if($respuesta[1] == 1054) {
+
+            echo'<script>
+
+            Swal.fire({
+            icon: "error",
+            title: "Opps, algo salio mal, intenta de nuevo!",
+            showConfirmButton: true,
+            confirmButtonText: "Cerrar",
+            closeOnConfirm: false
+            }).then((result) => {
+              if (result.value) {
+
+                window.location = "inscripcion";
+                
+              }
+            })
+            
+            </script>';
+            
+          } else {
             
             echo'<script>
-    
-            Swal.fire({
-                icon: "success",
-                  title: "Inscripción eliminada correctamente!",
-                  showConfirmButton: true,
-                  confirmButtonText: "Cerrar",
-                  closeOnConfirm: false
-                  }).then((result) => {
-                            if (result.value) {
-    
-                            window.location = "inscripcion";
-    
-                            }
-                        })
-    
-            </script>';
-    
-        }else{
 
-          echo'<script>
-    
             Swal.fire({
-                  icon: "error",
-                  title: "Opps, algo salio mal, intenta de nuevo!",
+                  icon: "success",
+                  title: "Inscripción eliminado exitosamente!",
                   showConfirmButton: true,
                   confirmButtonText: "Cerrar",
                   closeOnConfirm: false
                   }).then((result) => {
-                            if (result.value) {
-    
-                            window.location = "inscripcion";
-    
-                            }
-                        })
-    
+                      if (result.value) {
+
+                      window.location = "inscripcion";
+
+                      }
+                  })
+
             </script>';
-        }
+          } 
       }
     }
 
