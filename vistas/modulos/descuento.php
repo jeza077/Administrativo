@@ -69,7 +69,7 @@
                   
                       <td>'.($key + 1).'</td>
                       <td>'.$value["tipo_descuento"].'</td>
-                      <td>'.$value["valor_descuento"].'</td>';
+                      <td>'.$value["valor_descuento"].'%</td>';
                       if($value['estado'] != 0){
                           echo '<td><button class="btn btn-success btn-md btnActivarDescuento" idDescuento="'.$value["id_descuento"].'" estadoDescuento="0">Activado</button></td>';
                       }else{

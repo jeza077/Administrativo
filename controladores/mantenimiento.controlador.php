@@ -1452,27 +1452,62 @@
 
       if(isset($_GET['idEliminarDescuento'])){
           $tabla = 'tbl_descuento';
-          $datos = $_GET['idEliminarDescuento'];
+          $item = 'id_descuento';
+          $valor = $_GET['idEliminarDescuento'];
 
+          $respuesta = ModeloMantenimiento::mdlBorrarDinamico($tabla, $item, $valor);
 
-          $respuesta = ModeloMantenimiento::mdlBorrarDescuento($tabla, $datos);
-          
           // var_dump($respuesta);
           // return;
-          
-          if($respuesta == true){
+         
+          if($respuesta[1] == 1451){
 
-            $descripcionEvento = "Elimino el Descuento";
-            $accion = "Elimino";
+            // $descripcionEvento = "Elimino el Rol";
+            // $accion = "Elimino";
 
-            $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
+            // $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
 
+            echo '<script>
+                Swal.fire({
+                    title: "¡No se pudo borrar el descuento!",
+                    text: "Abóquese con el administrador",
+                    icon: "error",
+                    heightAuto: false
+                }).then((result)=>{
+                    if(result.value){
+                        window.location = "descuento";
+                    }
+                });                                      
+            </script>';
+            
+            
+          }else if($respuesta[1] == 1054) {
+
+            echo'<script>
+
+            Swal.fire({
+            icon: "error",
+            title: "Opps, algo salio mal, intenta de nuevo!",
+            showConfirmButton: true,
+            confirmButtonText: "Cerrar",
+            closeOnConfirm: false
+            }).then((result) => {
+              if (result.value) {
+
+                window.location = "descuento";
+                
+              }
+            })
+            
+            </script>';
+            
+          } else {
             
             echo'<script>
-    
+
             Swal.fire({
-                icon: "success",
-                  title: "Descuento eliminado correctamente!",
+                  icon: "success",
+                  title: "Descuento eliminado exitosamente!",
                   showConfirmButton: true,
                   confirmButtonText: "Cerrar",
                   closeOnConfirm: false
@@ -1483,29 +1518,9 @@
 
                       }
                   })
-    
+
             </script>';
-    
-        }else{
-
-          echo'<script>
-    
-            Swal.fire({
-                  icon: "error",
-                  title: "Opps, algo salio mal, intenta de nuevo!",
-                  showConfirmButton: true,
-                  confirmButtonText: "Cerrar",
-                  closeOnConfirm: false
-                  }).then((result) => {
-                      if (result.value) {
-
-                      window.location = "descuento";
-
-                      }
-                  })
-    
-            </script>';
-        }
+          } 
       }
     }
 
