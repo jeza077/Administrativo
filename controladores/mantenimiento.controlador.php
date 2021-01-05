@@ -1,9 +1,9 @@
 <?php
   
   class ControladorMantenimientos {
-   /*===========================================================
-   BITACORA
-   =============================================================*/
+    /*===========================================================
+    BITACORA
+    =============================================================*/
     static public function ctrBitacoraInsertar($usuario, $objeto,$accion,$descripcion){
 
      $tabla = "tbl_bitacora";
@@ -19,24 +19,23 @@
 
      $respuesta = ModeloUsuarios::mdlInsertarBitacora($tabla, $fechaActual, $usuario, $objeto, $accion, $descripcion);
     }
+
   	/*=============================================
-				MOSTRAR BITACORA
-	=============================================*/
+    MOSTRAR BITACORA
+	  =============================================*/
 
-	static public function ctrMostrarBitacora( $item, $valor) {
+    static public function ctrMostrarBitacora( $item, $valor) {
 
-		$tabla1 = "tbl_bitacora";
-		
-		$respuesta = ModeloUsuarios::mdlMostrarBitacora($tabla1, $item, $valor);
+      $tabla1 = "tbl_bitacora";
+      
+      $respuesta = ModeloUsuarios::mdlMostrarBitacora($tabla1, $item, $valor);
 
-		return $respuesta;
+      return $respuesta;
 
-  }
+    }
 
-
-
-   /*======================================================
-     Roles
+    /*======================================================
+    INSERTAR ROLES
     =============================================================================================*/
    
     static public function ctrRolesInsertar($rol, $descripcion){
@@ -146,7 +145,7 @@
     }
 
     /*=============================================
-        MOSTRAR ROLES
+    MOSTRAR ROLES
     =============================================*/
 
     static public function ctrMostrarRoles($item, $valor){
@@ -161,7 +160,7 @@
 
 
     /*=============================================
-        MOSTRAR PERMISOS ROLES
+    MOSTRAR PERMISOS ROLES
     =============================================*/
 
     static public function ctrMostrarPermisosRoles($item1, $valor1, $item2, $valor2){
@@ -174,7 +173,7 @@
     
     
     /*=============================================
-        GUARDAR PERMISOS DE ROLES
+    GUARDAR PERMISOS DE ROLES
     =============================================*/
 
     static public function ctrInsertarPermisosRoles($id, $pant, $cons, $agre, $actua, $elim){
@@ -252,7 +251,7 @@
 
 
     /*======================================================
-       Inscripciones Insertar
+    Inscripciones Insertar
     =============================================================================================*/
     static public function ctrInscripcionInsertar(){
 
@@ -347,7 +346,7 @@
 
      
     /*=============================================
-        MOSTRAR INSCRIPCION
+    MOSTRAR INSCRIPCION
     =============================================*/
 
     static public function ctrMostrarInscripcion($item, $valor){
@@ -362,7 +361,7 @@
 
 
     /*======================================================
-         MATRICULA INSERTAR
+    MATRICULA INSERTAR
     =========================================================*/
    
     static public function ctrMatriculaInsertar(){
@@ -395,7 +394,7 @@
             Swal.fire({
   
               icon: "success",
-              title: "¡La matricula ha sido creada exitosamente!",
+              title: "¡Matricula creada exitosamente!",
               showConfirmButton: true,
               confirmButtonText: "Cerrar",
               closeOnConfirm: false
@@ -468,7 +467,7 @@
 
 
     /*=============================================
-        MOSTRAR MATRICULA
+    MOSTRAR MATRICULA
     =============================================*/
 
     static public function ctrMostrarMatricula($item, $valor){
@@ -483,7 +482,7 @@
 
 
     /*=============================================
-        MOSTRAR DOCUMENTOS
+    MOSTRAR DOCUMENTOS
     =============================================*/
 
     static public function ctrMostrarDocumento($item, $valor){
@@ -498,7 +497,7 @@
 
 
     /*======================================================
-       DESCUENTO INSERTAR
+    DESCUENTO INSERTAR
     =======================================================*/
    
     static public function ctrDescuentoInsertar(){
@@ -608,7 +607,7 @@
     }
 
     /*=============================================
-        MOSTRAR DESCUENTO
+    MOSTRAR DESCUENTO
     =============================================*/
 
     static public function ctrMostrarDescuento($item, $valor){
@@ -625,7 +624,7 @@
 
 
     /*=============================================
-        AGREGAR NUEVO DOCUMENTO
+    AGREGAR NUEVO DOCUMENTO
     =============================================*/
     
     static public function ctrDocumentoInsertar(){
@@ -720,7 +719,7 @@
 
 
     /*=============================================
-        AGREGAR NUEVO PROVEEDOR
+    AGREGAR NUEVO PROVEEDOR
     =============================================*/
     static public function ctrNuevoProveedor($datos){
       
@@ -764,23 +763,9 @@
 
     }
 
-    /*=============================================
-        MOSTRAR PROVEEDOR
-    =============================================*/
-
-    // static public function ctrMostrarProveedores($item, $valor){
-
-    //   return true;
-    //   $tabla = "tbl_proveedores";
-      
-    //   $respuesta = ModeloMantenimiento::mdlMostrarProveedores($tabla, $item, $valor);
-
-    //   return $respuesta;
-
-    // }
 
     /*=============================================
-      EDITAR ROL
+    EDITAR ROL
     =============================================*/
     
     static public function ctrEditarRol(){
@@ -850,7 +835,7 @@
 
 
     /*=============================================
-      EDITAR MATRICULA
+    EDITAR MATRICULA
     =============================================*/
     
     static public function ctrEditarMatricula(){
@@ -920,7 +905,7 @@
 
 
     /*=============================================
-      EDITAR INSCRIPCION
+    EDITAR INSCRIPCION
     =============================================*/
     
     static public function ctrEditarInscripcion(){
@@ -991,7 +976,7 @@
 
 
     /*=============================================
-      EDITAR DESCUENTO
+    EDITAR DESCUENTO
     =============================================*/
     
     static public function ctrEditarDescuento(){
@@ -1059,7 +1044,7 @@
 
 
     /*=============================================
-      EDITAR ROL
+    EDITAR ROL
     =============================================*/
     
     static public function ctrEditarDocumento(){
@@ -1156,7 +1141,7 @@
     }
 
     /*=============================================
-      EDITAR ROL
+    EDITAR ROL
     =============================================*/
     
     static public function ctrEditarProveedor(){
@@ -1246,7 +1231,7 @@
 
     
     /*=============================================
-              BORRAR ROLES
+    BORRAR ROLES
     =============================================*/
     static public function ctrBorrarRoles(){
       // var_dump($_GET);
@@ -1312,68 +1297,84 @@
     }
 
   	/*=============================================
-            BORRAR MATRICULA
+    BORRAR MATRICULA
     =============================================*/
     static public function ctrBorrarMatricula(){
       // var_dump($_GET);
       //return;
 
       if(isset($_GET['idEliminarMatricula'])){
-          $tabla = 'tbl_matricula';
-          $datos = $_GET['idEliminarMatricula'];
-
-
-          $respuesta = ModeloMantenimiento::mdlBorrarMatricula($tabla, $datos);
           
+          $tabla = 'tbl_matricula';
+          $item = 'id_matricula';
+          $valor = $_GET['idEliminarMatricula'];
+
+          $respuesta = ModeloMantenimiento::mdlBorrarDinamico($tabla, $item, $valor);
+
           // var_dump($respuesta);
           // return;
-          
-          if($respuesta == true){
+         
+          if($respuesta[1] == 1451){
 
-            $descripcionEvento = "Elimino la Matricul";
-            $accion = "Elimino";
+            // $descripcionEvento = "Elimino el Rol";
+            // $accion = "Elimino";
 
-            $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
+            // $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
 
+            echo '<script>
+                Swal.fire({
+                    title: "¡No se pudo borrar la matricula!",
+                    text: "Abóquese con el administrador",
+                    icon: "error",
+                    heightAuto: false
+                }).then((result)=>{
+                    if(result.value){
+                        window.location = "matricula";
+                    }
+                });                                      
+            </script>';
+            
+            
+          }else if($respuesta[1] == 1054) {
+
+            echo'<script>
+
+            Swal.fire({
+            icon: "error",
+            title: "Opps, algo salio mal, intenta de nuevo!",
+            showConfirmButton: true,
+            confirmButtonText: "Cerrar",
+            closeOnConfirm: false
+            }).then((result) => {
+              if (result.value) {
+
+                window.location = "matricula";
+                
+              }
+            })
+            
+            </script>';
+            
+          } else {
             
             echo'<script>
-    
-            Swal.fire({
-                icon: "success",
-                  title: "Matricula eliminada correctamente!",
-                  showConfirmButton: true,
-                  confirmButtonText: "Cerrar",
-                  closeOnConfirm: false
-                  }).then((result) => {
-                            if (result.value) {
-    
-                            window.location = "matricula";
-    
-                            }
-                        })
-    
-            </script>';
-    
-        }else{
 
-          echo'<script>
-    
             Swal.fire({
-                  icon: "error",
-                  title: "Opps, algo salio mal, intenta de nuevo!",
+                  icon: "success",
+                  title: "Matricula eliminada exitosamente!",
                   showConfirmButton: true,
                   confirmButtonText: "Cerrar",
                   closeOnConfirm: false
                   }).then((result) => {
-                            if (result.value) {
-    
-                            window.location = "matricula";
-    
-                            }
-                        })
-    
+                      if (result.value) {
+
+                      window.location = "matricula";
+
+                      }
+                  })
+
             </script>';
-        }
+          }           
       }
     }
 
@@ -1403,7 +1404,7 @@
 
             echo '<script>
                 Swal.fire({
-                    title: "¡No se pudo borrar el inscripción!",
+                    title: "¡No se pudo borrar la inscripción!",
                     text: "Abóquese con el administrador",
                     icon: "error",
                     heightAuto: false
@@ -1441,7 +1442,7 @@
 
             Swal.fire({
                   icon: "success",
-                  title: "Inscripción eliminado exitosamente!",
+                  title: "Inscripción eliminada exitosamente!",
                   showConfirmButton: true,
                   confirmButtonText: "Cerrar",
                   closeOnConfirm: false
