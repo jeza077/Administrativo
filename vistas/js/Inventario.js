@@ -135,12 +135,6 @@ $(document).on('click', '#nuevaCompra', function () {
     selectDinamico();    
 });
 
-$(document).on('click', '#pruebaBtn', function (e) {
-    e.preventDefault();
-    // console.log('click');
-    $('#nuevoProveedor').remove();
-    
-});
 
 //** ------------------------------------*/
 //         IMPRIMIR PRODUCTO

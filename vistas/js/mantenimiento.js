@@ -302,7 +302,24 @@ $(document).on('click', '.btnGuardarProveedor', function (e) {
                         }
                     })
         
-            }
+            } else if(respuesta == '"Mal"'){
+
+                Swal.fire({
+                    title: "Campos no pueden ir vacíos, escrito en minusculas o llevar caracteres especiales. Intenta de nuevo!",
+                    icon: "error",
+                    heightAuto: false,
+                    allowOutsideClick: false
+                });
+            
+            } else {
+                
+                Swal.fire({
+                    title: "Opps, algo salio mal, intenta de nuevo!",
+                    icon: "error",
+                    heightAuto: false,
+                    allowOutsideClick: false
+                });
+            } 
         }
     })
 

@@ -726,7 +726,7 @@
       
       if(isset($datos["nombre"])){
         
-        if(preg_match('/^[A-ZñÑÁÉÍÓÚ ]+$/', $datos["nombre"])){
+        if(preg_match('/^[A-ZÑÁÉÍÓÚ ]+$/', $datos["nombre"])){
           // return $datos['telefono'];
 
           $tabla = "tbl_proveedores";
@@ -748,68 +748,15 @@
               // $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
 
               return true;
-              echo'<script>
-      
-              Swal.fire({
-                  icon: "success",
-                    title: "El documento se creo exitosamente",
-                    showConfirmButton: true,
-                    confirmButtonText: "Cerrar",
-                    closeOnConfirm: false
-                    }).then((result) => {
-                              if (result.value) {
-      
-                              window.location = "documentos";
-      
-                              }
-                          })
-      
-              </script>';
       
           }else{
 
-            echo'<script>
-      
-              Swal.fire({
-                    icon: "warning",
-                    title: "Error al editar rol",
-                    showConfirmButton: true,
-                    confirmButtonText: "Cerrar",
-                    closeOnConfirm: false
-                    }).then((result) => {
-                              if (result.value) {
-      
-                              window.location = "rol";
-      
-                              }
-                          })
-      
-              </script>';
+            return false;
           }
 
         } else {
-          echo '<script>
-  
-              Swal.fire({
 
-                icon: "error",
-                title: "¡Campos no pueden ir vacíos, escrito en minusculas o llevar caracteres especiales!",
-                showConfirmButton: true,
-                confirmButtonText: "Cerrar",
-                closeOnConfirm: false
-
-              }).then((result)=>{
-
-                if(result.value){
-
-                  window.location = "documentos";
-
-                }
-
-              });
-
-
-            </script>';
+          return 'Mal';
 
         }
       }
@@ -1644,16 +1591,51 @@
 
           $respuesta = ModeloMantenimiento::mdlBorrarDinamico($tabla, $item, $valor);
           
-          // var_dump($respuesta);
+          // var_dump($respuesta[1]);
           // return;
           
-          if($respuesta == true){
+          if($respuesta[1] == 1451){
 
             // $descripcionEvento = "Elimino el Rol";
             // $accion = "Elimino";
 
             // $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
 
+            echo '<script>
+                Swal.fire({
+                    title: "¡No se pudo borrar el proveedor!",
+                    text: "Abóquese con el administrador",
+                    icon: "error",
+                    heightAuto: false
+                }).then((result)=>{
+                    if(result.value){
+                        window.location = "proveedores";
+                    }
+                });                                      
+            </script>';
+            
+            
+          }else if($respuesta[1] == 1054) {
+
+            echo'<script>
+
+            Swal.fire({
+            icon: "error",
+            title: "Opps, algo salio mal, intenta de nuevo!",
+            showConfirmButton: true,
+            confirmButtonText: "Cerrar",
+            closeOnConfirm: false
+            }).then((result) => {
+              if (result.value) {
+
+                window.location = "proveedores";
+                
+              }
+            })
+            
+            </script>';
+            
+          } else {
             
             echo'<script>
 
@@ -1672,27 +1654,7 @@
                   })
 
             </script>';
-
-        }else{
-
-          echo'<script>
-
-            Swal.fire({
-                  icon: "error",
-                  title: "Opps, algo salio mal, intenta de nuevo!",
-                  showConfirmButton: true,
-                  confirmButtonText: "Cerrar",
-                  closeOnConfirm: false
-                  }).then((result) => {
-                      if (result.value) {
-
-                      window.location = "proveedores";
-
-                      }
-                  })
-
-            </script>';
-        }
+          } 
       }
     }
 

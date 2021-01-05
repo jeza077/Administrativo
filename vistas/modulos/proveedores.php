@@ -86,7 +86,7 @@
 
 
 <!--=====================================
-MODAL AGREGAR NUEVA PROVEEDOR
+MODAL AGREGAR NUEVO PROVEEDOR
 ======================================-->
 <div class="modal fade" id="modalNuevoProveedor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   

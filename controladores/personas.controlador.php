@@ -800,16 +800,16 @@ class ControladorPersonas{
             if($respuesta[1] == 1451){
       
                 echo '<script>
-                        Swal.fire({
-                            title: "No se pudo borrar el '.$tipoPersona.'!",
-                            icon: "error",
-                            heightAuto: false
-                        }).then((result)=>{
-                            if(result.value){
-                                window.location = "'.$pantalla.'";
-                            }
-                        });                                      
-                    </script>';
+                    Swal.fire({
+                        title: "No se pudo borrar el '.$tipoPersona.'!",
+                        icon: "error",
+                        heightAuto: false
+                    }).then((result)=>{
+                        if(result.value){
+                            window.location = "'.$pantalla.'";
+                        }
+                    });                                      
+                </script>';
 
             } else if($tipoPersona == 'usuario') {
                 $descripcionEvento = " Elimino un usuario.";
