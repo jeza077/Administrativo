@@ -654,7 +654,7 @@
       
               Swal.fire({
                   icon: "success",
-                    title: "El documento se creo exitosamente",
+                    title: "Documento creado exitosamente!",
                     showConfirmButton: true,
                     confirmButtonText: "Cerrar",
                     closeOnConfirm: false
@@ -1378,7 +1378,7 @@
     }
 
     /*=============================================
-              BORRAR INSCRIPCION
+    BORRAR INSCRIPCION
     =============================================*/
     static public function ctrBorrarInscripcion(){
       // var_dump($_GET);
@@ -1444,7 +1444,7 @@
     }
 
     /*=============================================
-            BORRAR DESCUENTO
+    BORRAR DESCUENTO
     =============================================*/
     static public function ctrBorrarDescuento(){
       // var_dump($_GET);
@@ -1510,7 +1510,7 @@
     }
 
     /*=============================================
-            BORRAR DOCUMENTO
+    BORRAR DOCUMENTO
     =============================================*/
     static public function ctrBorrarDocumento(){
       // var_dump($_GET['idEliminarDocumento']);
@@ -1519,21 +1519,56 @@
       if(isset($_GET['idEliminarDocumento'])){
 
           $tabla = 'tbl_documento';
-          $datos = $_GET['idEliminarDocumento'];
+          $item = 'id_documento';
+          $valor = $_GET['idEliminarDocumento'];
 
+          $respuesta = ModeloMantenimiento::mdlBorrarDinamico($tabla, $item, $valor);
 
-          $respuesta = ModeloMantenimiento::mdlBorrarDocumento($tabla, $datos);
-          
           // var_dump($respuesta);
           // return;
-          
-          if($respuesta == true){
+
+          if($respuesta[1] == 1451){
 
             // $descripcionEvento = "Elimino el Rol";
             // $accion = "Elimino";
 
             // $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
 
+            echo '<script>
+                Swal.fire({
+                    title: "¡No se pudo borrar el documento!",
+                    text: "Abóquese con el administrador",
+                    icon: "error",
+                    heightAuto: false
+                }).then((result)=>{
+                    if(result.value){
+                        window.location = "documentos";
+                    }
+                });                                      
+            </script>';
+            
+            
+          }else if($respuesta[1] == 1054) {
+
+            echo'<script>
+
+            Swal.fire({
+            icon: "error",
+            title: "Opps, algo salio mal, intenta de nuevo!",
+            showConfirmButton: true,
+            confirmButtonText: "Cerrar",
+            closeOnConfirm: false
+            }).then((result) => {
+              if (result.value) {
+
+                window.location = "documentos";
+                
+              }
+            })
+            
+            </script>';
+            
+          } else {
             
             echo'<script>
 
@@ -1552,32 +1587,13 @@
                   })
 
             </script>';
-
-        }else{
-
-          echo'<script>
-
-            Swal.fire({
-                  icon: "error",
-                  title: "Opps, algo salio mal, intenta de nuevo!",
-                  showConfirmButton: true,
-                  confirmButtonText: "Cerrar",
-                  closeOnConfirm: false
-                  }).then((result) => {
-                      if (result.value) {
-
-                      window.location = "documentos";
-
-                      }
-                  })
-
-            </script>';
-        }
+          } 
+          
       }
     }
 
     /*=============================================
-            BORRAR PROVEEDOR
+    BORRAR PROVEEDOR
     =============================================*/
     static public function ctrBorrarProveedor(){
       // var_dump($_GET['idEliminarProveedor']);
@@ -1660,7 +1676,7 @@
 
 
     /*=============================================
-        RANGO DE FECHAS BITACORA
+    RANGO DE FECHAS BITACORA
     =============================================*/
 
     static public function ctrRangoFechasBitacora($fechaInicial, $fechaFinal) {
@@ -1674,7 +1690,7 @@
     }
 
     /*=============================================
-        RANGO DE INSCRIPCION
+    RANGO DE INSCRIPCION
     =============================================*/
 
     static public function ctrRangoInscripcion($rango) {

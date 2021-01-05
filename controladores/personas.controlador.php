@@ -317,7 +317,7 @@ class ControladorPersonas{
 
 
     /*=============================================
-				EDITAR PERSONAS
+    EDITAR PERSONAS
     =============================================*/ 
     static public function ctrEditarPersona($ajustes, $tipoPersona, $pantalla){
         // echo "<pre>";
@@ -612,7 +612,7 @@ class ControladorPersonas{
     }
 
     /*=============================================
-				EDITAR CLIENTE VENTAS
+    EDITAR CLIENTE VENTAS
     =============================================*/
     
     static public function ctrEditarClienteVentas($tipoCliente, $pantalla) {
@@ -726,7 +726,7 @@ class ControladorPersonas{
         }
     }
     /*=============================================
-            ACTUALIZAR PAGO CLIENTE
+    ACTUALIZAR PAGO CLIENTE
     =============================================*/
     static public function ctrActualizarPagoCliente($tipoPersona, $pantalla){
         // echo "<pre>";
@@ -781,7 +781,7 @@ class ControladorPersonas{
     }
     
 	/*=============================================
-            BORRAR PERSONAS (USUARIO/CLIENTE)
+    BORRAR PERSONAS (USUARIO/CLIENTE)
 	=============================================*/
     static public function ctrBorrarPersona($tipoPersona, $pantalla){
         // var_dump($_GET);
