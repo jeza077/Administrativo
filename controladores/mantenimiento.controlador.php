@@ -1238,61 +1238,77 @@
       // return;
 
       if(isset($_GET['idEliminarRoles'])){
+          
           $tabla = 'tbl_roles';
-          $datos = $_GET['idEliminarRoles'];
+          $item = 'id_rol';
+          $valor = $_GET['idEliminarRoles'];
 
-
-          $respuesta = ModeloMantenimiento::mdlBorrarRoles($tabla, $datos);
+          $respuesta = ModeloMantenimiento::mdlBorrarDinamico($tabla, $item, $valor);
           
           // var_dump($respuesta);
           // return;
-          
-          if($respuesta == true){
 
-            $descripcionEvento = "Elimino el Rol";
-            $accion = "Elimino";
+          if($respuesta[1] == 1451){
 
-            $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
+            // $descripcionEvento = "Elimino el Rol";
+            // $accion = "Elimino";
 
+            // $bitacoraConsulta = ControladorMantenimientos::ctrBitacoraInsertar($_SESSION["id_usuario"], 6,$accion, $descripcionEvento);
+
+            echo '<script>
+                Swal.fire({
+                    title: "¡No se pudo borrar el rol!",
+                    text: "Abóquese con el administrador",
+                    icon: "error",
+                    heightAuto: false
+                }).then((result)=>{
+                    if(result.value){
+                        window.location = "rol";
+                    }
+                });                                      
+            </script>';
+            
+            
+          }else if($respuesta[1] == 1054) {
+
+            echo'<script>
+
+            Swal.fire({
+            icon: "error",
+            title: "Opps, algo salio mal, intenta de nuevo!",
+            showConfirmButton: true,
+            confirmButtonText: "Cerrar",
+            closeOnConfirm: false
+            }).then((result) => {
+              if (result.value) {
+
+                window.location = "rol";
+                
+              }
+            })
+            
+            </script>';
+            
+          } else {
             
             echo'<script>
 
             Swal.fire({
                   icon: "success",
-                  title: "Rol eliminado exitosamente",
+                  title: "Rol eliminado exitosamente!",
                   showConfirmButton: true,
                   confirmButtonText: "Cerrar",
                   closeOnConfirm: false
                   }).then((result) => {
-                            if (result.value) {
+                      if (result.value) {
 
-                            window.location = "rol";
+                      window.location = "rol";
 
-                            }
-                        })
-
-            </script>';
-
-        }else{
-
-          echo'<script>
-
-            Swal.fire({
-                  icon: "error",
-                  title: "Error al borrar rol",
-                  showConfirmButton: true,
-                  confirmButtonText: "Cerrar",
-                  closeOnConfirm: false
-                  }).then((result) => {
-                            if (result.value) {
-
-                            window.location = "rol";
-
-                            }
-                        })
+                      }
+                  })
 
             </script>';
-        }
+          } 
       }
     }
 

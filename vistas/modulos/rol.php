@@ -106,7 +106,7 @@
 
 
 <!--=======================================================================
-                  MODAL AGREGAR ROL
+MODAL AGREGAR ROL
 =========================================================================-->
 
 <div class="modal fade" id="modalNuevoRol" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

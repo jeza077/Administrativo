@@ -38,7 +38,7 @@ $('.tablaBitacora').DataTable( {
 
 
 /*=====================================
-    GUARDAR ROL
+//    GUARDAR ROL
 ========================================*/
 $('.pantalla-permisos').hide();
 $('#modalFooterPermisos').hide();
@@ -240,7 +240,8 @@ $(document).on('click', '.btnGuardarRol', function (e) {
 });
 
 function redireccionDinamica(selector, pantalla) {
-    $(document).on('click', selector, function () {
+    $(document).on('click', selector, function (e) {
+        e.preventDefault();
         window.location = pantalla;
     });
 }
