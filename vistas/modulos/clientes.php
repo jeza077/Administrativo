@@ -167,7 +167,7 @@
 
                     <div class="form-group col-md-3">
                       <label for="identidad">Numero de documento</label>
-                      <input type="text" class="form-control idCliente" name="nuevoNumeroDocumento" placeholder="Ingrese Identidad" required>
+                      <input type="text" class="form-control numeroDocumento" name="nuevoNumeroDocumento" placeholder="Ingrese Identidad" required>
                     </div>
                     <div class="form-group col-md-3">
                       <label for="nombre">Nombre</label>
@@ -178,6 +178,8 @@
                       <input type="text" class="form-control apellidos mayus" name="nuevoApellido" placeholder="Ingrese Apellidos" required>
                     </div>
                   </div>
+
+                  <div class="alertaDocumento"></div>
       
                   <div class="form-row">
                     <div class="form-group col-md-4">
@@ -193,6 +195,8 @@
                         <input type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy/mm/dd" data-mask  name="nuevaFechaNacimiento" placeholder="Ingrese Fecha de Nacimiento" required>
                     </div>
                   </div>
+                  
+                  <div class="alertaEmail"></div>
 
                   <div class="form-row">
                     <div class="form-group col-md-9">

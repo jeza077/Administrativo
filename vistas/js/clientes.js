@@ -26,7 +26,7 @@ function redireccion(selector, ruta) {
 
 
 //VALIDACIONES AGREGAR CLIENTE
-validarDoc($('.idCliente'))
+validarDoc($('.numeroDocumento'), $('.alertaDocumento'))
 validarEmail($('.emailCliente'))
 longitudString($('.nombreCliente'),30); 
 $('.nombreCliente').keydown(sinNumeros)

@@ -1,6 +1,6 @@
 //***VALIDACIONES */
 longitudString($('.nuevoUsuario'),50); //Longitud Input Usuario
-validarEmail($('.email')); //Validar que no exista en DB, email de la persona ingresada
+// validarEmail($('.email')); //Validar que no exista en DB, email de la persona ingresada
 $('.id').keydown(impedirEspacios); //Impedir espacios, input identidad
 //***VALIDACIONES EN EL IMPUT APELLIDO */
 $('.apellidos').keydown(sinCaracteres)

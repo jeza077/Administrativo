@@ -1,6 +1,8 @@
 //** VERIFICAR QUE USUARIO NO SE REPITA */
-$('.nuevoUsuario').keyup(function (){
+$('.nuevoUsuario').blur(function (){
 
+    $('.alert').remove();
+    
     var usuarioIngresado = $(this).val();
 
     var datos = new FormData();
@@ -19,14 +21,14 @@ $('.nuevoUsuario').keyup(function (){
             // console.log(respuesta);
 
             if(respuesta){
-                $('.final').before('<div class="alert alert-danger fade show mt-2" role="alert">Usuario ya existente, ingrese uno diferente.</div>');
+                $('.alertaUsuario').append('<div class="alert alert-danger fade show mt-2" role="alert"><i class="icon fas fa-ban"></i>Usuario ya existente, ingrese uno diferente.</div>');
                 // setTimeout(function () {
                     // $('.alert').remove();
                 // }, 3000)
                 
                 //E inmeditamente Limpiamos el input
                 // $('.nuevoUsuario').val("");
-                // $('.nuevoUsuario').focus();
+                $('.nuevoUsuario').focus();
             } else {
                 $('.alert').remove();
             }
