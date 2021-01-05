@@ -8,7 +8,7 @@ use PHPMailer\PHPMailer\Exception;
 class ControladorUsuarios{
 
 	/*=============================================
-				MOSTRAR SOLO USUARIOS
+	MOSTRAR SOLO USUARIOS
 	=============================================*/
 
 	static public function ctrMostrarSoloUsuarios($tabla, $item, $valor){
@@ -21,7 +21,7 @@ class ControladorUsuarios{
 	}
 
 	/*=============================================
-				MOSTRAR USUARIOS
+	MOSTRAR USUARIOS
 	=============================================*/
 
 	static public function ctrMostrarUsuarios($tabla, $item, $valor){
@@ -34,7 +34,7 @@ class ControladorUsuarios{
 	}
 
 	/*=============================================
-				MOSTRAR (DINAMICO)
+	MOSTRAR (DINAMICO)
 	=============================================*/
 
 	static public function ctrMostrar($tabla, $item, $valor) {
@@ -48,7 +48,7 @@ class ControladorUsuarios{
 
 	
 	/*=============================================
-			MOSTRAR MODULOS POR ROL-USUARIO
+	MOSTRAR MODULOS POR ROL-USUARIO
 	=============================================*/
 
 	static public function ctrMostrarUsuarioModulo($item1, $item2, $valor1, $valor2){
@@ -59,7 +59,7 @@ class ControladorUsuarios{
 	}
 
 	/*=============================================
-			INGRESO DE USUARIO
+	INGRESO DE USUARIO
 	=============================================*/
 
 	static public function ctrIngresoUsuario(){
@@ -404,7 +404,7 @@ class ControladorUsuarios{
 	}
 
 	/*=============================================
-			REGISTRO DE USUARIOS
+	REGISTRO DE USUARIOS
 	=============================================*/
 	static public function ctrCrearUsuario($datos){
 
@@ -592,7 +592,7 @@ class ControladorUsuarios{
 
 
 	/*=============================================
-		REGISTRO DE USUARIOS YA REGISTRADO
+	REGISTRO DE USUARIOS YA REGISTRADO
 	=============================================*/
 	static public function ctrCrearUsuarioYaRegistrado(){
 
@@ -812,7 +812,7 @@ class ControladorUsuarios{
 	}
 
 	/*=============================================
-			EDITAR USUARIOS
+	EDITAR USUARIOS
 	=============================================*/
 	
 	static public function ctrEditarUsuario($datos){
@@ -1016,7 +1016,7 @@ class ControladorUsuarios{
 	}
 
 	/*=============================================
-                MOSTRAR PREGUNTAS
+	MOSTRAR PREGUNTAS
 	=============================================*/	
 	static public function ctrMostrarPreguntas($item1, $valor1, $item2, $valor2, $item3, $valor3) {
 
@@ -1241,7 +1241,7 @@ class ControladorUsuarios{
 
 	
 	/*=============================================
-		ACTUALIZAR USUARIO
+	ACTUALIZAR USUARIO
 	=============================================*/	
 	static public function ctrActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2, $item3, $valor3){
 		
@@ -1251,7 +1251,7 @@ class ControladorUsuarios{
 	}
 
 	/*=============================================
-		CAMBIAR CONTRASEÑA POR CODIGO-CORREO
+	CAMBIAR CONTRASEÑA POR CODIGO-CORREO
 	=============================================*/	
 	static public function ctrCambiarContraseñaPorCodigo(){
 
@@ -1376,7 +1376,7 @@ class ControladorUsuarios{
 
 
 	/*=============================================
-		ENVIAR CODIGO DE RECUPERAR CONTRASEÑA
+	ENVIAR CODIGO DE RECUPERAR CONTRASEÑA
 	=============================================*/	
     static public function ctrEnviarCodigo($id, $nombre, $correo){
 
@@ -1422,7 +1422,7 @@ class ControladorUsuarios{
 
 
 	/*=============================================
-		ENVIAR CORREO DE RECUPERAR CONTRASEÑA
+	ENVIAR CORREO DE RECUPERAR CONTRASEÑA
 	=============================================*/	
     static public function ctrEnviarCorreoRecuperacion($correoElectronico, $nombre, $codigo){
 		// $user_os        =   ControladorGlobales::ctrGetOS();
@@ -1543,7 +1543,7 @@ class ControladorUsuarios{
 	
 
 	/*=============================================
-			GENERAR CORREO
+	GENERAR CORREO
 	=============================================*/	
     static public function ctrGenerarCorreo($correoDestinatario, $nombreDestinatario, $asunto, $template, $require){
 
@@ -1946,7 +1946,7 @@ class ControladorUsuarios{
 
 
 	/*=============================================
-		CREAR CODIGO RANDOM PARA EL PASSWORD
+	CREAR CODIGO RANDOM PARA EL PASSWORD
 	=============================================*/	
     static public function ctrCreateRandomCode(){
 
@@ -1963,7 +1963,7 @@ class ControladorUsuarios{
 	
 	
     /*=============================================
-			MOSTRAR PARAMETROS
+	MOSTRAR PARAMETROS
     =============================================*/
     static public function ctrMostrarParametros($item, $valor){
         $tabla = 'tbl_parametros';
@@ -1974,7 +1974,7 @@ class ControladorUsuarios{
 	
 
 	/*=============================================
-		RANGO DINAMICO
+	RANGO DINAMICO
 	=============================================*/
 	static public function ctrRangoUsuarios($rango){
 
@@ -1988,7 +1988,7 @@ class ControladorUsuarios{
 
 
     /*=============================================
-			GENERAR CONTRASEÑAS ALEATORIAS
+	GENERAR CONTRASEÑAS ALEATORIAS
     =============================================*/
 	static public function password_seguro_random(){
  

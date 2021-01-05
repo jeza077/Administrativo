@@ -254,7 +254,7 @@ $bloque6 = <<<EOF
 			<br>
 			 Valor de descuento
 			<br>
-			 Pago de inscripcion
+			 Pago de inscripción
 
 		</td>
 
@@ -293,7 +293,7 @@ $bloque7 = <<<EOF
 
 		<td style="font-size:11.5px; background-color:white; border-top: 2.8px solid #343434; width:60px; text-align:right">
 
-			$clientes[pago_total] 
+			$      $clientes[pago_total] 
 
 
 		</td>

@@ -72,10 +72,10 @@ for (let i = 0; i < claseActivo.length; i++) {
         $(claseActivo[i]).addClass('active');     
         break;
     }
-    if(pathname == 'http://localhost/Admin-Gym/productos' || pathname == 'http://localhost/Admin-Gym/equipo'){
+    if(pathname == 'http://localhost/admin/productos' || pathname == 'http://localhost/admin/equipo'){
         $(stock).addClass('active');
     }
-    if(pathname == 'http://localhost/Admin-Gym/administrar-venta' || pathname == 'http://localhost/Admin-Gym/crear-venta' || pathname == 'http://localhost/Admin-Gym/reportes'){
+    if(pathname == 'http://localhost/admin/administrar-venta' || pathname == 'http://localhost/admin/crear-venta' || pathname == 'http://localhost/admin/reportes'){
         $(ventas).addClass('active');
     }
 }
@@ -772,5 +772,39 @@ function exportarPdf(btnExportar, rutaArchivoPdf) {
     //       window.open("extensiones/tcpdf/pdf/bitacora-pdf.php?&fechaInicial="+fechaInicial+"&fechaFinal="+fechaFinal);
     //     }
     
+    });
+}
+
+
+//** FUNCION SELECT PARA PROVEEDORES
+function selectDinamico() {
+    
+    var tabla = 'tbl_proveeedores';
+    var datos = new FormData();
+    datos.append("tabla", tabla);
+    
+    $.ajax({ 
+        url:"ajax/inventario.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(respuesta){
+            // console.log(respuesta)
+
+            if(respuesta) {
+                // $('#nuevoProveedor').addClass('select2');
+                $("#selectProveedor").prepend("<select class='form-control select2' id='nuevoProveedor' style='width: 100%;' name='nuevoProveedor'></select>");
+                
+                $("#nuevoProveedor").append("<option selected='selected'>Seleccionar...</option>");
+
+                for(var i in respuesta){
+                    // console.log(respuesta[i][1]);
+                    $("#nuevoProveedor").append("<option value="+respuesta[i]['id_proveedor']+">"+respuesta[i]['nombre']+"</option>");
+                }
+            }
+        }    
     });
 }

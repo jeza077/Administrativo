@@ -286,10 +286,18 @@ $(document).on('click', '.btnGuardarProveedor', function (e) {
                     }).then((result) => {
                         if (result.value) {
 
-                            // window.location = "proveedores";
-
-                            var btnSalirModal = $('.salirModal');
-                            btnSalirModal.click();
+                            var pathname = window.location.href;
+                            // console.log(pathname);
+                            if(pathname == 'http://localhost/admin/compras'){
+                                // console.log('prov')
+                                var btnSalirModal = $('.salirModal');
+                                btnSalirModal.click();
+                                $('#nuevoProveedor').remove();
+                                selectDinamico();
+                            } else {
+                                
+                                window.location = "proveedores";
+                            }
 
                         }
                     })

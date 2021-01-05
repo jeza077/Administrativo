@@ -109,6 +109,10 @@ body.login-page .login-box.recu-password .card{
     font-weight: 300;
     font-size: 2rem;
 } */
+.input-group.mySelect {
+    flex-wrap: inherit;
+}
+
 
 
 /** COLORES **/

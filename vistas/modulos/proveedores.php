@@ -4,10 +4,10 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Proveedoress</h1>
+            <h1>Proveedores</h1>
           </div>
           <div class="col-sm-6">
-                <button class="btn btn-orange float-right"  data-toggle="modal" data-target="#modalNuevoProveedor">
+                <button class="btn btn-orange float-right" data-toggle="modal" data-target="#modalNuevoProveedor">
                   Nuevo Proveedor      
                 </button>
                 <button class="btn btn-outline-danger btnExportarProveedores float-right mr-3 ">
@@ -88,7 +88,6 @@
 <!--=====================================
 MODAL AGREGAR NUEVA PROVEEDOR
 ======================================-->
-
 <div class="modal fade" id="modalNuevoProveedor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   
   <div class="modal-dialog" role="document">
@@ -135,7 +134,7 @@ MODAL AGREGAR NUEVA PROVEEDOR
 
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary btnGuardarProveedor">Guardar</button>
-          <button type="button" class="btn btn-orange" data-dismiss="modal">Salir</button>
+          <button type="button" class="btn btn-orange salirModal" data-dismiss="modal">Salir</button>
         </div>
 
       </form> 
@@ -151,7 +150,6 @@ MODAL AGREGAR NUEVA PROVEEDOR
 <!--=====================================
 MODAL EDITAR PROVEEDOR
 ======================================-->
-
 <div class="modal fade" id="modalEditarProveedor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   
   <div class="modal-dialog " role="document">

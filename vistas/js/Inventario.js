@@ -127,7 +127,20 @@ $(document).on('click', '.btnEliminarEquipo', function () {
     });
 });
 
+//** -----------------------------------------------------*/
+//MOSTRAR INFO EN SELECT DESDE LA BASE DE DATOS DINAMICAMENTE
+// -------------------------------------------------------*/ 
+$(document).on('click', '#nuevaCompra', function () {
+    // console.log('clickkk')
+    selectDinamico();    
+});
 
+$(document).on('click', '#pruebaBtn', function (e) {
+    e.preventDefault();
+    // console.log('click');
+    $('#nuevoProveedor').remove();
+    
+});
 
 //** ------------------------------------*/
 //         IMPRIMIR PRODUCTO

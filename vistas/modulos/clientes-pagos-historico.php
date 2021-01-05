@@ -51,7 +51,7 @@
                   <th scope="col">Nombre</th>
                   <th scope="col">Pago Matricula</th>
                   <th scope="col">Valor Descuento</th>
-                  <th scope="col">Pago Inscripcion</th>
+                  <th scope="col">Pago Inscripción</th>
                   <th scope="col">Pago Total</th>
                   <th scope="col">Fecha de Pago</th>
                   <th scope="col">Acciones</th>
