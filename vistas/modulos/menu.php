@@ -298,9 +298,9 @@
 
             <?php } ?>
            
-            <?php if($_SESSION['permisos']['Respaldo y Restauracion']['consulta'] == 1){?>
+            <?php if($_SESSION['permisos']['Respaldo y Restauración']['consulta'] == 1){?>
             <li class="nav-item">
-              <a href="respaldoyrestauracion" class="nav-link menu-lateral">
+              <a href="respaldo-restauracion" class="nav-link menu-lateral">
                 <i class="nav-icon fas fa-download"></i>
                 <p>
                   Respaldo y Restauracion

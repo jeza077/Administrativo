@@ -38,6 +38,22 @@
     <section class="content">
 
           <?php
+
+        $permisos = $_SESSION['permisos'];
+
+        // foreach ($permisos as $key => $value) {
+          
+        //   // if($_GET['ruta'] == $value)
+          
+        //   echo "<pre>";
+        //   var_dump($value['link']);
+        //   echo "</pre>";
+        // }
+
+          
+    // echo "<pre>";
+    // var_dump($_SESSION['permisos']);
+    // echo "</pre>";
             $descripcionEvento = " Consulto la pantalla de Usuario";
             $accion = "consulta";
 

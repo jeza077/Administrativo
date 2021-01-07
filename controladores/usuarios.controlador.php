@@ -121,6 +121,7 @@ class ControladorUsuarios{
 					  $link_objeto = $modulo['link_objeto'];
 	
 					  $permisos = array(
+						'link' => $link_objeto,
 						'agregar' => $modulo['agregar'],
 						'eliminar' => $modulo['eliminar'],
 						'actualizar' => $modulo['actualizar'],
