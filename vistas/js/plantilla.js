@@ -14,6 +14,34 @@ $('#DataTables_Table_0_filter input[type=search]').addClass('ClaseBuscar');
 }
 
 /*=============================================
+****    FUNCION ALERTAS
+=============================================*/
+const alertaDinamica = (titulo, texto, icono) => {
+    var pathname = window.location.href;
+    // $host= $_SERVER["HTTP_HOST"];
+    // $url= $_SERVER["REQUEST_URI"];
+    // $urlF = "http://" . $host . $url;
+    if(pathname == 'http://localhost/admin/dashboard'){
+        Swal.fire({
+            title: titulo,
+            text: texto,
+            icon: icono,
+            showConfirmButton: true,
+            confirmButtonText: "Cerrar"
+        });
+    }
+
+}
+
+// alertaDinamica('hola', 'prueba', 'warning')
+
+// setTimeout(() => {
+    
+//     alertaDinamica('holaHola', 'prueba2', 'warning')
+// }, 3000);
+
+
+/*=============================================
     DATATABLES
 =============================================*/
 $(".tablas").DataTable({

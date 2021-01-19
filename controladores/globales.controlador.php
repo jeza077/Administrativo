@@ -90,33 +90,63 @@ class ControladorGlobales{
     }
 
     /*=============================================
-			FUNCION ALERTAS
+	****    FUNCION ALERTAS
     =============================================*/
-    static public function ctrAlertas($mensaje, $icono){
+    static public function ctrAlertas($titulo, $texto, $icono){
 
         $host= $_SERVER["HTTP_HOST"];
         $url= $_SERVER["REQUEST_URI"];
         $urlF = "http://" . $host . $url;
-        if($urlF == 'http://localhost/gym/dashboard'){
+        if($urlF == 'http://localhost/admin/dashboard'){
             echo '<script>			
                 function alertas() {
                          Swal.fire({
-                            title: "'.$mensaje.'",
+                            title: "'.$titulo.'",
+                            text: "'.$texto.'",
                             icon: "'.$icono.'",
-                            toast: true,
-                            position: "top",
                             showConfirmButton: true,
-                            confirmButtonText: "Cerrar",
-                            width: 600
+                            confirmButtonText: "Cerrar"
                         });
                     }
-                alertas();
-                
-            </script>';
+                    alertas();
+                    
+                    </script>';
+                    // width: 600
+                    // toast: true,
+                    // position: "top",
         }
   
     }
 
+
+    /*=============================================
+	****    FUNCION ALERTAS
+    =============================================*/
+    static public function ctrAlertaCliente($titulo, $texto, $icono){
+
+        $host= $_SERVER["HTTP_HOST"];
+        $url= $_SERVER["REQUEST_URI"];
+        $urlF = "http://" . $host . $url;
+        if($urlF == 'http://localhost/admin/dashboard'){
+            echo '<script>			
+                function alertas() {
+                         Swal.fire({
+                            title: "'.$titulo.'",
+                            text: "'.$texto.'",
+                            icon: "'.$icono.'",
+                            showConfirmButton: true,
+                            confirmButtonText: "Cerrar"
+                        });
+                    }
+                    alertas();
+                    
+                    </script>';
+                    // width: 600
+                    // toast: true,
+                    // position: "top",
+        }
+  
+    }
     /*=============================================
 			EDITAR PARAMETROS
     =============================================*/
